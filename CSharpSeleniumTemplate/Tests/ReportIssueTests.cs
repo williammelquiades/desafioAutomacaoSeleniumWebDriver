@@ -47,5 +47,8 @@ namespace CSharpSeleniumTemplate.Tests
             bugReportPage.PreencherDescricao(descricao);
             bugReportPage.ClicarEmSubmitReport();
         }
+
+        [Test]
+        public void TentarCriarCadastroSemPreencherCamposObrigatorios() { }
     }
 }
