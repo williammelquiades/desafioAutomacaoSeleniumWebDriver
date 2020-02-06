@@ -39,6 +39,7 @@ namespace CSharpSeleniumTemplate.Helpers
                             chrome.AddArgument("--disable-dev-shm-usage");
                             chrome.AddArgument("--disable-browser-side-navigation");
                             chrome.AddArgument("--disable-gpu");
+                            chrome.AddArgument("--headless");
                             chrome.PageLoadStrategy = PageLoadStrategy.Normal;
                             INSTANCE = new ChromeDriver(chrome);
                         }
