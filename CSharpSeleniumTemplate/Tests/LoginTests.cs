@@ -32,7 +32,7 @@ namespace CSharpSeleniumTemplate.Tests
 
             #region Parameters
             string usuario = ConfigurationManager.AppSettings["username"].ToString();
-            string senha   = ConfigurationManager.AppSettings["password"].ToString();
+            string senha = ConfigurationManager.AppSettings["password"].ToString();
             #endregion
 
             loginPage.PreencherUsuario(usuario);
@@ -40,14 +40,14 @@ namespace CSharpSeleniumTemplate.Tests
             loginPage.PreencherSenha(senha);
             loginPage.ClicarEmLogin();
 
-            
+
             Assert.Multiple(() =>
             {
                 Assert.AreEqual(usuario, mainPage.RetornaUsernameDasInformacoesDeLogin());
             });
         }
 
-        /*
+
         [Test]
         public void EfetuarLoginInformandoSenhaInvalida()
         {
@@ -68,7 +68,7 @@ namespace CSharpSeleniumTemplate.Tests
             Assert.AreEqual(mensagemErroEsperada, loginPage.RetornaMensagemDeErro());
         }
 
-        
+
         //Exemplo utilizando um retorno de uma query de banco de dados
         [Test]
         public void EfetuarLoginComSucesso2()
@@ -106,6 +106,6 @@ namespace CSharpSeleniumTemplate.Tests
 
             Assert.AreEqual(mensagemErroEsperada, loginPage.RetornaMensagemDeErro());
         }
-        */
+
     }
 }

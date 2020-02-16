@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using CSharpSeleniumTemplate.Helpers;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
+//using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.WaitHelpers;
 
 namespace CSharpSeleniumTemplate.Bases
@@ -174,17 +175,24 @@ namespace CSharpSeleniumTemplate.Bases
         }
 
         //protected string GetTableValue(By locator , string marcadoresCriados)
-       // {
-           // WaitUntilPageReady();
-            //wait.Until(ExpectedConditions.ElementExists(locator));
-            //IWebElement element = driver.FindElement(locator);
-            //var marcadores = new List<String>();
+        // {
+        // WaitUntilPageReady();
+        //wait.Until(ExpectedConditions.ElementExists(locator));
+        //IWebElement element = driver.FindElement(locator);
+        //var marcadores = new List<String>();
 
-            //foreach (string buscarMarcadorCriado in element){
-                //return GetText(buscarMarcadorCriado);
-            //}
+        //foreach (string buscarMarcadorCriado in element){
+        //return GetText(buscarMarcadorCriado);
+        //}
 
-       // }
+        // }
+        
+        protected string GetAttribute(By locator, string attribute)
+        {
+            string text = WaitForElement(locator).GetAttribute(attribute);
+            ExtentReportHelpers.AddTestInfo(3, "RETURN: " + text);
+            return text;
+        }
 
         protected string GetValue(By locator)
         {
@@ -313,6 +321,77 @@ namespace CSharpSeleniumTemplate.Bases
 
             return url;
         }
+
+        // Select item na lista de forma automatica
+
+        public void escolherValorAleatorioNaLista(IWebElement elemento)
+        {
+            wait.Until(ExpectedConditions.ElementToBeClickable(elemento));
+
+            Random random = new Random();
+            OpenQA.Selenium.Support.UI.SelectElement selector = new OpenQA.Selenium.Support.UI.SelectElement(elemento);
+            IList<IWebElement> options = selector.Options;
+            int aux = options.Count;
+
+            int r = random.Next(0, aux);
+            new OpenQA.Selenium.Support.UI.SelectElement(elemento).SelectByText(options[r].Text.Trim());
+        }
+
+        /*
+         public void escolherValorAleatorioNaLista(IWebElement elemento, string nomePageObjects)
+         {
+             //wait.ElementToBeClickable(elemento);
+
+             wait.Until(ExpectedConditions.ElementToBeClickable(elemento));
+
+             //OpenQA.Selenium.Support.UI.SelectElement comboBox = new OpenQA.Selenium.Support.UI.SelectElement(WaitForElement(locator));
+             //comboBox.SelectByText(nomePageObjects);
+             //ExtentReportHelpers.AddTestInfo(3, "PARAMETER: " + nomePageObjects);
+
+             Random random = new Random();
+             OpenQA.Selenium.Support.UI.SelectElement options = new OpenQA.Selenium.Support.UI.SelectElement(WaitForElement(elemento));
+             IList<IWebElement> options = nomePageObjects.Options;
+             int aux = options.Count;
+
+             int r = random.Next(0, aux);
+             new OpenQA.Selenium.Support.UI.(elemento).SelectByText(options[r].Text.Trim());
+             ExtentReportHelpers.AddTestInfo(3, "PARAMETER: " + nomePageObjects);
+
+         }
+
+       
+
+
+        public string escolherERetornaValorAleatorioNaLista(IWebElement elemento)
+        {
+            wait.Until(ExpectedConditions.ElementExists(elemento));
+
+            Random random = new Random();
+            SelectElement selector = new SelectElement(elemento);
+            IList<IWebElement> options = selector.Options;
+            int aux = options.Count;
+
+            int r = random.Next(0, aux);
+            new SelectElement(elemento).SelectByText(options[r].Text.Trim());
+            return options[r].Text.Trim();
+        }
+
+
+        public string escolherERetornaValorAleatorioNaLista(IWebElement elemento, string nomePageObjects)
+        {
+            wait.ElementToBeClickable(elemento);
+
+            Random random = new Random();
+            SelectElement selector = new SelectElement(elemento);
+            IList<IWebElement> options = selector.Options;
+            int aux = options.Count;
+
+            int r = random.Next(0, aux);
+            new SelectElement(elemento).SelectByText(options[r].Text.Trim());
+            Relatorio.test.Pass("Um valor aleatório foi escolhido para o elemento '" + nomePageObjects + "'");
+            return options[r].Text.Trim();
+        }
+        // Fim de seleção automatica na lista */
         #endregion
     }
 }

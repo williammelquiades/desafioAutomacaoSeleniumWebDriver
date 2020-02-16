@@ -24,14 +24,11 @@ namespace CSharpSeleniumTemplate.Tests
         public void CriarNovoProjetoComSucesso()
         {
 
-            //loginFlows = new LoginFlows();
-            //loginPage = new LoginPage();
             menuMantis = new MenuMantis();
             gerenciarProjeto = new GerenciarProjetosPage();
             
 
             #region Parameters
-
             string nomeProjeto = "Proj Test " + GeneralHelpers.ReturnStringWithRandomNumbers(2);
             string setEstado = "release";
             string setVisibilidade = "private"; // public - private || privado

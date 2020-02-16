@@ -13,7 +13,7 @@ namespace CSharpSeleniumTemplate.Tests
     public class GerenciasMarcadoresTests : TestBase
     {
         #region Pages and Flows Objects
-        LoginFlows  loginFlows;
+        LoginFlows loginFlows;
         //LoginPage loginPage;
         MenuMantis menuMantis;
         //GerenciarProjetosPage gerenciarProjeto;
@@ -21,17 +21,18 @@ namespace CSharpSeleniumTemplate.Tests
         #endregion
 
         [Test]
-        public void CriarNovoProjetoComSucesso()
+        [Category("Validar Criacao de marcadores")]
+        public void CriarNovoMarcorComSucesso()
         {
 
             loginFlows = new LoginFlows();
-          //  loginPage = new LoginPage();
+            //  loginPage = new LoginPage();
             menuMantis = new MenuMantis();
-            gerenciarMarcadores = new GerenciarMarcadoresPage();          
+            gerenciarMarcadores = new GerenciarMarcadoresPage();
 
             #region Parameters
             string usuario = ConfigurationManager.AppSettings["username"].ToString();
-            string senha   = ConfigurationManager.AppSettings["password"].ToString();
+            string senha = ConfigurationManager.AppSettings["password"].ToString();
             string textoNomeMarcador = "Marcador " + GeneralHelpers.ReturnStringWithRandomNumbers(3);
             string textoDescricaoMarcador = "Marcador de teste automático" + GeneralHelpers.ReturnStringWithRandomCharacters(5);
             #endregion
