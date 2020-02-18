@@ -9,6 +9,15 @@ using System.Threading.Tasks;
 
 namespace CSharpSeleniumTemplate.Pages
 {
+
+    public class GerenciarUsuariosPage : PageBase
+    {
+        #region Mapping
+        #endregion
+
+        #region Actions
+        #endregion
+    }
     public class GerenciarProjetosPage : PageBase
     {
         #region Mapping
@@ -22,38 +31,45 @@ namespace CSharpSeleniumTemplate.Pages
         By mensagemErroTextArea = By.XPath("//*[@class='page-content']//p"); //*[starts-with(@class,'alert')]//p
         //
         By botãoAdicionarCategoria = By.XPath("//input[@type='submit' or contains(text(), 'Adicionar Categoria')]");
-        By campoNovaCategoria = By.ClassName("input-sm"); 
+        By campoNovaCategoria = By.ClassName("input-sm");
         #endregion
 
         #region Actions
         //Gerenciamento Projeto: Seção >> Projetos
-        public void ClicarEmAbaGerenciarProjeto() {
+        public void ClicarEmAbaGerenciarProjeto()
+        {
             Click(abaGerenciarProjetos);
         }
 
-        public void ClicarEmNovoProjeto() { 
-            Click(botaoNovoProjeto); 
+        public void ClicarEmNovoProjeto()
+        {
+            Click(botaoNovoProjeto);
         }
 
-        public void PreencherNomeProjeto(string nomeProjeto) {
+        public void PreencherNomeProjeto(string nomeProjeto)
+        {
             SendKeys(this.nomeProjeto, nomeProjeto);
         }
 
-        public void SelecionarEstado(string selecionaEstado) {
+        public void SelecionarEstado(string selecionaEstado)
+        {
             ComboBoxSelectByVisibleText(this.selecionaEstado, selecionaEstado);
         }
 
         public void HerdarCategoria() { }
 
-        public void SelecionarVisibilidade(string selecionarVisibilidade) { 
+        public void SelecionarVisibilidade(string selecionarVisibilidade)
+        {
             ComboBoxSelectByVisibleText(this.selecionarVisibilidade, selecionarVisibilidade);
         }
 
-        public void SetDescricao(string campoDescricao) {
+        public void SetDescricao(string campoDescricao)
+        {
             SendKeys(this.campoDescricao, campoDescricao);
         }
 
-        public void clicarEmAdicionar() { 
+        public void clicarEmAdicionar()
+        {
             Click(botaoAdd);
         }
 
@@ -64,19 +80,22 @@ namespace CSharpSeleniumTemplate.Pages
 
         // Gerenciamento Projetos: Seção >> Categoria Global
 
-        public void PreencherCategoriaGlobal(string nomeCategoria) {
+        public void PreencherCategoriaGlobal(string nomeCategoria)
+        {
             SendKeys(this.campoNovaCategoria, nomeCategoria);
-;        }
+            ;
+        }
 
-        public void ClicarAdicionarEmNovaCategoria() {
+        public void ClicarAdicionarEmNovaCategoria()
+        {
             Click(campoNovaCategoria);
         }
 
         #endregion
     }
 
-    public class CategoriaGlobalPage : PageBase {
-
+    public class CategoriaGlobalPage : PageBase
+    {
         #region Mapping
         By botaoAdicionarCategoria = By.XPath("//*[@class='input-sm' and @type='text']//following-sibling::input[1]");
         By campoNovaCategoria = By.ClassName("input-sm");

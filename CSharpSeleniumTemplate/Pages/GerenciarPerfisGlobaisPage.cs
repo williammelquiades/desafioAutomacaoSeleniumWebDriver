@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 
 namespace CSharpSeleniumTemplate.Pages
 {
-   
 
     public class GerenciarPerfisGlobaisPage : PageBase
     {
@@ -28,41 +27,47 @@ namespace CSharpSeleniumTemplate.Pages
         #endregion
 
         #region Actions
-        public void ClicarEmAba() { 
+        public void ClicarEmAba()
+        {
             Click(abaPerfisGlobais);
         }
 
-        public void PreencherCampoNomePlataforma(string plataforma) {
+        public void PreencherCampoNomePlataforma(string plataforma)
+        {
             this.VARPLATAFORMA = plataforma;
-            SendKeys(this.campoPlataforma, plataforma);           
+            SendKeys(this.campoPlataforma, plataforma);
         }
 
-        public void PreencherCampoNomeSO(string so) {
+        public void PreencherCampoNomeSO(string so)
+        {
             SendKeys(this.campoSo, so);
         }
 
-        public void PreenhcerCampoVersaoSO(string versaoSO) {
+        public void PreenhcerCampoVersaoSO(string versaoSO)
+        {
             SendKeys(this.campoVersaoSo, versaoSO);
         }
 
-        public void PreencherCampoDescricao(String descricao) {
+        public void PreencherCampoDescricao(String descricao)
+        {
             SendKeys(this.campoDescricaoAdicional, descricao);
         }
 
-        public void ClicarEmAdicionarPerfil() {
+        public void ClicarEmAdicionarPerfil()
+        {
             Click(botaoNovoPerfil);
         }
 
         //public string VerificarItemCriado(string VARPLATAFORMA, string SO, string VERSAOSO)
         //{
-          //  this.VARPLATAFORMA = VARPLATAFORMA;
-          //  this.SO = SO;
-          //  this.VERSAOSO = VERSAOSO;
-            //System.Console.WriteLine("Captura de campo: "+campoPlataforma);
-            //return GetText(campoPlataforma);
+        //  this.VARPLATAFORMA = VARPLATAFORMA;
+        //  this.SO = SO;
+        //  this.VERSAOSO = VERSAOSO;
+        //System.Console.WriteLine("Captura de campo: "+campoPlataforma);
+        //return GetText(campoPlataforma);
         //}
 
-         
+
         #endregion
     }
 }

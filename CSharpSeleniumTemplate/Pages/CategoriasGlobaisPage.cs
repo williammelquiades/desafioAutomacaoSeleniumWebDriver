@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CSharpSeleniumTemplate.Pages
 {
-    class CategoriasGlobaisPage :PageBase
+    class CategoriasGlobaisPage : PageBase
     {
         #region Mapping
         By abaGerenciarProjetos = By.XPath("//a[@href='/manage_proj_page.php']");
@@ -16,10 +16,11 @@ namespace CSharpSeleniumTemplate.Pages
         By campoNovaCategoria = By.Name("name");
         #endregion
 
+
         #region Actions
         public void ClicarEmAbaGerenciarProjeto()
         {
-            Click(abaGerenciarProjetos);
+            Click(this.abaGerenciarProjetos);
         }
 
         public void PreencherNomeCategoria(string nomeCategoria)
@@ -32,9 +33,11 @@ namespace CSharpSeleniumTemplate.Pages
             Click(botãoAdicionarCategoria);
         }
 
-        public void RetornoValidacao() { 
+        public void RetornoValidacao()
+        {
             // Validar criação de nova categoria
         }
         #endregion
+
     }
 }

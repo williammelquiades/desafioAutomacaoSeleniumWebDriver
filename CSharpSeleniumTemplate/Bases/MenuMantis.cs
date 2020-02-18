@@ -29,7 +29,7 @@ namespace CSharpSeleniumTemplate.Bases
         By clicarEmResumo = By.XPath("//a[@href='/summary_page.php']");
 
         //Item de menu: Gerenciamento  e subItem
-        By clicarEmGerenciar = By.XPath("//a[@href='/manage_overview_page.php']");
+        By ItemMenuGerenciar = By.XPath("//a[@href='/manage_overview_page.php']");
 
         #endregion
 
@@ -47,7 +47,10 @@ namespace CSharpSeleniumTemplate.Bases
         //Actions Resumo
 
         //Actions Gerenciamento
-        public void ClicarItemMenuGerenciar() { Click(clicarEmGerenciar); }
+        public void ClicarItemMenuGerenciar()
+        {
+            Click(ItemMenuGerenciar);
+        }
         #endregion
     }
 }

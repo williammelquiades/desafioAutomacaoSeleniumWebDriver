@@ -10,38 +10,74 @@ namespace CSharpSeleniumTemplate.Pages
 {
     public class GerenciarPage : PageBase
     {
-
-    }
-
-    class CategoriasGlobaisPage : PageBase
-    {
+        //Abas de acesso em tela Gerenciar
         #region Mapping
-        By abaGerenciarProjetos = By.XPath("//a[@href='/manage_proj_page.php']");
-        By botãoAdicionarCategoria = By.XPath("//input[@type='submit' or contains(text(), 'Adicionar Categoria')]");
-        By campoNovaCategoria = By.Name("name");
+        By abaInformacaoSite = By.XPath("(//ul[@class='nav nav-tabs padding-18']//li//a)[1]");
+        By textoNomeFormulario = By.XPath("//h4[@class='widget-title lighter']");
+        By abaGerenciarUsuarios = By.LinkText("Gerenciar Usuários");
+        By abaGerenciarProjetos = By.LinkText("Gerenciar Projetos");
+        By abaGerenciarMarcadores = By.LinkText("Gerenciar Marcadores");
+        By linkAllMarkers = By.LinkText("TODAS");
+        By abaGerenciarCamposPersonalizados = By.LinkText("Gerenciar Campos Personalizados");
+        By abaGerenciarPerfisGlobais = By.LinkText("Gerenciar Perfís Globais");
+        By abaGerenciarPlugins = By.LinkText("Gerenciar Plugins");
+        By abaGerenciarConfiguracoes = By.LinkText("Gerenciar Configuração");
+        /*
+           Aba interna de gerenciamento de configurações 
+           (//div[@class='btn-group']//a)[1 a 6 ]
+         */
+        By linkReportSetting = By.LinkText("Relatório de Configuração");
+        By linkFlowWork = By.LinkText("Limiares do Fluxo de Trabalho");
+        By linkTransitionsFlowWord = By.LinkText("Transições de Fluxo de Trabalho");
+        By linkNotificationEmail = By.LinkText("Notificações por E-Mail");
+        By linkManageColumns = By.LinkText("Gerenciar Colunas");
         #endregion
 
         #region Actions
-        public void ClicarEmAbaGerenciarProjeto()
+        public void ClicarEmAbaInformacaoSite()
+        {
+            Click(abaInformacaoSite);
+        }
+        public string CapturarNomeDoFormulario()
+        {
+            return GetText(textoNomeFormulario);
+        }
+
+        public void ClicarEmGerenciarUsuario()
+        {
+            Click(abaGerenciarUsuarios);
+        }
+
+        public void ClicarEmAbaGerenciarProjetos()
         {
             Click(abaGerenciarProjetos);
         }
 
-        public void PreencherNomeCategoria(string nomeCategoria)
+        public void ClicarEmAbaGerenciarMarcadores()
         {
-            SendKeys(this.campoNovaCategoria, nomeCategoria);
+            Click(abaGerenciarMarcadores);
         }
 
-        public void clicarEmAdicionar()
+        public void ClicarEmAbaGerenciarCamposPersonalizados()
         {
-            Click(botãoAdicionarCategoria);
+            Click(abaGerenciarCamposPersonalizados);
         }
 
-        public void RetornoValidacao()
+        public void ClicarEmAbaGerenciarPerfilGlobal()
         {
-            // Validar criação de nova categoria
+            Click(abaGerenciarPerfisGlobais);
         }
+
+
+        public void ClicarEmAbaGerenciarPlugins()
+        {
+            Click();
+        }
+        public void ClicarEmAbaGerenciarConfiguracao()
+        {
+            Click();
+        }
+
         #endregion
     }
-
 }

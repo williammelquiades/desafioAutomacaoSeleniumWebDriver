@@ -125,11 +125,13 @@
     <Compile Include="Pages\CriarTarefasPage.cs" />
     <Compile Include="Pages\GerenciarCamposPersonalizadosPage.cs" />
     <Compile Include="Pages\GerenciarMarcadoresPage.cs" />
+    <Compile Include="Pages\GerenciarPage.cs" />
     <Compile Include="Pages\GerenciarPerfisGlobaisPage.cs" />
     <Compile Include="Pages\GerenciarProjetosPage.cs" />
     <Compile Include="Pages\GereniarContasPage.cs" />
     <Compile Include="Pages\LoginPage.cs" />
     <Compile Include="Pages\MainPage.cs" />
+    <Compile Include="Pages\MinhaContaPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -146,8 +148,10 @@
     <Compile Include="Tests\GerenciarCamposPersonalizadosTests.cs" />
     <Compile Include="Tests\GerenciarMarcadoresTests.cs" />
     <Compile Include="Tests\GerenciarPerfisGlobaisTests.cs" />
+    <Compile Include="Tests\GerenciarTests.cs" />
     <Compile Include="Tests\GerenciasProjetosTests.cs" />
     <Compile Include="Tests\LoginTests.cs" />
+    <Compile Include="Tests\MinhasContaTests.cs" />
     <Compile Include="Tests\ReportIssueTests.cs" />
     <Compile Include="Tests\ValidaMenuPrincipalTests.cs" />
   </ItemGroup>
