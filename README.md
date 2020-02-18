@@ -17,4 +17,4 @@ O desafio foi realizado na GTAA da Base 2 tecnologia, a escrita e o desenvolvime
 
 ![alt text](https://i.imgur.com/wexOWJF.png)
 
-# desafioAutomacaoSeleniumWebDriver
+# Desafio Automacao Selenium WebDriver : Regras
