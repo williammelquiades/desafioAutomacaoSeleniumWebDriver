@@ -4,10 +4,12 @@ using CSharpSeleniumTemplate.Helpers;
 using CSharpSeleniumTemplate.Pages;
 using NUnit.Framework;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace CSharpSeleniumTemplate.Tests
@@ -24,10 +26,12 @@ namespace CSharpSeleniumTemplate.Tests
         CriarTarefasPage criarTarefas;
         #endregion
 
-        [Test]
+        
+        [Test, Category("ValidarCampoObrigatorioResumo")]
         public void ValidarCamposObrigatorioResumo()
         {
             menuMantis = new MenuMantis();
+            criarTarefas = new CriarTarefasPage();
 
             #region Parameters
             string projetoPadrao = "Automacao";
@@ -35,62 +39,109 @@ namespace CSharpSeleniumTemplate.Tests
             string descricao = "";
             string msgPT = "Preencha este campo.";
             string msgEN = "Please fill out this field.";
-            string msgExplorer = "Este é um campo obrigatório";
+            string msgIE = "Este é um campo obrigatório";
             string msgJavaScripit = "validationMessage";
             #endregion
 
             loginInSystem.EfetuarLogin(USUARIO, SENHA);
             menuMantis.ClicarItemMenuCriarTarefas();
-            criarTarefas.SelecionarProjeto(projetoPadrao);
             criarTarefas.ClicarEmSelecionarProjeto();
+            criarTarefas.SalvarNovoProjeto();
 
-            //CollectionAssert.Contains(new[] { msgEN, msgPT, msgExplorer }, createTaskPage.RetornarMsgDescricao(msgJavaScripit));
+            CollectionAssert.Contains(new[] { msgEN, msgPT, msgIE }, criarTarefas.MensagemValidacaoResumo(msgJavaScripit));
 
         }
-        /*
+
         [Test, Category("ValidarCampoObrigatorioDescricao")]
-        public void ValidarCampoObrigatorioDescricao() { 
-        
-        }
+        public void ValidarCampoObrigatorioDescricao()
+        {
+            menuMantis = new MenuMantis();
+            criarTarefas = new CriarTarefasPage();
 
-        [Test, Category("VerificarErroDoCampoCategoria")]
-        public void VerificarErroDeCampoCategoria() { 
-        
-        }
-
-        [Test, Category("CriarTarefas")]
-        public void CriarNovaTarefaComSucesso() {
-
-            // Relatorio.iniciarTeste("Criar tarefa");
+            #region Parameters
+            string projetoPadrao = "Automacao";
+            string resumo = "Teste Resumo";
+            string msgPT = "Preencha este campo.";
+            string msgEN = "Please fill out this field.";
+            string msgIE = "Este é um campo obrigatório";
+            string msgJavaScripit = "validationMessage";
+            #endregion
 
             loginInSystem.EfetuarLogin(USUARIO, SENHA);
-
-            //home.verificaAcessoTelaHome();
-
-
             menuMantis.ClicarItemMenuCriarTarefas();
-            criarTarefas.SelecionarProjeto("Automacao");
+            criarTarefas.ClicarEmSelecionarProjeto();
+            criarTarefas.PreencherResumo(resumo);
+            criarTarefas.SalvarNovoProjeto();
 
-            criarTarefas.SelecionarCategoria("TESTE");
-            criarTarefas.SelecionarFrequencia("TESTE");
-            criarTarefas.SelecionarGravidade("TESTE");
-            criarTarefas.SelecionarPrioridade("TESTE");
-            criarTarefas.SelecionarPerfil("TESTE");
-            criarTarefas.SelecionaAtribuicao("TESTE");
-            criarTarefas.PreencherResumo("TESTE");
-            criarTarefas.PreencherDescricao("TESTE");
+            CollectionAssert.Contains(new[] { msgEN, msgPT, msgIE }, criarTarefas.MensagemValidacaoDescricao(msgJavaScripit));
+        }
+        
 
+        [Test, Category("Verificar Erro De Campo Categoria Vazio")]
+        public void VerificarErroDeCampoCategoria()
+        {
+            menuMantis = new MenuMantis();
+            criarTarefas = new CriarTarefasPage();
 
+            #region Parameters
+            //string projetoPadrao = "Automacao";
+            string texto = "Texto de Tests";
+            string mensagemErroEsperada = "APPLICATION ERROR #11";
+            #endregion
 
-            //criarTarefas.criarNovaTarefaAleatoria();
+            loginInSystem.EfetuarLogin(USUARIO, SENHA);
+            menuMantis.ClicarItemMenuCriarTarefas();
+            criarTarefas.ClicarEmSelecionarProjeto();
+            criarTarefas.PreencherResumo(texto);
+            criarTarefas.PreencherDescricao(texto);
+            criarTarefas.SalvarNovoProjeto();
 
-            //Assert.AreEqual("Operação realizada com sucesso.", criar.MensagemOperacao.Text);
-        }//fim void
+            Assert.AreEqual(mensagemErroEsperada, criarTarefas.RetornaMensagemDeErro());
+        }
+       
+      
+        [Test, Category("Criar Nova Tarefas Com Sucesso")]
+        public void CriarNovaTarefaComSucesso()
+        {
+            menuMantis = new MenuMantis();
+            criarTarefas = new CriarTarefasPage();
 
+            #region Parameters
+            string categoria = "[All Projects] General"; // [Todos os Projetos] General
+            string frequencia = "always"; // always | sempre
+            string gravidade = "feature"; // feature | pequeno
+            string prioridade = "urgent";
+            string perfil = "Linux gnome 0238";
+            string atribuido = "administrator";
+            string textoDeTeste = "Texto de Tests";
+            string msgEsperada = "Operation successful."; // Operation successful. | Operação realizada com sucesso.
+
+            //string
+            #endregion
+
+            loginInSystem.EfetuarLogin(USUARIO, SENHA);
+            menuMantis.ClicarItemMenuCriarTarefas();
+            //criarTarefas.SelecionarProjeto("Automacao");
+            criarTarefas.ClicarEmSelecionarProjeto();
+
+            criarTarefas.SelecionarCategoria(categoria);
+            criarTarefas.SelecionarFrequencia(frequencia);
+            criarTarefas.SelecionarGravidade(gravidade);
+            criarTarefas.SelecionarPrioridade(prioridade);
+            criarTarefas.SelecionarPerfil(perfil);
+            criarTarefas.SelecionaAtribuicao(atribuido);
+            criarTarefas.PreencherResumo(textoDeTeste);
+            criarTarefas.PreencherDescricao(textoDeTeste);
+            criarTarefas.SalvarNovoProjeto();
+
+            Assert.That(criarTarefas.ValidarCriarTarefa().Contains(msgEsperada));
+        }
+
+        /*
         [Test, Category("CriarNovasTarefasEmMassaComDataDriver")]
         public void CriarNovasTarefasEmMassa() {
 
         }
-        */
+       */
     }
 }

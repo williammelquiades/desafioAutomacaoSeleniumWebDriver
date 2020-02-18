@@ -14,7 +14,7 @@ namespace CSharpSeleniumTemplate.Pages
 
         #region Mapping
         By listaDeProjetos = By.Id("select-project-id");
-        By botaoSelecionarProjeto = By.XPath("//input[@type='submit' or contains(text(), 'Selecionar Projeto')]");
+        By botaoSelecionarProjeto = By.XPath("//div[2]/input");
         By listaDeCategoria = By.Id("category_id");
         By listaDeFraquencia = By.Id("reproducibility");
         By listaDeGravidade = By.Id("severity");
@@ -29,23 +29,29 @@ namespace CSharpSeleniumTemplate.Pages
         By campoDescricao = By.Name("description");
         By campoPassoReproducao = By.Name("steps_to_reproduce");
         By campoInfoAdicionais = By.Name("additional_info");
+        By msgErroCategoria = By.XPath("//p[contains(text(),'APPLICATION ERROR #11')]");
+        By msgDeRetornoTarefa = By.XPath("//p");
         #endregion
 
         #region Actions
-        public void SelecionarProjeto(string listaDeProjetos)
-        {
-            ComboBoxSelectByVisibleText(this.listaDeProjetos, listaDeProjetos);
-        }
-
         public void ClicarEmSelecionarProjeto()
         {
             Click(botaoSelecionarProjeto);
         }
 
+        public void SalvarNovoProjeto()
+        {
+            Click(botaoSelecionarProjeto);
+        }
+
+        public void SelecionarProjeto(string listaDeProjetos)
+        {
+            ComboBoxSelectByVisibleText(this.listaDeProjetos, listaDeProjetos);
+        }
+
         public void SelecionarCategoria(string listaDeCategoria)
         {
-            //ComboBoxSelectByVisibleText(this.listaDeCategoria, listaDeCategoria);
-
+            ComboBoxSelectByVisibleText(this.listaDeCategoria, listaDeCategoria);
             //GeneralHelpers.clicaBotao(MenuCriarTarefa, uteis.RetornaNomeVariavel(() => MenuCriarTarefa));
         }
 
@@ -94,11 +100,25 @@ namespace CSharpSeleniumTemplate.Pages
             SendKeys(this.campoInfoAdicionais, campoInfoAdicionais);
         }
 
-        public string MensagemValidacaoResumo(string testeCampoDescricao)
+        public string MensagemValidacaoResumo(string textoCampoResumo)
+        {
+            return GetAttribute(this.campoResumo, textoCampoResumo);
+        }
+
+        public string MensagemValidacaoDescricao(string testeCampoDescricao)
         {
             return GetAttribute(this.campoDescricao, testeCampoDescricao);
         }
-        #endregion
 
+        public string ValidarCriarTarefa()
+        {
+            return GetText(msgDeRetornoTarefa);
+        }
+
+        public string RetornaMensagemDeErro()
+        {
+            return GetText(msgErroCategoria);
+        }
+        #endregion
     }
 }
