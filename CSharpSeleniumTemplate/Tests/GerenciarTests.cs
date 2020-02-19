@@ -22,9 +22,11 @@ namespace CSharpSeleniumTemplate.Tests
         [AutoInstance] MenuMantis menuMantis;
         [AutoInstance] GerenciarPage gerenciarPage;
         [AutoInstance] FormularioGerenciarProjetosPage formularioGerenciarProjeto;
+        [AutoInstance] FormularioCategoriaGlobais formularioCategoriasGlobais;
         string MSGESPERADA = "Operação realizada com sucesso.";
         #endregion
-        
+
+        /*
         [Test]
         [Category("Acessar Abas")]
         public void AcessarAbaInformacaoSite()
@@ -197,7 +199,7 @@ namespace CSharpSeleniumTemplate.Tests
         }
 
         [Test]
-        [Category("Cadastro de Projetos com Sucesso")]
+        [Category("Gerenciar Projetos Sucesso")]
         public void CriarNovoProjetoComSucesso()
         {
 
@@ -217,7 +219,7 @@ namespace CSharpSeleniumTemplate.Tests
         }
 
         [Test]
-        [Category("Cadastro de Projetos com Sucesso Consulta BD")]
+        [Category("Gerenciar Projetos BD")]
         public void CriarNovoProjetoComSucessoConsultandoBD()
         {
             #region Parameters
@@ -241,6 +243,121 @@ namespace CSharpSeleniumTemplate.Tests
 
             Assert.Less(quantidadeProjetosAoIniciar, quantidadeProjetosAoFinalizar);
             Assert.AreEqual(MSGESPERADA, formularioGerenciarProjeto.RetornaMensagem());
+        }
+
+        [Test]
+        [Category("Gerenciar Projetos BD")]
+        public void DeletarProjetoBD()
+        {
+            #region Parameters
+            int quantidadeProjetosAoIniciar = 0, quantidadeProjetosAoFinalizar;
+            #endregion
+
+            quantidadeProjetosAoIniciar = GerenciarProjetosDBSteps.RetornaQuantidadeDeProjetosCriadosDB();
+
+            loginInSystem.EfetuarLogin(USUARIO, SENHA);
+
+            menuMantis.ClicarItemMenuGerenciar();
+
+            gerenciarPage.ClicarEmAbaGerenciarProjetos();
+
+            Assume.That(formularioGerenciarProjeto.ProcurarProjetosNaLista());
+
+            formularioGerenciarProjeto.ClicarEmProjetoDaLista();
+
+            formularioGerenciarProjeto.ClicarEmApagarProjeto();
+
+            formularioGerenciarProjeto.ClicarEmConfirmarApagarProjeto();
+
+            quantidadeProjetosAoFinalizar = GerenciarProjetosDBSteps.RetornaQuantidadeDeProjetosCriadosDB();
+
+            Assert.Greater(quantidadeProjetosAoIniciar, quantidadeProjetosAoFinalizar);
+            //Assert.That(formularioGerenciarProjeto.VerificarRetornoDeBotaoATela());
+        }
+
+        [Test]
+        [Category("Gerenciar Projetos")]
+        public void EditarProjetoDaLista()
+        {
+            #region Parameters
+            
+            #endregion
+
+
+            loginInSystem.EfetuarLogin(USUARIO, SENHA);
+
+            menuMantis.ClicarItemMenuGerenciar();
+
+            gerenciarPage.ClicarEmAbaGerenciarProjetos();
+
+            Assume.That(formularioGerenciarProjeto.ProcurarProjetosNaLista());
+
+            formularioGerenciarProjeto.ClicarEmProjetoDaLista();
+
+            formularioGerenciarProjeto.CapturarTextoDoCampos();
+
+            formularioGerenciarProjeto.ClicarEmAtualizarProjeto();
+
+            Assert.That(formularioGerenciarProjeto.VerificarRetornoDeBotaoATela());
+        }
+
+        [Test]
+        [Category("Gerenciar Categoria Global")]
+        public void CriarCategoriaSemNome()
+        {
+            #region Parameters         
+            string msgError = "Um campo necessário 'Categoria' estava vazio.";
+            #endregion
+
+            loginInSystem.EfetuarLogin(USUARIO, SENHA);
+
+            menuMantis.ClicarItemMenuGerenciar();
+
+            gerenciarPage.ClicarEmAbaGerenciarProjetos();
+
+
+            formularioCategoriasGlobais.ClicarEmAdicionarCategoria();
+
+            Assert.True(formularioCategoriasGlobais.MenssagemDeErro().Contains(msgError));
+        }
+
+        [Test]
+        [Category("Gerenciar Categoria Global")]
+        public void CriarCategoriaComSucesso()
+        {
+            #region Parameters          
+            #endregion
+
+            loginInSystem.EfetuarLogin(USUARIO, SENHA);
+
+            menuMantis.ClicarItemMenuGerenciar();
+
+            gerenciarPage.ClicarEmAbaGerenciarProjetos();          
+
+            formularioCategoriasGlobais.PreencherNomeCategoria();
+
+            formularioCategoriasGlobais.ClicarEmAdicionarCategoria();
+
+            Assert.AreEqual(MSGESPERADA, formularioGerenciarProjeto.RetornaMensagem());
+        }*/
+
+        public void CriarCategoriaRepetida()
+        {
+            #region Parameters
+            string msgError = "Uma categoria com este nome já existe.";
+            #endregion
+
+            loginInSystem.EfetuarLogin(USUARIO, SENHA);
+
+            menuMantis.ClicarItemMenuGerenciar();
+            gerenciarPage.ClicarEmAbaGerenciarProjetos();
+            Assume.That(formularioCategoriasGlobais.ProcurarProjetosNaLista());
+            formularioCategoriasGlobais.PreencherNomeCategoria();
+            formularioCategoriasGlobais.ClicarEmAdicionarCategoria();
+
+            Assert.AreEqual(msgError, formularioCategoriasGlobais.MenssagemDeErro());
+
+
         }
     }
 }

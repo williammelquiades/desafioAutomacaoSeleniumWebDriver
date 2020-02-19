@@ -17,8 +17,8 @@ namespace CSharpSeleniumTemplate.Tests
         string SENHA   = ConfigurationManager.AppSettings["password"].ToString();
         [AutoInstance] LoginFlows loginInSystem;
         [AutoInstance] MenuMantis menuMantis;
-        [AutoInstance] GerenciarProjetosPage emGerenciarProjetos;
-        [AutoInstance] CategoriaGlobalPage emCategoriaGlobal;
+        [AutoInstance] GerenciarPage emGerenciarProjetos;
+        //[AutoInstance] CategoriaGlobalPage emCategoriaGlobal;
         #endregion
         
         [Test]
@@ -32,9 +32,9 @@ namespace CSharpSeleniumTemplate.Tests
 
             menuMantis.ClicarItemMenuGerenciar();
 
-            emGerenciarProjetos.ClicarEmAbaGerenciarProjeto();
-            emCategoriaGlobal.PreencherCategoriaGlobal(nomeNovaCategoria);
-            emCategoriaGlobal.ClicarAdicionarEmNovaCategoria();
+            emGerenciarProjetos.ClicarEmAbaGerenciarProjetos();
+            //emCategoriaGlobal.PreencherCategoriaGlobal(nomeNovaCategoria);
+            //emCategoriaGlobal.ClicarAdicionarEmNovaCategoria();
 
             //Desenvolver retorno //Assert.AreEqual(mensagem);
         }

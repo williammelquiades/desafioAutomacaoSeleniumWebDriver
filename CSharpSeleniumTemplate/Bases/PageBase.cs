@@ -79,7 +79,7 @@ namespace CSharpSeleniumTemplate.Bases
         //OBSERVAÇÃO: após o primeiro shaddowRoot só é possível localizar os elementos através de id e css Selectors
         protected IWebElement ExpandShadowRootElement(IWebElement element)
         {
-            IWebElement shadowRootElement = (IWebElement) javaScriptExecutor.ExecuteScript("return arguments[0].shadowRoot", element);
+            IWebElement shadowRootElement = (IWebElement)javaScriptExecutor.ExecuteScript("return arguments[0].shadowRoot", element);
             return shadowRootElement;
         }
 
@@ -136,7 +136,7 @@ namespace CSharpSeleniumTemplate.Bases
 
         protected void SendKeysSlowly(By locator, string text)
         {
-            foreach(char c in text)
+            foreach (char c in text)
             {
                 Thread.Sleep(100);
                 WaitForElement(locator).SendKeys(c.ToString());
@@ -174,19 +174,6 @@ namespace CSharpSeleniumTemplate.Bases
             return text;
         }
 
-        //protected string GetTableValue(By locator , string marcadoresCriados)
-        // {
-        // WaitUntilPageReady();
-        //wait.Until(ExpectedConditions.ElementExists(locator));
-        //IWebElement element = driver.FindElement(locator);
-        //var marcadores = new List<String>();
-
-        //foreach (string buscarMarcadorCriado in element){
-        //return GetText(buscarMarcadorCriado);
-        //}
-
-        // }
-        
         protected string GetAttribute(By locator, string attribute)
         {
             string text = WaitForElement(locator).GetAttribute(attribute);
@@ -223,6 +210,19 @@ namespace CSharpSeleniumTemplate.Bases
             bool result = driver.FindElement(locator).Selected;
             ExtentReportHelpers.AddTestInfo(3, "RETURN: " + result);
             return result;
+        }
+
+        protected bool ReturnIfElementExists(By locator)
+        {
+            try
+            {
+                driver.FindElement(locator);
+                return true;
+            }
+            catch (NoSuchElementException)
+            {
+                return false;
+            }
         }
 
         protected void Clear(By locator)
@@ -309,7 +309,7 @@ namespace CSharpSeleniumTemplate.Bases
         public string GetTitle()
         {
             string title = driver.Title;
-            ExtentReportHelpers.AddTestInfo(2, "RETURN: "+title);
+            ExtentReportHelpers.AddTestInfo(2, "RETURN: " + title);
 
             return title;
         }
@@ -317,7 +317,7 @@ namespace CSharpSeleniumTemplate.Bases
         public string GetURL()
         {
             string url = driver.Url;
-            ExtentReportHelpers.AddTestInfo(2, "RETURN: "+url);
+            ExtentReportHelpers.AddTestInfo(2, "RETURN: " + url);
 
             return url;
         }

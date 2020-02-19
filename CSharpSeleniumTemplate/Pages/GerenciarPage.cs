@@ -23,20 +23,18 @@ namespace CSharpSeleniumTemplate.Pages
         By abaGerenciarUsuarios = By.LinkText("Gerenciar Usuários");
         By abaGerenciarProjetos = By.LinkText("Gerenciar Projetos");
         By abaGerenciarMarcadores = By.LinkText("Gerenciar Marcadores");
-        By todosOsMarcadoresPaginacao= By.LinkText("TODAS");
+        By todosOsMarcadoresPaginacao = By.LinkText("TODAS");
         By abaGerenciarCamposPersonalizados = By.LinkText("Gerenciar Campos Personalizados");
         By abaGerenciarPerfisGlobais = By.LinkText("Gerenciar Perfís Globais");
         By abaGerenciarPlugins = By.LinkText("Gerenciar Plugins");
         By abaGerenciarConfiguracoes = By.LinkText("Gerenciar Configuração");
-        /*
-           Aba interna de gerenciamento de configurações 
-           (//div[@class='btn-group']//a)[1 a 6 ]
-         */
-        By linkReportSetting = By.LinkText("Relatório de Configuração");
-        By linkFlowWork = By.LinkText("Limiares do Fluxo de Trabalho");
-        By linkTransitionsFlowWord = By.LinkText("Transições de Fluxo de Trabalho");
-        By linkNotificationEmail = By.LinkText("Notificações por E-Mail");
-        By linkManageColumns = By.LinkText("Gerenciar Colunas");
+
+        By subAbaGerenciamentoConfiguracaoRelPermiss = By.XPath("(//div[@class='btn-group']//a)[1]");
+        By subAbaGerenciamentoConfiguracaoRelConfig = By.LinkText("Relatório de Configuração");
+        By subAbaGerenciamentoConfiguracaoLimearesDoFLuxo = By.LinkText("Limiares do Fluxo de Trabalho");
+        By subAbaGerenciamentoConfigTransicaoDeFluxo = By.LinkText("Transições de Fluxo de Trabalho");
+        By subAbaGerenciamentoConfigNotificacaoEmail = By.LinkText("Notificações por E-Mail");
+        By subAbaGerenciamentoConfigGerenciarColunas = By.LinkText("Gerenciar Colunas");
         #endregion
 
         #region Actions
@@ -110,8 +108,9 @@ namespace CSharpSeleniumTemplate.Pages
         #endregion
     }
 
-    public class FormularioGerenciamentoUsuario : PageBase {
-       
+    public class FormularioGerenciamentoUsuario : PageBase
+    {
+
         #region Mapping
         By botaoCriarNovaConta = By.XPath("//a[@href='/manage_user_create_page.php']");
         By campoNomeUsuario = By.Id("user-username");
@@ -164,6 +163,8 @@ namespace CSharpSeleniumTemplate.Pages
     {
         #region Mapping
         By botaoNovoProjeto = By.XPath("//button[contains(text(),'Criar Novo Projeto') or contains(text(), 'Create New Project')]");
+        By botaoDeleteProjeto = By.XPath("//input[@value='Apagar Projeto']");
+        By botaoAtualizarCategoria = By.XPath("//input[@type='submit' or contains(text(), 'Atualizar Projeto')]");
         By nomeProjeto = By.Id("project-name");
         By campoDescricao = By.Id("project-description");
         By selecionaEstado = By.Id("project-status");
@@ -171,9 +172,9 @@ namespace CSharpSeleniumTemplate.Pages
         By botaoAdicionarProjeto = By.XPath("//input[@type='submit' or contains(text(), 'Adicionar projeto')]");
         By mensagemErroTextArea = By.XPath("//*[@class='page-content']//p"); //*[starts-with(@class,'alert')]//p
         By mensagemDeSucesso = By.XPath("//*[@class='page-content']//p");
+        By listaDeProjetosInTable = By.XPath("//td/a");
         //
-        By botãoAdicionarCategoria = By.XPath("//input[@type='submit' or contains(text(), 'Adicionar Categoria')]");
-        By campoNovaCategoria = By.ClassName("input-sm");
+       
         #endregion
 
         #region Actions
@@ -186,6 +187,18 @@ namespace CSharpSeleniumTemplate.Pages
         public void PreencherNomeProjeto()
         {
             SendKeys(this.nomeProjeto, "Proj Test " + GeneralHelpers.ReturnStringWithRandomNumbers(2));
+        }
+
+        public void CapturarTextoDoCampos()
+        {
+           
+
+            SendKeys(nomeProjeto," Edit v.01");
+        }
+
+        public void ClicarEmAtualizarProjeto()
+        {
+            Click(botaoAtualizarCategoria);
         }
 
         public void SelecionarEstado(string selecionaEstado)
@@ -202,7 +215,7 @@ namespace CSharpSeleniumTemplate.Pages
 
         public void PreencherDescricao()
         {
-            SendKeys(this.campoDescricao, "Descrição de teste automático" + GeneralHelpers.ReturnStringWithRandomCharacters(10));
+            SendKeys(this.campoDescricao, "Descrição de teste automático " + GeneralHelpers.ReturnStringWithRandomCharacters(10));
         }
 
         public void ClicarEmAdicionarProjeto()
@@ -215,18 +228,35 @@ namespace CSharpSeleniumTemplate.Pages
             return GetText(mensagemDeSucesso);
         }
 
-        // Gerenciamento Projetos: Seção >> Categoria Global
-
-        public void PreencherCategoriaGlobal(string nomeCategoria)
+        public bool ProcurarProjetosNaLista()
         {
-            SendKeys(this.campoNovaCategoria, nomeCategoria);
-            ;
+            return ReturnIfElementExists(listaDeProjetosInTable);
         }
 
-        public void ClicarAdicionarEmNovaCategoria()
+        public bool VerificarRetornoDeBotaoATela()
         {
-            Click(campoNovaCategoria);
+            return ReturnIfElementIsDisplayed(botaoNovoProjeto);
         }
+
+        public void ClicarEmProjetoDaLista()
+        {
+            Click(listaDeProjetosInTable);
+        }
+
+        public void ClicarEmApagarProjeto()
+        {
+            Click(botaoDeleteProjeto);
+        }
+
+        public void ClicarEmEditarProjeto()
+        {
+            Click(botaoAtualizarCategoria);
+        }
+
+        public void ClicarEmConfirmarApagarProjeto()
+        {
+            Click(botaoDeleteProjeto);
+        }        
 
         public string ValidarCampoNomeProjeto(string msgJavaScripit)
         {
@@ -240,24 +270,43 @@ namespace CSharpSeleniumTemplate.Pages
     {
 
         #region Mapping
-        By botãoAdicionarCategoria = By.XPath("//input[@type='submit' or contains(text(), 'Adicionar Categoria')]");
+        By botaoAdicionarCategoria = By.XPath("//input[@type='submit' or contains(text(), 'Adicionar Categoria')]");
+        // By campoNovaCategoria = By.ClassName("input-sm");
+        //By botãoAdicionarCategoria = By.XPath("//input[@type='submit' or contains(text(), 'Adicionar Categoria')]");
+        By msgError = By.XPath("//div[@id='main-container']/div[2]/div[2]/div/div/div[2]/p[2]");
         By campoNovaCategoria = By.Name("name");
+        By listaCategoriasGlobais = By.XPath("(//div[@class='table-responsive'])[2]//tr//td[1]");
         #endregion
 
         #region Actions        
-        public void PreencherNomeCategoria(string nomeCategoria)
+        public void PreencherNomeCategoria()
         {
-            SendKeys(this.campoNovaCategoria, nomeCategoria);
+            SendKeys(this.campoNovaCategoria, "Categoria[" + GeneralHelpers.ReturnStringWithRandomNumbers(2) + "]");
         }
 
-        public void clicarEmAdicionar()
+        public void ClicarEmAdicionarCategoria()
         {
-            Click(botãoAdicionarCategoria);
+            Click(botaoAdicionarCategoria);
         }
 
         public void RetornoValidacao()
         {
             // Validar criação de nova categoria
+        }
+
+        public string MenssagemDeErro()
+        {
+            return GetText(msgError);
+        }
+
+        public bool ProcurarProjetosNaLista()
+        {
+            return ReturnIfElementExists(listaCategoriasGlobais);
+        }
+
+        public void ClicarEmProjetoDaLista()
+        {
+            Click(listaCategoriasGlobais);
         }
         #endregion
     }
