@@ -63,3 +63,4 @@ jenkins:
     - jenkins-data:/var/jenkins_home/
     - /var/run/docker.sock:/var/run/docker.sock
     - /home/desafiobase2/ .docker/:/home/jenkins/ .docker/
+    - /home/test
