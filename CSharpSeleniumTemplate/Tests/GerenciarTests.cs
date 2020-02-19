@@ -18,8 +18,8 @@ namespace CSharpSeleniumTemplate.Tests
         string USUARIO = ConfigurationManager.AppSettings["username"].ToString();
         string SENHA = ConfigurationManager.AppSettings["password"].ToString();
         [AutoInstance] LoginFlows loginInSystem;
-        [AutoInstance] GerenciarPage gerenciarPage;
         [AutoInstance] MenuMantis menuMantis;
+        [AutoInstance] GerenciarPage gerenciarPage;
         [AutoInstance] FormularioGerenciarProjetosPage formularioGerenciarProjeto;
         #endregion
 

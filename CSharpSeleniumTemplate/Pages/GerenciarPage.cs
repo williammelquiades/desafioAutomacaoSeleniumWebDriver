@@ -23,7 +23,7 @@ namespace CSharpSeleniumTemplate.Pages
         By abaGerenciarUsuarios = By.LinkText("Gerenciar Usuários");
         By abaGerenciarProjetos = By.LinkText("Gerenciar Projetos");
         By abaGerenciarMarcadores = By.LinkText("Gerenciar Marcadores");
-        By linkAllMarkers = By.LinkText("TODAS");
+        By todosOsMarcadoresPaginacao= By.LinkText("TODAS");
         By abaGerenciarCamposPersonalizados = By.LinkText("Gerenciar Campos Personalizados");
         By abaGerenciarPerfisGlobais = By.LinkText("Gerenciar Perfís Globais");
         By abaGerenciarPlugins = By.LinkText("Gerenciar Plugins");
@@ -111,6 +111,7 @@ namespace CSharpSeleniumTemplate.Pages
     }
 
     public class FormularioGerenciamentoUsuario : PageBase {
+       
         #region Mapping
         By botaoCriarNovaConta = By.XPath("//a[@href='/manage_user_create_page.php']");
         By campoNomeUsuario = By.Id("user-username");
@@ -156,6 +157,7 @@ namespace CSharpSeleniumTemplate.Pages
         {
             Click(checkProtegido);
         }
+        #endregion
     }
 
     public class FormularioGerenciarProjetosPage : PageBase
@@ -332,6 +334,7 @@ namespace CSharpSeleniumTemplate.Pages
         {
             // Criar validaçao de item em tela 
         }
+        #endregion
     }
 
     public class FormularioGerenciarPerfilGlobais : PageBase
@@ -385,6 +388,7 @@ namespace CSharpSeleniumTemplate.Pages
         //System.Console.WriteLine("Captura de campo: "+campoPlataforma);
         //return GetText(campoPlataforma);
         //}
+        #endregion
     }
 
     public class FormularioGerenciarPlugins : PageBase { }
