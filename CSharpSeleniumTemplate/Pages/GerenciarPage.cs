@@ -110,7 +110,53 @@ namespace CSharpSeleniumTemplate.Pages
         #endregion
     }
 
-    public class FormularioGerenciamentoUsuario : PageBase { }
+    public class FormularioGerenciamentoUsuario : PageBase {
+        #region Mapping
+        By botaoCriarNovaConta = By.XPath("//a[@href='/manage_user_create_page.php']");
+        By campoNomeUsuario = By.Id("user-username");
+        By campoNomeVerdadeiro = By.Id("user-realname");
+        By campoEmail = By.Id("email-field");
+        By nivelDeAcesso = By.Id("user-access-level");
+        By checkHabilitado = By.Id("user-enabled");
+        By checkProtegido = By.Id("user-protected");
+        #endregion
+
+        #region action
+        public void CriarNovoUsuario()
+        {
+            Click(botaoCriarNovaConta);
+        }
+
+        public void PreencherNovoUsuario(string nomeUsuario)
+        {
+            SendKeys(this.campoNomeUsuario, nomeUsuario);
+        }
+
+        public void PreencherNomeVerdadeiro(string nomeVerdadeiro)
+        {
+            SendKeys(this.campoNomeVerdadeiro, nomeVerdadeiro);
+        }
+
+        public void PreencherEmail(string campoEmail)
+        {
+            SendKeys(this.campoEmail, campoEmail);
+        }
+
+        public void MarcarAcesso()
+        {
+            Click(nivelDeAcesso);
+        }
+
+        public void MarcarHabilidade()
+        {
+            Click(checkHabilitado);
+        }
+
+        public void MarcarProtegido()
+        {
+            Click(checkProtegido);
+        }
+    }
 
     public class FormularioGerenciarProjetosPage : PageBase
     {
@@ -188,7 +234,31 @@ namespace CSharpSeleniumTemplate.Pages
         #endregion
     }
 
-    public class FormularioCategoriaGlobais : PageBase{ }
+    public class FormularioCategoriaGlobais : PageBase
+    {
+
+        #region Mapping
+        By botãoAdicionarCategoria = By.XPath("//input[@type='submit' or contains(text(), 'Adicionar Categoria')]");
+        By campoNovaCategoria = By.Name("name");
+        #endregion
+
+        #region Actions        
+        public void PreencherNomeCategoria(string nomeCategoria)
+        {
+            SendKeys(this.campoNovaCategoria, nomeCategoria);
+        }
+
+        public void clicarEmAdicionar()
+        {
+            Click(botãoAdicionarCategoria);
+        }
+
+        public void RetornoValidacao()
+        {
+            // Validar criação de nova categoria
+        }
+        #endregion
+    }
 
     public class FormularioGerenciarMarcadoresPage : PageBase
     {
@@ -238,9 +308,84 @@ namespace CSharpSeleniumTemplate.Pages
         #endregion
     }
 
-    public class FormularioGerenciarCamposPersonalizados : PageBase { }
+    public class FormularioGerenciarCamposPersonalizados : PageBase
+    {
 
-    public class FormularioGerenciarPerfilGlobais : PageBase { }
+        #region Mapping
+        By campoInputNovoCampoPersonalizado = By.ClassName("input-sm");
+        By botaoNovoCampoPersonalizado = By.XPath("//input[@type='submit' or contains(text(), 'Novo Campo Personalizado')]");
+        By listItenstabela = By.XPath("//*[@class='table-responsive']//tbody//tr//td//a");
+        #endregion
+
+        #region Actions
+        public void PreencherNovoCampoPersonalizado(string novoCampoPersonalizado)
+        {
+            SendKeys(this.campoInputNovoCampoPersonalizado, novoCampoPersonalizado);
+        }
+
+        public void ClicarEmNovo()
+        {
+            Click(botaoNovoCampoPersonalizado);
+        }
+
+        public void ValidarItemCriadoEmTabela()
+        {
+            // Criar validaçao de item em tela 
+        }
+    }
+
+    public class FormularioGerenciarPerfilGlobais : PageBase
+    {
+        private string VARPLATAFORMA = "";
+        private string SO = "";
+        private string VERSAOSO = "";
+
+        #region Mapping
+        By campoPlataforma = By.Id("platform");
+        By campoSo = By.Id("os");
+        By campoVersaoSo = By.Id("os-version");
+        By campoDescricaoAdicional = By.Id("description");
+        By botaoNovoPerfil = By.XPath("//input[@type='submit' or contains(text(), 'Adicionar Perfil')]");
+        By campoSelecaoPerfilCriado = By.XPath("//select[@id='select-profile']//option");
+
+        #endregion
+
+        #region Actions
+        public void PreencherCampoNomePlataforma(string plataforma)
+        {
+            this.VARPLATAFORMA = plataforma;
+            SendKeys(this.campoPlataforma, plataforma);
+        }
+
+        public void PreencherCampoNomeSO(string so)
+        {
+            SendKeys(this.campoSo, so);
+        }
+
+        public void PreenhcerCampoVersaoSO(string versaoSO)
+        {
+            SendKeys(this.campoVersaoSo, versaoSO);
+        }
+
+        public void PreencherCampoDescricao(String descricao)
+        {
+            SendKeys(this.campoDescricaoAdicional, descricao);
+        }
+
+        public void ClicarEmAdicionarPerfil()
+        {
+            Click(botaoNovoPerfil);
+        }
+
+        //public string VerificarItemCriado(string VARPLATAFORMA, string SO, string VERSAOSO)
+        //{
+        //  this.VARPLATAFORMA = VARPLATAFORMA;
+        //  this.SO = SO;
+        //  this.VERSAOSO = VERSAOSO;
+        //System.Console.WriteLine("Captura de campo: "+campoPlataforma);
+        //return GetText(campoPlataforma);
+        //}
+    }
 
     public class FormularioGerenciarPlugins : PageBase { }
 
