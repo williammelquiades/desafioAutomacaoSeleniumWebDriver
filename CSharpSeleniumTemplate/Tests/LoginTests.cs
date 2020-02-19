@@ -80,8 +80,8 @@ namespace CSharpSeleniumTemplate.Tests
             string usuario = "templateautomacao";
             string senha = UsuariosDBSteps.RetornaSenhaDoUsuario(usuario);
             #endregion
-
             loginPage.PreencherUsuario(usuario);
+            loginPage.ClicarEmLogin();
             loginPage.PreencherSenha(senha);
             loginPage.ClicarEmLogin();
 
@@ -101,6 +101,7 @@ namespace CSharpSeleniumTemplate.Tests
             #endregion
 
             loginPage.PreencherUsuario(usuario);
+            loginPage.ClicarEmLogin();
             loginPage.PreencherSenha(senha);
             loginPage.ClicarEmLogin();
 

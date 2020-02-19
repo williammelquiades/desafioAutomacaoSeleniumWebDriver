@@ -149,7 +149,6 @@
     <Compile Include="Tests\GerenciarMarcadoresTests.cs" />
     <Compile Include="Tests\GerenciarPerfisGlobaisTests.cs" />
     <Compile Include="Tests\GerenciarTests.cs" />
-    <Compile Include="Tests\GerenciasProjetosTests.cs" />
     <Compile Include="Tests\LoginTests.cs" />
     <Compile Include="Tests\MinhasContaTests.cs" />
     <Compile Include="Tests\ReportIssueTests.cs" />

@@ -24,7 +24,7 @@ namespace CSharpSeleniumTemplate.Tests
         #endregion
 
         [Test]
-        [Category("AcessarAbas")]
+        [Category("Acessar Abas")]
         public void AcessarAbaInformacaoSite()
         {
             #region Parameters
@@ -52,7 +52,7 @@ namespace CSharpSeleniumTemplate.Tests
         }
 
         [Test]
-        [Category("AcessarAbas")]
+        [Category("Acessar Abas")]
         public void AcessarAbaGerenciarUsuario()
         {
             #region Parameters
@@ -69,7 +69,7 @@ namespace CSharpSeleniumTemplate.Tests
         }
 
         [Test]
-        [Category("AcessarAbas")]
+        [Category("Acessar Abas")]
         public void AcessarAbaGerenciarProjetos()
         {
             #region Parameters
@@ -86,7 +86,7 @@ namespace CSharpSeleniumTemplate.Tests
         }
 
         [Test]
-        [Category("AcessarAbas")]
+        [Category("Acessar Abas")]
         public void AcessarAbaGerenciarMarcadores()
         {
             #region Parameters
@@ -103,7 +103,7 @@ namespace CSharpSeleniumTemplate.Tests
         }
 
         [Test]
-        [Category("AcessarAbas")]
+        [Category("Acessar Abas")]
         public void AcessarAbaGerenciarCamposPersonalizados()
         {
             #region Parameters
@@ -120,7 +120,7 @@ namespace CSharpSeleniumTemplate.Tests
         }
 
         [Test]
-        [Category("AcessarAbas")]
+        [Category("Acessar Abas")]
         public void AcessarAbaGerenciarPerfisGlobais()
         {
             #region Parameters
@@ -137,7 +137,7 @@ namespace CSharpSeleniumTemplate.Tests
         }
 
         [Test]
-        [Category("AcessarAbas")]
+        [Category("Acessar Abas")]
         public void AcessarAbaGerenciarPlugins()
         {
             #region Parameters
@@ -154,7 +154,7 @@ namespace CSharpSeleniumTemplate.Tests
         }
 
         [Test]
-        [Category("AcessarAbas")]
+        [Category("Acessar Abas")]
         public void AcessarAbaGerenciarConfiguracao()
         {
             #region Parameters
@@ -195,21 +195,21 @@ namespace CSharpSeleniumTemplate.Tests
         }
 
         [Test]
+        [Category("Cadastro de Projetos com Sucesso")]
         public void CriarNovoProjetoComSucesso()
         {
-
             #region Parameters                 
             string mensagemEsperada = "Operação realizada com sucesso.";
-            //    string caminhoArquivo = GeneralHelpers.ReturnProjectPath() + "Resources/Files/anexo_ocorrencia.jpg";
             #endregion
 
             loginInSystem.EfetuarLogin(USUARIO, SENHA);
 
             menuMantis.ClicarItemMenuGerenciar();
+
             gerenciarPage.ClicarEmAbaGerenciarProjetos();
 
             formularioGerenciarProjeto.ClicarEmNovoProjeto();
-            formularioGerenciarProjeto.PreencherNomeProjeto();           
+            formularioGerenciarProjeto.PreencherNomeProjeto();
             formularioGerenciarProjeto.PreencherDescricao();
             formularioGerenciarProjeto.ClicarEmAdicionarProjeto();
 

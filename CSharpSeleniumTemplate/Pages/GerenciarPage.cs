@@ -110,6 +110,8 @@ namespace CSharpSeleniumTemplate.Pages
         #endregion
     }
 
+    public class FormularioGerenciamentoUsuario : PageBase { }
+
     public class FormularioGerenciarProjetosPage : PageBase
     {
         #region Mapping
@@ -128,8 +130,6 @@ namespace CSharpSeleniumTemplate.Pages
 
         #region Actions
         //Gerenciamento Projeto: Seção >> Projetos
-       
-
         public void ClicarEmNovoProjeto()
         {
             Click(botaoNovoProjeto);
@@ -187,4 +187,62 @@ namespace CSharpSeleniumTemplate.Pages
 
         #endregion
     }
+
+    public class FormularioCategoriaGlobais : PageBase{ }
+
+    public class FormularioGerenciarMarcadoresPage : PageBase
+    {
+        #region  Mapping
+        By nomeMarcador = By.Id("tag-name");
+        By campoDescricao = By.Id("tag-description");
+        By botaoNovoMarcador = By.XPath("//input[@type='submit' or contains(text(), 'Criar Marcador')]");
+        By tagContador = By.ClassName("badge");
+        By searcheMarcadorCriado = By.XPath("//*[@class='table-responsive']//tbody//tr//td//a");
+        #endregion
+
+        #region Actions
+        public void PreencherNomeMarcado(string nomeMarcador)
+        {
+            SendKeys(this.nomeMarcador, nomeMarcador);
+            ProcurarMarcadorCriado(nomeMarcador);
+        }
+
+        public void preencherDescricaoMarcador(string nomeMarcador)
+        {
+            SendKeys(campoDescricao, nomeMarcador);
+        }
+
+        public void ClicarEmCriarMarcador()
+        {
+            Click(botaoNovoMarcador);
+        }
+
+        public void ValidarMarcadorCriado()
+        {
+            GetValue(tagContador);
+        }
+
+        public void ProcurarMarcadorCriado(string nomeMarcador)
+        {
+            System.Console.WriteLine("Marcador criado " + nomeMarcador);
+            //GetTableValue(searcheMarcadorCriado, nomeMarcador);
+
+            //IWebElement element = driver.FindElement(searcheMarcadorCriado);
+            //var marcadores = new List<String>(GetText(element));
+
+            // foreach (searcheMarcadorCriado in marcadores)
+            //  {
+            //      System.Console.WriteLine();
+            //  }
+        }
+        #endregion
+    }
+
+    public class FormularioGerenciarCamposPersonalizados : PageBase { }
+
+    public class FormularioGerenciarPerfilGlobais : PageBase { }
+
+    public class FormularioGerenciarPlugins : PageBase { }
+
+    public class FormularioGerenciarConfiguracao : PageBase { }
 }
