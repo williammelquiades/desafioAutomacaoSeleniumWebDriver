@@ -1,4 +1,5 @@
 ﻿using CSharpSeleniumTemplate.Bases;
+using CSharpSeleniumTemplate.DataBaseSteps;
 using CSharpSeleniumTemplate.Flows;
 using CSharpSeleniumTemplate.Helpers;
 using CSharpSeleniumTemplate.Pages;
@@ -21,8 +22,9 @@ namespace CSharpSeleniumTemplate.Tests
         [AutoInstance] MenuMantis menuMantis;
         [AutoInstance] GerenciarPage gerenciarPage;
         [AutoInstance] FormularioGerenciarProjetosPage formularioGerenciarProjeto;
+        string MSGESPERADA = "Operação realizada com sucesso.";
         #endregion
-
+        
         [Test]
         [Category("Acessar Abas")]
         public void AcessarAbaInformacaoSite()
@@ -198,9 +200,6 @@ namespace CSharpSeleniumTemplate.Tests
         [Category("Cadastro de Projetos com Sucesso")]
         public void CriarNovoProjetoComSucesso()
         {
-            #region Parameters                 
-            string mensagemEsperada = "Operação realizada com sucesso.";
-            #endregion
 
             loginInSystem.EfetuarLogin(USUARIO, SENHA);
 
@@ -213,8 +212,35 @@ namespace CSharpSeleniumTemplate.Tests
             formularioGerenciarProjeto.PreencherDescricao();
             formularioGerenciarProjeto.ClicarEmAdicionarProjeto();
 
-            Assert.AreEqual(mensagemEsperada, formularioGerenciarProjeto.RetornaMensagem());
+            Assert.AreEqual(MSGESPERADA, formularioGerenciarProjeto.RetornaMensagem());
 
+        }
+
+        [Test]
+        [Category("Cadastro de Projetos com Sucesso Consulta BD")]
+        public void CriarNovoProjetoComSucessoConsultandoBD()
+        {
+            #region Parameters
+            int quantidadeProjetosAoIniciar = 0;
+            int quantidadeProjetosAoFinalizar;
+            #endregion
+
+            loginInSystem.EfetuarLogin(USUARIO, SENHA);
+
+            menuMantis.ClicarItemMenuGerenciar();
+
+            gerenciarPage.ClicarEmAbaGerenciarProjetos();
+
+            formularioGerenciarProjeto.ClicarEmNovoProjeto();
+            quantidadeProjetosAoIniciar = GerenciarProjetosDBSteps.RetornaQuantidadeDeProjetosCriadosDB();
+            formularioGerenciarProjeto.PreencherNomeProjeto();
+            formularioGerenciarProjeto.PreencherDescricao();
+            formularioGerenciarProjeto.ClicarEmAdicionarProjeto();
+
+            quantidadeProjetosAoFinalizar = GerenciarProjetosDBSteps.RetornaQuantidadeDeProjetosCriadosDB();
+
+            Assert.Less(quantidadeProjetosAoIniciar, quantidadeProjetosAoFinalizar);
+            Assert.AreEqual(MSGESPERADA, formularioGerenciarProjeto.RetornaMensagem());
         }
     }
 }

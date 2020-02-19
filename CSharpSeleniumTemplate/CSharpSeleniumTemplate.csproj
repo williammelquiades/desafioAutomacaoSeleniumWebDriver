@@ -63,6 +63,9 @@
     <Reference Include="MongoDB.Libmongocrypt, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MongoDB.Libmongocrypt.1.0.0\lib\net452\MongoDB.Libmongocrypt.dll</HintPath>
     </Reference>
+    <Reference Include="MySqlConnector, Version=0.61.0.0, Culture=neutral, PublicKeyToken=d33d3e53aa5f8c92, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySqlConnector.0.61.0\lib\net461\MySqlConnector.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -71,6 +74,15 @@
     </Reference>
     <Reference Include="RazorEngine, Version=3.10.0.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
       <HintPath>..\packages\RazorEngine.3.10.0\lib\net45\RazorEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="Savage.Data, Version=5.4.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Savage.Data.5.4.2\lib\net46\Savage.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Savage.Data.MySqlClient, Version=5.4.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySqlClient.5.4.2\lib\net46\Savage.Data.MySqlClient.dll</HintPath>
+    </Reference>
+    <Reference Include="Savage.OptimizedDataReader, Version=1.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\OptimizedDataReader.1.1.2\lib\net46\Savage.OptimizedDataReader.dll</HintPath>
     </Reference>
     <Reference Include="SeleniumExtras.WaitHelpers, Version=3.11.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\DotNetSeleniumExtras.WaitHelpers.3.11.0\lib\net45\SeleniumExtras.WaitHelpers.dll</HintPath>
@@ -88,11 +100,25 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.3\lib\netstandard2.0\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.7.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.3\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
     </Reference>
@@ -113,6 +139,7 @@
     <Compile Include="Bases\MenuMantis.cs" />
     <Compile Include="Bases\PageBase.cs" />
     <Compile Include="Bases\TestBase.cs" />
+    <Compile Include="DataBaseSteps\GerenciarProjetosDBSteps.cs" />
     <Compile Include="DataBaseSteps\UsuariosDBSteps.cs" />
     <Compile Include="Flows\LoginFlows.cs" />
     <Compile Include="Helpers\AutoInstance.cs" />
@@ -136,6 +163,11 @@
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Queries\QueriesGerenciar.Designer.cs">
+      <DependentUpon>QueriesGerenciar.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Queries\UsuariosQueries.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -168,6 +200,10 @@
     <Content Include="Resources\Files\anexo_ocorrencia.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Queries\QueriesGerenciar.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>QueriesGerenciar.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Queries\UsuariosQueries.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>UsuariosQueries.Designer.cs</LastGenOutput>

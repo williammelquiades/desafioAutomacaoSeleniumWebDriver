@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -11,24 +12,24 @@ namespace CSharpSeleniumTemplate.Helpers
 {
     public class DataBaseHelpers
     {
-        private static SqlConnection GetDBConnection()
+        private static MySqlConnection GetDBConnection()
         {
-            string connectionString = "Data Source=" + ConfigurationManager.AppSettings["dbURL"].ToString() + 
-                                      "," + ConfigurationManager.AppSettings["dbPort"].ToString() + ";" +
-                                      "Initial Catalog=" + ConfigurationManager.AppSettings["dbCatalog"].ToString() + ";" +
-                                      "User ID=" + ConfigurationManager.AppSettings["dbUser"].ToString() + "; " +
-                                      "Password=" + ConfigurationManager.AppSettings["dbPassword"].ToString() + ";";
+            string connectionString = "Data Source=" + ConfigurationManager.AppSettings["URL_ACESSO_BD"].ToString() + 
+                                      "," + ConfigurationManager.AppSettings["PORTA_ACESSO_BD"].ToString() + ";" +
+                                      "Initial Catalog=" + ConfigurationManager.AppSettings["NOME_BANCO_DE_DADOS"].ToString() + ";" +
+                                      "User ID=" + ConfigurationManager.AppSettings["USUARIO_BD"].ToString() + "; " +
+                                      "Password=" + ConfigurationManager.AppSettings["PASSAWORD_BD"].ToString() + ";";
 
-            SqlConnection connection = new SqlConnection(connectionString);
+            MySqlConnection connection = new MySqlConnection(connectionString);
 
             return connection;
         }
 
         public static void ExecuteQuery(string query)
         {
-            using (SqlCommand cmd = new SqlCommand(query, GetDBConnection()))
+            using (MySqlCommand cmd = new MySqlCommand(query, GetDBConnection()))
             {
-                cmd.CommandTimeout = Int32.Parse(ConfigurationManager.AppSettings["dbConnectionTimeout"].ToString());
+                cmd.CommandTimeout = Int32.Parse(ConfigurationManager.AppSettings["TIMEOUT_CONNECTION_BD"].ToString());
                 cmd.Connection.Open();
                 cmd.ExecuteNonQuery();
                 cmd.Connection.Close();
@@ -40,9 +41,9 @@ namespace CSharpSeleniumTemplate.Helpers
             DataSet ds = new DataSet();
             List<string> lista = new List<string>();
 
-            using (SqlCommand cmd = new SqlCommand(query, GetDBConnection()))
+            using (MySqlCommand cmd = new MySqlCommand(query, GetDBConnection()))
             {
-                cmd.CommandTimeout = Int32.Parse(ConfigurationManager.AppSettings["dbConnectionTimeout"].ToString());
+                cmd.CommandTimeout = Int32.Parse(ConfigurationManager.AppSettings["TIMEOUT_CONNECTION_BD"].ToString());
                 cmd.Connection.Open();
 
                 DataTable table = new DataTable();
