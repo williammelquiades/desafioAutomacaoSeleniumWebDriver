@@ -284,6 +284,11 @@ namespace CSharpSeleniumTemplate.Pages
             SendKeys(this.campoNovaCategoria, "Categoria[" + GeneralHelpers.ReturnStringWithRandomNumbers(2) + "]");
         }
 
+        public void PreencherNomeCategoriaIgual()
+        {
+            SendKeys(this.campoNovaCategoria, "General");
+        }
+
         public void ClicarEmAdicionarCategoria()
         {
             Click(botaoAdicionarCategoria);

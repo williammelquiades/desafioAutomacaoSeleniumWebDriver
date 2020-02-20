@@ -280,7 +280,7 @@ namespace CSharpSeleniumTemplate.Tests
         public void EditarProjetoDaLista()
         {
             #region Parameters
-            
+
             #endregion
 
 
@@ -332,7 +332,7 @@ namespace CSharpSeleniumTemplate.Tests
 
             menuMantis.ClicarItemMenuGerenciar();
 
-            gerenciarPage.ClicarEmAbaGerenciarProjetos();          
+            gerenciarPage.ClicarEmAbaGerenciarProjetos();
 
             formularioCategoriasGlobais.PreencherNomeCategoria();
 
@@ -341,6 +341,8 @@ namespace CSharpSeleniumTemplate.Tests
             Assert.AreEqual(MSGESPERADA, formularioGerenciarProjeto.RetornaMensagem());
         }*/
 
+        [Test]
+        [Category("Gerenciar Categoria Global")]
         public void CriarCategoriaRepetida()
         {
             #region Parameters
@@ -351,8 +353,8 @@ namespace CSharpSeleniumTemplate.Tests
 
             menuMantis.ClicarItemMenuGerenciar();
             gerenciarPage.ClicarEmAbaGerenciarProjetos();
-            Assume.That(formularioCategoriasGlobais.ProcurarProjetosNaLista());
-            formularioCategoriasGlobais.PreencherNomeCategoria();
+            //Assume.That(formularioCategoriasGlobais.ProcurarProjetosNaLista());
+            formularioCategoriasGlobais.PreencherNomeCategoriaIgual();
             formularioCategoriasGlobais.ClicarEmAdicionarCategoria();
 
             Assert.AreEqual(msgError, formularioCategoriasGlobais.MenssagemDeErro());
