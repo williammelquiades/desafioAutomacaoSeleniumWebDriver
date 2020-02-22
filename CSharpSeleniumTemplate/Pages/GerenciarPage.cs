@@ -328,10 +328,10 @@ namespace CSharpSeleniumTemplate.Pages
         public void PreencherNomeMarcado(string nomeMarcador)
         {
             SendKeys(this.nomeMarcador, nomeMarcador);
-            ProcurarMarcadorCriado(nomeMarcador);
+            //ProcurarMarcadorCriado(nomeMarcador);
         }
 
-        public void preencherDescricaoMarcador(string nomeMarcador)
+        public void PreencherDescricaoMarcador(string nomeMarcador)
         {
             SendKeys(campoDescricao, nomeMarcador);
         }
@@ -341,24 +341,26 @@ namespace CSharpSeleniumTemplate.Pages
             Click(botaoNovoMarcador);
         }
 
-        public void ValidarMarcadorCriado()
+
+        /*public void ValidarMarcadorCriado()
         {
             GetValue(tagContador);
         }
 
+
         public void ProcurarMarcadorCriado(string nomeMarcador)
         {
             System.Console.WriteLine("Marcador criado " + nomeMarcador);
-            //GetTableValue(searcheMarcadorCriado, nomeMarcador);
+            GetTableValue(searcheMarcadorCriado, nomeMarcador);
 
-            //IWebElement element = driver.FindElement(searcheMarcadorCriado);
-            //var marcadores = new List<String>(GetText(element));
+            IWebElement element = driver.FindElement(searcheMarcadorCriado);
+            var marcadores = new List<String>(GetText(nomeMarcador));
 
-            // foreach (searcheMarcadorCriado in marcadores)
-            //  {
-            //      System.Console.WriteLine();
-            //  }
-        }
+             foreach (searcheMarcadorCriado in marcadores)
+             {
+                  System.Console.WriteLine();
+              }
+        }*/
         #endregion
     }
 
