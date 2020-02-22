@@ -26,7 +26,7 @@ namespace CSharpSeleniumTemplate.Tests
         string MSGESPERADA = "Operação realizada com sucesso.";
         #endregion
 
-        /*
+        
         [Test]
         [Category("Acessar Abas")]
         public void AcessarAbaInformacaoSite()
@@ -339,8 +339,9 @@ namespace CSharpSeleniumTemplate.Tests
             formularioCategoriasGlobais.ClicarEmAdicionarCategoria();
 
             Assert.AreEqual(MSGESPERADA, formularioGerenciarProjeto.RetornaMensagem());
-        }*/
+        }
 
+        /*
         [Test]
         [Category("Gerenciar Categoria Global")]
         public void CriarCategoriaRepetida()
@@ -353,13 +354,13 @@ namespace CSharpSeleniumTemplate.Tests
 
             menuMantis.ClicarItemMenuGerenciar();
             gerenciarPage.ClicarEmAbaGerenciarProjetos();
-            //Assume.That(formularioCategoriasGlobais.ProcurarProjetosNaLista());
-            formularioCategoriasGlobais.PreencherNomeCategoriaIgual();
+            Assume.That(formularioCategoriasGlobais.ProcurarProjetosNaLista());
+            formularioCategoriasGlobais.ClicarEmProjetoDaLista();
             formularioCategoriasGlobais.ClicarEmAdicionarCategoria();
 
             Assert.AreEqual(msgError, formularioCategoriasGlobais.MenssagemDeErro());
 
 
-        }
+        }*/
     }
 }

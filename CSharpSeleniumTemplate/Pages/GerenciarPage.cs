@@ -191,8 +191,6 @@ namespace CSharpSeleniumTemplate.Pages
 
         public void CapturarTextoDoCampos()
         {
-           
-
             SendKeys(nomeProjeto," Edit v.01");
         }
 
@@ -275,7 +273,7 @@ namespace CSharpSeleniumTemplate.Pages
         //By botãoAdicionarCategoria = By.XPath("//input[@type='submit' or contains(text(), 'Adicionar Categoria')]");
         By msgError = By.XPath("//div[@id='main-container']/div[2]/div[2]/div/div/div[2]/p[2]");
         By campoNovaCategoria = By.Name("name");
-        By listaCategoriasGlobais = By.XPath("(//div[@class='table-responsive'])[2]//tr//td[1]");
+        By listaItemDeCategoriasGlobais = By.XPath("((//div[@class='table-responsive'])//tbody)[2]/tr/td[1]");
         #endregion
 
         #region Actions        
@@ -306,7 +304,7 @@ namespace CSharpSeleniumTemplate.Pages
 
         public bool ProcurarProjetosNaLista()
         {
-            return ReturnIfElementExists(listaCategoriasGlobais);
+            return ReturnIfElementExists(listaItemDeCategoriasGlobais);
         }
 
         public void ClicarEmProjetoDaLista()
