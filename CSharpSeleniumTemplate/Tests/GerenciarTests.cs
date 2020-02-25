@@ -18,15 +18,34 @@ namespace CSharpSeleniumTemplate.Tests
         #region Pages and Flows Objects
         string USUARIO = ConfigurationManager.AppSettings["username"].ToString();
         string SENHA = ConfigurationManager.AppSettings["password"].ToString();
-        [AutoInstance] LoginFlows loginInSystem;
+        [AutoInstance] LoginFlows LogarNoSistema;
         [AutoInstance] MenuMantis menuMantis;
         [AutoInstance] GerenciarPage gerenciarPage;
         [AutoInstance] FormularioGerenciarProjetosPage formularioGerenciarProjeto;
-        [AutoInstance] FormularioCategoriaGlobais formularioCategoriasGlobais;
+        [AutoInstance] FormularioCategoriaGlobaisPage formularioCategoriasGlobais;
+        [AutoInstance] FormularioGerenciarMarcadoresPage formularioMarcadores;
+        [AutoInstance] FormularioGerenciamentoUsuarioPage formularioUsuario;
         string MSGESPERADA = "Operação realizada com sucesso.";
         #endregion
 
-        
+
+        [Test]
+        [Category("Acessar Abas")]
+        public void AcessarAbaGerenciarUsuario()
+        {
+            #region Parameters
+            string nameEsperado = "Gerenciar Contas";
+            #endregion
+
+            LogarNoSistema.EfetuarLogin(USUARIO, SENHA);
+
+            menuMantis.ClicarItemMenuGerenciar();
+
+            gerenciarPage.ClicarEmGerenciarUsuario();
+
+            Assert.That(formularioUsuario.VerificarBotaoCriarUsuario);
+        }
+
         [Test]
         [Category("Acessar Abas")]
         public void AcessarAbaInformacaoSite()
@@ -39,7 +58,7 @@ namespace CSharpSeleniumTemplate.Tests
             string baseDados = "mysqli";
             #endregion
 
-            loginInSystem.EfetuarLogin(USUARIO, SENHA);
+            LogarNoSistema.EfetuarLogin(USUARIO, SENHA);
 
             menuMantis.ClicarItemMenuGerenciar();
 
@@ -57,30 +76,13 @@ namespace CSharpSeleniumTemplate.Tests
 
         [Test]
         [Category("Acessar Abas")]
-        public void AcessarAbaGerenciarUsuario()
-        {
-            #region Parameters
-            string nameEsperado = "Gerenciar Contas";
-            #endregion
-
-            loginInSystem.EfetuarLogin(USUARIO, SENHA);
-
-            menuMantis.ClicarItemMenuGerenciar();
-
-            gerenciarPage.ClicarEmGerenciarUsuario();
-
-            Assert.AreEqual(nameEsperado, gerenciarPage.CapturarNomeDuploDoFormulario());
-        }
-
-        [Test]
-        [Category("Acessar Abas")]
         public void AcessarAbaGerenciarProjetos()
         {
             #region Parameters
             string nameEsperado = "Projetos";
             #endregion
 
-            loginInSystem.EfetuarLogin(USUARIO, SENHA);
+            LogarNoSistema.EfetuarLogin(USUARIO, SENHA);
 
             menuMantis.ClicarItemMenuGerenciar();
 
@@ -97,14 +99,16 @@ namespace CSharpSeleniumTemplate.Tests
             string nameEsperado = "Gerenciar Marcadores";
             #endregion
 
-            loginInSystem.EfetuarLogin(USUARIO, SENHA);
+            LogarNoSistema.EfetuarLogin(USUARIO, SENHA);
 
             menuMantis.ClicarItemMenuGerenciar();
 
             gerenciarPage.ClicarEmAbaGerenciarMarcadores();
 
-            Assert.AreEqual(nameEsperado, gerenciarPage.CapturarNomeDuploDoFormulario());
+            //Assert.AreEqual(nameEsperado, gerenciarPage.CapturarNomeDuploDoFormulario());
+            Assert.That(formularioMarcadores.VerificarBotaoPaginacaoEmTela);
         }
+
 
         [Test]
         [Category("Acessar Abas")]
@@ -114,13 +118,14 @@ namespace CSharpSeleniumTemplate.Tests
             string nameEsperado = "Campos Personalizados";
             #endregion
 
-            loginInSystem.EfetuarLogin(USUARIO, SENHA);
+            LogarNoSistema.EfetuarLogin(USUARIO, SENHA);
 
             menuMantis.ClicarItemMenuGerenciar();
 
             gerenciarPage.ClicarEmAbaGerenciarCamposPersonalizados();
 
-            Assert.AreEqual(nameEsperado, gerenciarPage.CapturarPadraoNomeDoFormulario());
+            //Assert.AreEqual(nameEsperado, gerenciarPage.CapturarPadraoNomeDoFormulario());
+            Assert.That(gerenciarPage.VerificarBotaoNovoCampo);
         }
 
         [Test]
@@ -131,7 +136,7 @@ namespace CSharpSeleniumTemplate.Tests
             string nameEsperado = "Adicionar Perfil";
             #endregion
 
-            loginInSystem.EfetuarLogin(USUARIO, SENHA);
+            LogarNoSistema.EfetuarLogin(USUARIO, SENHA);
 
             menuMantis.ClicarItemMenuGerenciar();
 
@@ -148,7 +153,7 @@ namespace CSharpSeleniumTemplate.Tests
             string nameEsperado = "Plugins Instalados";
             #endregion
 
-            loginInSystem.EfetuarLogin(USUARIO, SENHA);
+            LogarNoSistema.EfetuarLogin(USUARIO, SENHA);
 
             menuMantis.ClicarItemMenuGerenciar();
 
@@ -165,13 +170,13 @@ namespace CSharpSeleniumTemplate.Tests
             string nameEsperado = "ANEXO(S)";
             #endregion
 
-            loginInSystem.EfetuarLogin(USUARIO, SENHA);
+            LogarNoSistema.EfetuarLogin(USUARIO, SENHA);
 
             menuMantis.ClicarItemMenuGerenciar();
 
             gerenciarPage.ClicarEmAbaGerenciarConfiguracao();
 
-            Assert.AreEqual(nameEsperado, gerenciarPage.CapturarNomeDuploDoFormulario());
+            Assert.That(gerenciarPage.VerificarItemNaTela());
         }
 
         [Test]
@@ -185,7 +190,7 @@ namespace CSharpSeleniumTemplate.Tests
             string msgJavaScripit = "validationMessage";
             #endregion
 
-            loginInSystem.EfetuarLogin(USUARIO, SENHA);
+            LogarNoSistema.EfetuarLogin(USUARIO, SENHA);
 
             menuMantis.ClicarItemMenuGerenciar();
 
@@ -203,7 +208,7 @@ namespace CSharpSeleniumTemplate.Tests
         public void CriarNovoProjetoComSucesso()
         {
 
-            loginInSystem.EfetuarLogin(USUARIO, SENHA);
+            LogarNoSistema.EfetuarLogin(USUARIO, SENHA);
 
             menuMantis.ClicarItemMenuGerenciar();
 
@@ -227,7 +232,7 @@ namespace CSharpSeleniumTemplate.Tests
             int quantidadeProjetosAoFinalizar;
             #endregion
 
-            loginInSystem.EfetuarLogin(USUARIO, SENHA);
+            LogarNoSistema.EfetuarLogin(USUARIO, SENHA);
 
             menuMantis.ClicarItemMenuGerenciar();
 
@@ -255,7 +260,7 @@ namespace CSharpSeleniumTemplate.Tests
 
             quantidadeProjetosAoIniciar = GerenciarProjetosDBSteps.RetornaQuantidadeDeProjetosCriadosDB();
 
-            loginInSystem.EfetuarLogin(USUARIO, SENHA);
+            LogarNoSistema.EfetuarLogin(USUARIO, SENHA);
 
             menuMantis.ClicarItemMenuGerenciar();
 
@@ -284,7 +289,7 @@ namespace CSharpSeleniumTemplate.Tests
             #endregion
 
 
-            loginInSystem.EfetuarLogin(USUARIO, SENHA);
+            LogarNoSistema.EfetuarLogin(USUARIO, SENHA);
 
             menuMantis.ClicarItemMenuGerenciar();
 
@@ -309,7 +314,7 @@ namespace CSharpSeleniumTemplate.Tests
             string msgError = "Um campo necessário 'Categoria' estava vazio.";
             #endregion
 
-            loginInSystem.EfetuarLogin(USUARIO, SENHA);
+            LogarNoSistema.EfetuarLogin(USUARIO, SENHA);
 
             menuMantis.ClicarItemMenuGerenciar();
 
@@ -325,10 +330,8 @@ namespace CSharpSeleniumTemplate.Tests
         [Category("Gerenciar Categoria Global")]
         public void CriarCategoriaComSucesso()
         {
-            #region Parameters          
-            #endregion
 
-            loginInSystem.EfetuarLogin(USUARIO, SENHA);
+            LogarNoSistema.EfetuarLogin(USUARIO, SENHA);
 
             menuMantis.ClicarItemMenuGerenciar();
 
@@ -338,10 +341,11 @@ namespace CSharpSeleniumTemplate.Tests
 
             formularioCategoriasGlobais.ClicarEmAdicionarCategoria();
 
-            Assert.AreEqual(MSGESPERADA, formularioGerenciarProjeto.RetornaMensagem());
+            //Assert.AreEqual(MSGESPERADA, formularioGerenciarProjeto.RetornaMensagem());
+            Assert.AreEqual(formularioCategoriasGlobais.verificaItemNaLista, formularioCategoriasGlobais.VerificarCategoriaGlobalCriada());
         }
 
-        /*
+
         [Test]
         [Category("Gerenciar Categoria Global")]
         public void CriarCategoriaRepetida()
@@ -350,17 +354,116 @@ namespace CSharpSeleniumTemplate.Tests
             string msgError = "Uma categoria com este nome já existe.";
             #endregion
 
-            loginInSystem.EfetuarLogin(USUARIO, SENHA);
+            LogarNoSistema.EfetuarLogin(USUARIO, SENHA);
 
             menuMantis.ClicarItemMenuGerenciar();
+
             gerenciarPage.ClicarEmAbaGerenciarProjetos();
+
             Assume.That(formularioCategoriasGlobais.ProcurarProjetosNaLista());
-            formularioCategoriasGlobais.ClicarEmProjetoDaLista();
+
+            formularioCategoriasGlobais.PreencherNomeCategoriaIgual();
+
+            //formularioCategoriasGlobais.ClicarEmProjetoDaLista();
+
             formularioCategoriasGlobais.ClicarEmAdicionarCategoria();
 
             Assert.AreEqual(msgError, formularioCategoriasGlobais.MenssagemDeErro());
 
+        }
 
-        }*/
+        [Test]
+        [Category("Validar fluxo Marcadores")]
+        public void CriarMarcadorSemPreencherCampo()
+        {
+            #region  Parameters
+            string msgPT = "Preencha este campo.";
+            string msgEN = "Please fill out this field.";
+            string msgIE = "Este é um campo obrigatório";
+            string msgJavaScripit = "validationMessage";
+            #endregion
+
+            LogarNoSistema.EfetuarLogin(USUARIO, SENHA);
+
+            menuMantis.ClicarItemMenuGerenciar();
+
+            gerenciarPage.ClicarEmAbaGerenciarMarcadores();
+
+            formularioMarcadores.ClicarEmCriarMarcador();
+
+            CollectionAssert.Contains(new[] { msgEN, msgPT, msgIE }, formularioMarcadores.ValidarCampoNomeMarcador(msgJavaScripit));
+        }
+      
+        [Test]
+        [Category("Validar fluxo Marcadores")]
+        public void CriarMarcadoresComSucesso()
+        {
+
+            LogarNoSistema.EfetuarLogin(USUARIO, SENHA);
+
+            menuMantis.ClicarItemMenuGerenciar();
+
+            gerenciarPage.ClicarEmAbaGerenciarMarcadores();
+
+            formularioMarcadores.PreencherNomeMarcado();
+            formularioMarcadores.PreencherDescricaoMarcador();
+
+            formularioMarcadores.ClicarEmCriarMarcador();
+
+            Assert.AreEqual(formularioMarcadores.verificaItemNaLista, formularioMarcadores.VerificarCriarMarcadores());
+        }
+        
+        [Test]
+        [Category("Validar fluxo Marcadores")]
+        public void DeletarMarcador()
+        {
+            #region  Parameters
+            string nomeMarcador = "Marcador " + GeneralHelpers.ReturnStringWithRandomNumbers(2);
+            string textoDescricao = "Descrição " + GeneralHelpers.ReturnStringWithRandomNumbers(3);
+            #endregion
+
+            GerenciarProjetosDBSteps.CriarMarcadorViaDB(nomeMarcador, textoDescricao);
+
+            LogarNoSistema.EfetuarLogin(USUARIO, SENHA);
+
+            menuMantis.ClicarItemMenuGerenciar();
+
+            gerenciarPage.ClicarEmAbaGerenciarMarcadores();
+
+            Assume.That(formularioMarcadores.VerificarMarcadorCriado());
+
+            formularioMarcadores.CapturarQuantidadeDeMarcadorCriado();
+
+            formularioMarcadores.ClicarEmAlgumMarcadorDaLista();
+
+            formularioMarcadores.ClicarEmDeletarMarcador();
+            formularioMarcadores.ClicarEmDeletarMarcador();
+
+            //Assert.AreEqual(0, GerenciarProjetosDBSteps.VerificarMarcadorDeletadoDB(nomeMarcador));
+            Assert.Greater(Convert.ToInt32(formularioMarcadores.quantidadeMarcador), Convert.ToInt32(formularioMarcadores.quantidadeMarcador) - 1);
+        }
+
+
+        [Test]
+        [Category("Validar fluxo Marcadores")]
+        public void PesquisarTodosOsMarcadores()
+        {
+
+            LogarNoSistema.EfetuarLogin(USUARIO, SENHA);
+
+            menuMantis.ClicarItemMenuGerenciar();
+
+            gerenciarPage.ClicarEmAbaGerenciarMarcadores();
+
+            formularioMarcadores.ClicarEmPaginacaoTodos();     
+
+            formularioMarcadores.CapturarQuantidadeDeMarcadorCriado();
+
+            int quantidadeMarcadoresBD = GerenciarProjetosDBSteps.RetornaQuantidadeDeProjetosCriadosDB();
+
+            Assert.AreEqual(Convert.ToInt32(formularioMarcadores.quantidadeMarcador), quantidadeMarcadoresBD);
+
+        }
+
     }
 }
