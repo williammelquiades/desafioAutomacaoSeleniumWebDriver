@@ -198,7 +198,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Queries\QueriesGerenciar.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>QueriesGerenciar.Designer.cs</LastGenOutput>
+      <LastGenOutput>QueriesGerenciar1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Queries\UsuariosQueries.resx">
       <Generator>ResXFileCodeGenerator</Generator>

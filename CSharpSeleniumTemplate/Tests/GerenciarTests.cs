@@ -28,7 +28,7 @@ namespace CSharpSeleniumTemplate.Tests
         string MSGESPERADA = "Operação realizada com sucesso.";
         #endregion
 
-
+        
         [Test]
         [Category("Acessar Abas")]
         public void AcessarAbaGerenciarUsuario()
@@ -439,7 +439,7 @@ namespace CSharpSeleniumTemplate.Tests
             formularioMarcadores.ClicarEmDeletarMarcador();
             formularioMarcadores.ClicarEmDeletarMarcador();
 
-            //Assert.AreEqual(0, GerenciarProjetosDBSteps.VerificarMarcadorDeletadoDB(nomeMarcador));
+            Assert.AreEqual(0, GerenciarProjetosDBSteps.VerificarMarcadorDeletadoDB(nomeMarcador));
             Assert.Greater(Convert.ToInt32(formularioMarcadores.quantidadeMarcador), Convert.ToInt32(formularioMarcadores.quantidadeMarcador) - 1);
         }
 
@@ -459,10 +459,9 @@ namespace CSharpSeleniumTemplate.Tests
 
             formularioMarcadores.CapturarQuantidadeDeMarcadorCriado();
 
-            int quantidadeMarcadoresBD = GerenciarProjetosDBSteps.RetornaQuantidadeDeProjetosCriadosDB();
+            int quantidadeMarcadoresBD = GerenciarProjetosDBSteps.RetornaQuantidadeTotalDeMarcadoresDB();
 
-            Assert.AreEqual(Convert.ToInt32(formularioMarcadores.quantidadeMarcador), quantidadeMarcadoresBD);
-
+            Assert.AreEqual (Convert.ToInt32(formularioMarcadores.quantidadeMarcador), quantidadeMarcadoresBD);  
         }
 
     }

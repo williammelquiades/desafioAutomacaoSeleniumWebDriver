@@ -61,9 +61,18 @@ namespace CSharpSeleniumTemplate.Queries {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to INSERT INTO mantis_tag_table (user_id ,NAME , description) VALUES (1,&apos;$marcadorDB&apos;,&apos;$descriçãoDB&apos;);.
+        /// </summary>
+        internal static string AdicionarNovoMarcador {
+            get {
+                return ResourceManager.GetString("AdicionarNovoMarcador", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SELECT COUNT(*) AS projetos FROM mantis_tag_table;.
         /// </summary>
-        internal static string BuscaQuantidadeDeMarcadoresEmBanco {
+        internal static string BuscaTotalDeMarcadoresEmBanco {
             get {
                 return ResourceManager.GetString("BuscaQuantidadeDeMarcadoresEmBanco", resourceCulture);
             }
@@ -72,18 +81,9 @@ namespace CSharpSeleniumTemplate.Queries {
         /// <summary>
         ///   Looks up a localized string similar to SELECT COUNT(*) AS projetos FROM mantis_project_table;.
         /// </summary>
-        internal static string BuscaQuantidadeDeProjetosEmBanco {
+        internal static string BuscarQuantidadeDeProjetosEmBanco {
             get {
                 return ResourceManager.GetString("BuscaQuantidadeDeProjetosEmBanco", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to INSERT INTO mantis_tag_table (user_id ,NAME , description) VALUES (1,&apos;$marcadorDB&apos;,&apos;$descriçãoDB&apos;);.
-        /// </summary>
-        internal static string InsertNovoMarcador {
-            get {
-                return ResourceManager.GetString("InsertNovoMarcador", resourceCulture);
             }
         }
         
@@ -91,9 +91,18 @@ namespace CSharpSeleniumTemplate.Queries {
         ///   Looks up a localized string similar to SELECT COUNT(*) AS Marcadores FROM mantis_tag_table
         ///WHERE NAME = &apos;$marcador&apos;;.
         /// </summary>
-        internal static string RetornaQuantidadeDeMarcadorEmBanco {
+        internal static string PesquisarSeMarcadorXPTOFoiDeletado {
             get {
-                return ResourceManager.GetString("RetornaQuantidadeDeMarcadorEmBanco", resourceCulture);
+                return ResourceManager.GetString("RetornaQuantidadeDeMarcadorPorNome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT COUNT(*) AS Marcadores FROM mantis_tag_table.
+        /// </summary>
+        internal static string RetornarTotalDeMarcadorEmBanco {
+            get {
+                return ResourceManager.GetString("RetornaQuantidadeTotalDeMarcadorEmBanco", resourceCulture);
             }
         }
         
@@ -101,9 +110,9 @@ namespace CSharpSeleniumTemplate.Queries {
         ///   Looks up a localized string similar to SELECT name FROM mantis_tag_table
         ///WHERE NAME = &apos;$tag&apos;;.
         /// </summary>
-        internal static string SelectMarcadorPorNome {
+        internal static string SelecionarMarcadorPeloNome {
             get {
-                return ResourceManager.GetString("SelectMarcadorPorNome", resourceCulture);
+                return ResourceManager.GetString("SelecionarMarcadorPorNome", resourceCulture);
             }
         }
     }

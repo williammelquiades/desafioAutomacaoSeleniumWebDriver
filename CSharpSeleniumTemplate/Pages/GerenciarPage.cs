@@ -363,7 +363,8 @@ namespace CSharpSeleniumTemplate.Pages
         By campoDescricao = By.Id("tag-description");
         By botaoNovoMarcador = By.XPath("//input[@type='submit' or contains(text(), 'Criar Marcador')]");
         By botaoDeletemarcador = By.XPath("//input[@value='Apagar Marcador']");
-        By tagContador = By.ClassName("badge");
+        //By tagContador = By.ClassName("badge");
+        By tagContador = By.XPath("//span[@class='badge']");
         By paginacaoTodosMarcadores = By.LinkText("TODAS");
         By buscaMarcadorCriadoInTable = By.XPath("//*[@class='table-responsive']//tbody//tr//td//a");
 
@@ -436,7 +437,6 @@ namespace CSharpSeleniumTemplate.Pages
         {
             return ReturnIfElementExists(paginacaoTodosMarcadores);
         }
-
         #endregion
     }
 
