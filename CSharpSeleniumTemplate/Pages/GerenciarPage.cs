@@ -20,11 +20,13 @@ namespace CSharpSeleniumTemplate.Pages
         By infosInformeSite4 = By.XPath("(//*[@id='manage-overview-table']//tbody//tr/td)[5]");
         By textoPadraoFormulario = By.XPath("//h4[@class='widget-title lighter']");
         By textoDubloFormulario = By.XPath("(//h4[@class='widget-title lighter'])[1]");
+        //*[@id="main-container"]/div[2]/div[2]/div/div[3]/div[2]/div[2]/div/div/table/tbody/tr[1]/td[1]
         By abaGerenciarUsuarios = By.LinkText("Gerenciar Usuários");
         By abaGerenciarProjetos = By.LinkText("Gerenciar Projetos");
         By abaGerenciarMarcadores = By.LinkText("Gerenciar Marcadores");
         By todosOsMarcadoresPaginacao = By.LinkText("TODAS");
         By abaGerenciarCamposPersonalizados = By.LinkText("Gerenciar Campos Personalizados");
+        By botaoNovoCampoPersonalizado = By.XPath("//input[@type='submit' or contains(text(), 'Novo Campo Personalizado')]");
         By abaGerenciarPerfisGlobais = By.LinkText("Gerenciar Perfís Globais");
         By abaGerenciarPlugins = By.LinkText("Gerenciar Plugins");
         By abaGerenciarConfiguracoes = By.LinkText("Gerenciar Configuração");
@@ -105,21 +107,36 @@ namespace CSharpSeleniumTemplate.Pages
             Click(abaGerenciarConfiguracoes);
         }
 
+        public bool VerificarBotaoNovoCampo()
+        {
+            return ReturnIfElementIsDisplayed(botaoNovoCampoPersonalizado);
+        }
+
+        public bool VerificarItemNaTela()
+        {
+            return ReturnIfElementExists(subAbaGerenciamentoConfiguracaoRelConfig);
+        }
+
         #endregion
     }
 
-    public class FormularioGerenciamentoUsuario : PageBase
+    public class FormularioGerenciamentoUsuarioPage : PageBase
     {
 
         #region Mapping
         By botaoCriarNovaConta = By.XPath("//a[@href='/manage_user_create_page.php']");
+        By botaoCriarNocaContaName = By.LinkText("Criar nova conta");
         By campoNomeUsuario = By.Id("user-username");
         By campoNomeVerdadeiro = By.Id("user-realname");
         By campoEmail = By.Id("email-field");
         By nivelDeAcesso = By.Id("user-access-level");
         By checkHabilitado = By.Id("user-enabled");
         By checkProtegido = By.Id("user-protected");
+        By quantidadeUsuariosCriados = By.ClassName("");
         #endregion
+
+        //Controles
+        public string quantidadeUsuario;
 
         #region action
         public void CriarNovoUsuario()
@@ -156,6 +173,16 @@ namespace CSharpSeleniumTemplate.Pages
         {
             Click(checkProtegido);
         }
+
+        public void CapturarQuantidadeDeMarcadorCriado()
+        {
+            quantidadeUsuario = GetText(quantidadeUsuariosCriados);
+        }
+
+        public bool VerificarBotaoCriarUsuario()
+        {
+            return ReturnIfElementExists(botaoCriarNocaContaName);
+        }
         #endregion
     }
 
@@ -174,7 +201,7 @@ namespace CSharpSeleniumTemplate.Pages
         By mensagemDeSucesso = By.XPath("//*[@class='page-content']//p");
         By listaDeProjetosInTable = By.XPath("//td/a");
         //
-       
+
         #endregion
 
         #region Actions
@@ -191,7 +218,7 @@ namespace CSharpSeleniumTemplate.Pages
 
         public void CapturarTextoDoCampos()
         {
-            SendKeys(nomeProjeto," Edit v.01");
+            SendKeys(nomeProjeto, " Edit v.01");
         }
 
         public void ClicarEmAtualizarProjeto()
@@ -254,7 +281,7 @@ namespace CSharpSeleniumTemplate.Pages
         public void ClicarEmConfirmarApagarProjeto()
         {
             Click(botaoDeleteProjeto);
-        }        
+        }
 
         public string ValidarCampoNomeProjeto(string msgJavaScripit)
         {
@@ -264,7 +291,7 @@ namespace CSharpSeleniumTemplate.Pages
         #endregion
     }
 
-    public class FormularioCategoriaGlobais : PageBase
+    public class FormularioCategoriaGlobaisPage : PageBase
     {
 
         #region Mapping
@@ -273,18 +300,22 @@ namespace CSharpSeleniumTemplate.Pages
         //By botãoAdicionarCategoria = By.XPath("//input[@type='submit' or contains(text(), 'Adicionar Categoria')]");
         By msgError = By.XPath("//div[@id='main-container']/div[2]/div[2]/div/div/div[2]/p[2]");
         By campoNovaCategoria = By.Name("name");
+        By categoriaGlobalLista = By.XPath("((//div[@class='table-responsive'])//tbody)[1]/tr/td[1]");
         By listaItemDeCategoriasGlobais = By.XPath("((//div[@class='table-responsive'])//tbody)[2]/tr/td[1]");
         #endregion
+        //Controles de execucao local
+        public string verificaItemNaLista;
 
         #region Actions        
         public void PreencherNomeCategoria()
         {
-            SendKeys(this.campoNovaCategoria, "Categoria[" + GeneralHelpers.ReturnStringWithRandomNumbers(2) + "]");
+            verificaItemNaLista = ("Categoria[" + GeneralHelpers.ReturnStringWithRandomNumbers(2) + "]");
+            SendKeys(this.campoNovaCategoria, verificaItemNaLista);//"Categoria[" + GeneralHelpers.ReturnStringWithRandomNumbers(2) + "]");
         }
 
         public void PreencherNomeCategoriaIgual()
         {
-            SendKeys(this.campoNovaCategoria, "General");
+            SendKeys(this.campoNovaCategoria, RetornaItemDalista());
         }
 
         public void ClicarEmAdicionarCategoria()
@@ -307,10 +338,21 @@ namespace CSharpSeleniumTemplate.Pages
             return ReturnIfElementExists(listaItemDeCategoriasGlobais);
         }
 
+        public string RetornaItemDalista()
+        {
+            return GetText(listaItemDeCategoriasGlobais);
+        }
+
+        public string VerificarCategoriaGlobalCriada()
+        {
+            return GetText(By.XPath("//td[contains(text(), '"+verificaItemNaLista+"')]"));
+        }
+
         public void ClicarEmProjetoDaLista()
         {
-            Click(listaCategoriasGlobais);
+            Click(listaItemDeCategoriasGlobais);
         }
+
         #endregion
     }
 
@@ -320,20 +362,27 @@ namespace CSharpSeleniumTemplate.Pages
         By nomeMarcador = By.Id("tag-name");
         By campoDescricao = By.Id("tag-description");
         By botaoNovoMarcador = By.XPath("//input[@type='submit' or contains(text(), 'Criar Marcador')]");
+        By botaoDeletemarcador = By.XPath("//input[@value='Apagar Marcador']");
         By tagContador = By.ClassName("badge");
-        By searcheMarcadorCriado = By.XPath("//*[@class='table-responsive']//tbody//tr//td//a");
+        By paginacaoTodosMarcadores = By.LinkText("TODAS");
+        By buscaMarcadorCriadoInTable = By.XPath("//*[@class='table-responsive']//tbody//tr//td//a");
+
         #endregion
 
+        //Controles de execucao local
+        public string verificaItemNaLista;
+        public string quantidadeMarcador;
+
         #region Actions
-        public void PreencherNomeMarcado(string nomeMarcador)
+        public void PreencherNomeMarcado()
         {
-            SendKeys(this.nomeMarcador, nomeMarcador);
-            ProcurarMarcadorCriado(nomeMarcador);
+            verificaItemNaLista = ("Marcador " + GeneralHelpers.ReturnStringWithRandomNumbers(2));
+            SendKeys(this.nomeMarcador, verificaItemNaLista); 
         }
 
-        public void preencherDescricaoMarcador(string nomeMarcador)
+        public void PreencherDescricaoMarcador()
         {
-            SendKeys(campoDescricao, nomeMarcador);
+            SendKeys(campoDescricao, GeneralHelpers.ReturnStringWithRandomCharacters(5));
         }
 
         public void ClicarEmCriarMarcador()
@@ -341,28 +390,49 @@ namespace CSharpSeleniumTemplate.Pages
             Click(botaoNovoMarcador);
         }
 
-        public void ValidarMarcadorCriado()
+        public void ClicarEmAlgumMarcadorDaLista()
         {
-            GetValue(tagContador);
+            Click(buscaMarcadorCriadoInTable);
         }
 
-        public void ProcurarMarcadorCriado(string nomeMarcador)
+        public void ClicarEmDeletarMarcador()
         {
-            System.Console.WriteLine("Marcador criado " + nomeMarcador);
-            //GetTableValue(searcheMarcadorCriado, nomeMarcador);
+            Click(botaoDeletemarcador);
+        }
 
-            //IWebElement element = driver.FindElement(searcheMarcadorCriado);
-            //var marcadores = new List<String>(GetText(element));
+        public void ClicarEmPaginacaoTodos()
+        {
+            Click(paginacaoTodosMarcadores);
+        }
 
-            // foreach (searcheMarcadorCriado in marcadores)
-            //  {
-            //      System.Console.WriteLine();
-            //  }
+        public void CapturarQuantidadeDeMarcadorCriado()
+        {
+            quantidadeMarcador = GetText(tagContador);
+        }
+
+        public string VerificarCriarMarcadores()
+        {
+            return GetText(By.LinkText(verificaItemNaLista));
+        }
+
+        public bool VerificarMarcadorCriado()
+        {
+            return ReturnIfElementExists(buscaMarcadorCriadoInTable);
+        }
+
+        public string ValidarCampoNomeMarcador(string msgJavaScripit)
+        {
+            return GetAttribute(this.nomeMarcador, msgJavaScripit);
+        }
+
+        public bool VerificarBotaoPaginacaoEmTela()
+        {
+            return ReturnIfElementExists(paginacaoTodosMarcadores);
         }
         #endregion
     }
 
-    public class FormularioGerenciarCamposPersonalizados : PageBase
+    public class FormularioGerenciarCamposPersonalizadosPage : PageBase
     {
 
         #region Mapping
@@ -389,7 +459,7 @@ namespace CSharpSeleniumTemplate.Pages
         #endregion
     }
 
-    public class FormularioGerenciarPerfilGlobais : PageBase
+    public class FormularioGerenciarPerfilGlobaisPage : PageBase
     {
         private string VARPLATAFORMA = "";
         private string SO = "";
@@ -443,7 +513,7 @@ namespace CSharpSeleniumTemplate.Pages
         #endregion
     }
 
-    public class FormularioGerenciarPlugins : PageBase { }
+    public class FormularioGerenciarPluginsPage : PageBase { }
 
-    public class FormularioGerenciarConfiguracao : PageBase { }
+    public class FormularioGerenciarConfiguracaoPage : PageBase { }
 }

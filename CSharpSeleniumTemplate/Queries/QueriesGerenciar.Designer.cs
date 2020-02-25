@@ -61,11 +61,49 @@ namespace CSharpSeleniumTemplate.Queries {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to SELECT COUNT(*) AS projetos FROM mantis_tag_table;.
+        /// </summary>
+        internal static string BuscaQuantidadeDeMarcadoresEmBanco {
+            get {
+                return ResourceManager.GetString("BuscaQuantidadeDeMarcadoresEmBanco", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SELECT COUNT(*) AS projetos FROM mantis_project_table;.
         /// </summary>
         internal static string BuscaQuantidadeDeProjetosEmBanco {
             get {
                 return ResourceManager.GetString("BuscaQuantidadeDeProjetosEmBanco", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to INSERT INTO mantis_tag_table (user_id ,NAME , description) VALUES (1,&apos;$marcadorDB&apos;,&apos;$descriçãoDB&apos;);.
+        /// </summary>
+        internal static string InsertNovoMarcador {
+            get {
+                return ResourceManager.GetString("InsertNovoMarcador", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT COUNT(*) AS Marcadores FROM mantis_tag_table
+        ///WHERE NAME = &apos;$marcador&apos;;.
+        /// </summary>
+        internal static string RetornaQuantidadeDeMarcadorEmBanco {
+            get {
+                return ResourceManager.GetString("RetornaQuantidadeDeMarcadorEmBanco", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT name FROM mantis_tag_table
+        ///WHERE NAME = &apos;$tag&apos;;.
+        /// </summary>
+        internal static string SelectMarcadorPorNome {
+            get {
+                return ResourceManager.GetString("SelectMarcadorPorNome", resourceCulture);
             }
         }
     }

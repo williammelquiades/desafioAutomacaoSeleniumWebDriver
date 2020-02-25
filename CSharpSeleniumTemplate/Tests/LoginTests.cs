@@ -77,7 +77,7 @@ namespace CSharpSeleniumTemplate.Tests
             mainPage = new MainPage();
 
             #region Parameters
-            string usuario = "templateautomacao";
+            string usuario = "administrator";
             string senha = UsuariosDBSteps.RetornaSenhaDoUsuario(usuario);
             #endregion
             loginPage.PreencherUsuario(usuario);

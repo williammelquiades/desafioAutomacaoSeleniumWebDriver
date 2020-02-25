@@ -21,7 +21,7 @@ namespace CSharpSeleniumTemplate.Tests
         #region Pages and Flows Objects
         string USUARIO = ConfigurationManager.AppSettings["username"].ToString();
         string SENHA = ConfigurationManager.AppSettings["password"].ToString();
-        [AutoInstance] LoginFlows loginInSystem;
+        [AutoInstance] LoginFlows logarNoSistema;
         MenuMantis menuMantis;
         CriarTarefasPage criarTarefas;
         #endregion
@@ -43,7 +43,7 @@ namespace CSharpSeleniumTemplate.Tests
             string msgJavaScripit = "validationMessage";
             #endregion
 
-            loginInSystem.EfetuarLogin(USUARIO, SENHA);
+            logarNoSistema.EfetuarLogin(USUARIO, SENHA);
             menuMantis.ClicarItemMenuCriarTarefas();
             criarTarefas.ClicarEmSelecionarProjeto();
             criarTarefas.SalvarNovoProjeto();
@@ -67,7 +67,7 @@ namespace CSharpSeleniumTemplate.Tests
             string msgJavaScripit = "validationMessage";
             #endregion
 
-            loginInSystem.EfetuarLogin(USUARIO, SENHA);
+            logarNoSistema.EfetuarLogin(USUARIO, SENHA);
             menuMantis.ClicarItemMenuCriarTarefas();
             criarTarefas.ClicarEmSelecionarProjeto();
             criarTarefas.PreencherResumo(resumo);
@@ -89,7 +89,7 @@ namespace CSharpSeleniumTemplate.Tests
             string mensagemErroEsperada = "APPLICATION ERROR #11";
             #endregion
 
-            loginInSystem.EfetuarLogin(USUARIO, SENHA);
+            logarNoSistema.EfetuarLogin(USUARIO, SENHA);
             menuMantis.ClicarItemMenuCriarTarefas();
             criarTarefas.ClicarEmSelecionarProjeto();
             criarTarefas.PreencherResumo(texto);
@@ -119,7 +119,7 @@ namespace CSharpSeleniumTemplate.Tests
             //string
             #endregion
 
-            loginInSystem.EfetuarLogin(USUARIO, SENHA);
+            logarNoSistema.EfetuarLogin(USUARIO, SENHA);
             menuMantis.ClicarItemMenuCriarTarefas();
             //criarTarefas.SelecionarProjeto("Automacao");
             criarTarefas.ClicarEmSelecionarProjeto();
