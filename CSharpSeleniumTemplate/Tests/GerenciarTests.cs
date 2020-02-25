@@ -180,7 +180,7 @@ namespace CSharpSeleniumTemplate.Tests
         }
 
         [Test]
-        [Category("Campos Obrigatorios")]
+        [Category("Gerenciar Projetos")]
         public void ValidaCampoObrigatorioEmGerenciarProjetos()
         {
             #region  Parameters
@@ -204,7 +204,7 @@ namespace CSharpSeleniumTemplate.Tests
         }
 
         [Test]
-        [Category("Gerenciar Projetos Sucesso")]
+        [Category("Gerenciar Projetos")]
         public void CriarNovoProjetoComSucesso()
         {
 
@@ -224,7 +224,7 @@ namespace CSharpSeleniumTemplate.Tests
         }
 
         [Test]
-        [Category("Gerenciar Projetos BD")]
+        [Category("Gerenciar Projetos")]
         public void CriarNovoProjetoComSucessoConsultandoBD()
         {
             #region Parameters
@@ -251,7 +251,7 @@ namespace CSharpSeleniumTemplate.Tests
         }
 
         [Test]
-        [Category("Gerenciar Projetos BD")]
+        [Category("Gerenciar Projetos")]
         public void DeletarProjetoBD()
         {
             #region Parameters
