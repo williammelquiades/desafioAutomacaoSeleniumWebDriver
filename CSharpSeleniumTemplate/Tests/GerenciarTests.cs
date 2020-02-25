@@ -457,7 +457,7 @@ namespace CSharpSeleniumTemplate.Tests
 
             formularioMarcadores.ClicarEmPaginacaoTodos();
 
-            int quantidadeMarcadoresBD = GerenciarProjetosDBSteps.RetornaQuantidadeDeProjetosCriadosDB();
+            int quantidadeMarcadoresBD = GerenciarProjetosDBSteps.RetornaQuantidadeDeMarcadoresDB();
 
             formularioMarcadores.CapturarQuantidadeDeMarcadorCriado();
 
