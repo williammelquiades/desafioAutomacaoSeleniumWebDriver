@@ -23,7 +23,7 @@ namespace CSharpSeleniumTemplate.Bases
         By clicarEmRegistroDeMudanca = By.XPath("//a[@href='/changelog_page.php']");
 
         //Item de menu: Planejamento
-        By clicarEmPlanejamento = By.XPath("//a[@href='/roadmap_page.php']");
+        By ItemMenuPlanejamento = By.XPath("//a[@href='/roadmap_page.php']");
 
         //Item de menu: Resumo
         By clicarEmResumo = By.XPath("//a[@href='/summary_page.php']");
@@ -43,7 +43,10 @@ namespace CSharpSeleniumTemplate.Bases
         //Actions Registro de Mudanças
 
         //Actions Planejamento
-
+        public void ClicarItemMenuPlanejamento()
+        {
+            Click(ItemMenuPlanejamento);
+        }
         //Actions Resumo
 
         //Actions Gerenciamento
