@@ -43,10 +43,7 @@ namespace CSharpSeleniumTemplate.Bases
         //Actions Registro de Mudanças
 
         //Actions Planejamento
-        public void ClicarItemMenuPlanejamento()
-        {
-            Click(ItemMenuPlanejamento);
-        }
+        
         //Actions Resumo
 
         //Actions Gerenciamento
