@@ -1,5 +1,6 @@
 ﻿using CSharpSeleniumTemplate.Bases;
 using NUnit.Framework;
+using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace CSharpSeleniumTemplate.Pages
     public class PlanejamentoPage : PageBase
     {
         #region Mapping
+        By msgEmTela = By.XPath("//p[@class='lead']");
 
         #endregion
 
