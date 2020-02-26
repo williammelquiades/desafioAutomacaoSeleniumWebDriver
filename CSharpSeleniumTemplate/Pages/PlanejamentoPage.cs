@@ -13,7 +13,7 @@ namespace CSharpSeleniumTemplate.Pages
     {
         #region Mapping
         By msgEmTela = By.XPath("//p[@class='lead']");
-
+        By campoPesquisaTarefa = By.Name("bug_id");
         #endregion
 
         #region Actions

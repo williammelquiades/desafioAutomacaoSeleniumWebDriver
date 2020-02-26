@@ -16,11 +16,17 @@ namespace CSharpSeleniumTemplate.Tests
 
         [Test]
         [Category("Planejamento")]
-        public void AcessarTelaDePlanejamento() { }
+        public void AcessarTelaDePlanejamento()
+        {
+            //teste
+        }
 
         [Test]
         [Category("Planejamento")]
-        public void PesquisaTarefaComCaracteres() { }
+        public void PesquisaTarefaComCaracteres()
+        {
+            //Test
+        }
 
         [Test]
         [Category("Planejamento")]
