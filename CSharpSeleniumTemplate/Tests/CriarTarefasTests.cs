@@ -34,9 +34,9 @@ namespace CSharpSeleniumTemplate.Tests
             criarTarefas = new CriarTarefasPage();
 
             #region Parameters
-            string projetoPadrao = "Automacao";
-            string resumo = "Teste Resumo";
-            string descricao = "";
+            //string projetoPadrao = "Automacao";
+            //string resumo = "Test";
+            //string descricao = "";
             string msgPT = "Preencha este campo.";
             string msgEN = "Please fill out this field.";
             string msgIE = "Este é um campo obrigatório";
@@ -44,8 +44,11 @@ namespace CSharpSeleniumTemplate.Tests
             #endregion
 
             logarNoSistema.EfetuarLogin(USUARIO, SENHA);
+
             menuMantis.ClicarItemMenuCriarTarefas();
+
             criarTarefas.ClicarEmSelecionarProjeto();
+
             criarTarefas.SalvarNovoProjeto();
 
             CollectionAssert.Contains(new[] { msgEN, msgPT, msgIE }, criarTarefas.MensagemValidacaoResumo(msgJavaScripit));
@@ -98,50 +101,50 @@ namespace CSharpSeleniumTemplate.Tests
 
             Assert.AreEqual(mensagemErroEsperada, criarTarefas.RetornaMensagemDeErro());
         }
-       
-      
-        [Test, Category("Criar Nova Tarefas Com Sucesso")]
-        public void CriarNovaTarefaComSucesso()
-        {
-            menuMantis = new MenuMantis();
-            criarTarefas = new CriarTarefasPage();
 
-            #region Parameters
-            string categoria = "[All Projects] General"; // [Todos os Projetos] General
-            string frequencia = "always"; // always | sempre
-            string gravidade = "feature"; // feature | pequeno
-            string prioridade = "urgent";
-            string perfil = "Linux gnome 0238";
-            string atribuido = "administrator";
-            string textoDeTeste = "Texto de Tests";
-            string msgEsperada = "Operation successful."; // Operation successful. | Operação realizada com sucesso.
+        
+          [Test, Category("Criar Nova Tarefas Com Sucesso")]
+          public void CriarNovaTarefaComSucesso()
+          {
+              menuMantis = new MenuMantis();
+              criarTarefas = new CriarTarefasPage();
 
-            //string
-            #endregion
+              #region Parameters
+              string categoria = "[Todos os Projetos] General"; // 
+              //string frequencia = "always"; // always | sempre
+              //string gravidade = "feature"; // feature | pequeno
+              //string prioridade = "urgent";
+              //string perfil = "Linux gnome 0238";
+              //string atribuido = "administrator";
+              string textoDeTeste = "Texto de Tests";
+              string msgEsperada = "Operação realizada com sucesso."; // Operation successful. | Operação realizada com sucesso.
+              #endregion
 
-            logarNoSistema.EfetuarLogin(USUARIO, SENHA);
-            menuMantis.ClicarItemMenuCriarTarefas();
-            //criarTarefas.SelecionarProjeto("Automacao");
-            criarTarefas.ClicarEmSelecionarProjeto();
+              logarNoSistema.EfetuarLogin(USUARIO, SENHA);
 
-            criarTarefas.SelecionarCategoria(categoria);
-            criarTarefas.SelecionarFrequencia(frequencia);
-            criarTarefas.SelecionarGravidade(gravidade);
-            criarTarefas.SelecionarPrioridade(prioridade);
-            criarTarefas.SelecionarPerfil(perfil);
-            criarTarefas.SelecionaAtribuicao(atribuido);
-            criarTarefas.PreencherResumo(textoDeTeste);
-            criarTarefas.PreencherDescricao(textoDeTeste);
-            criarTarefas.SalvarNovoProjeto();
+              menuMantis.ClicarItemMenuCriarTarefas();
 
-            Assert.That(criarTarefas.ValidarCriarTarefa().Contains(msgEsperada));
-        }
+              //criarTarefas.SelecionarProjeto("Automacao");
+              criarTarefas.ClicarEmSelecionarProjeto();
+
+              criarTarefas.SelecionarCategoria(categoria);
+              //criarTarefas.SelecionarFrequencia(frequencia);
+              //criarTarefas.SelecionarGravidade(gravidade);
+              //criarTarefas.SelecionarPrioridade(prioridade);
+              //criarTarefas.SelecionarPerfil(perfil);
+              //criarTarefas.SelecionaAtribuicao(atribuido);
+              criarTarefas.PreencherResumo(textoDeTeste);
+              criarTarefas.PreencherDescricao(textoDeTeste);
+              criarTarefas.SalvarNovoProjeto();
+
+              Assert.That(criarTarefas.ValidarCriarTarefa().Contains(msgEsperada));
+          }
 
         /*
-        [Test, Category("CriarNovasTarefasEmMassaComDataDriver")]
-        public void CriarNovasTarefasEmMassa() {
+          [Test, Category("CriarNovasTarefasEmMassaComDataDriver")]
+          public void CriarNovasTarefasEmMassa() {
 
-        }
-       */
+          }
+         */
     }
 }

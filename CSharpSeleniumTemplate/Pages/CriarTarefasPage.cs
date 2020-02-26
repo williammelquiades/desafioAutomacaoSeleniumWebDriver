@@ -52,7 +52,6 @@ namespace CSharpSeleniumTemplate.Pages
         public void SelecionarCategoria(string listaDeCategoria)
         {
             ComboBoxSelectByVisibleText(this.listaDeCategoria, listaDeCategoria);
-            //GeneralHelpers.clicaBotao(MenuCriarTarefa, uteis.RetornaNomeVariavel(() => MenuCriarTarefa));
         }
 
         public void SelecionarFrequencia(string listaDeFraquencia)
