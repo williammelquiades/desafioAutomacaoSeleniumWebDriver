@@ -22,9 +22,16 @@ namespace CSharpSeleniumTemplate.Tests
         #endregion
 
         [Test, Category("ValidarCampoObrigatorioResumo")]
-        public void ValidarCamposObrigatorioResumo()
+        public void ValidarAcessoATelaPlanejamento()
         {
-        
+            #region Parameters
+            string mensagemNaTela = "";
+            #endregion
+
+            logarNoSistema.EfetuarLogin(USUARIO, SENHA);
+
+            menuMantis.ClicarItemMenuPlanejamento();
+
         }
 
 
