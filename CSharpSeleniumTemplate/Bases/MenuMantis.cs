@@ -39,7 +39,10 @@ namespace CSharpSeleniumTemplate.Bases
         //Actions Criar Tarefas
         public void ClicarItemMenuCriarTarefas() { Click(clicarEmCriarTarefas); }
         //Actions Ver Tarefas
-
+        public void ClicarItemMenuVerTarefas()
+        {
+            Click(clicarEmVerTarefas);
+        }
         //Actions Registro de Mudanças
 
         //Actions Planejamento
