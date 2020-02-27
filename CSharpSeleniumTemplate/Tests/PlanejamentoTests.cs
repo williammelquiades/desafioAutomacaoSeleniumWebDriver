@@ -11,6 +11,7 @@ using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CSharpSeleniumTemplate.Pages;
 
 namespace CSharpSeleniumTemplate.Tests
 {
@@ -22,7 +23,7 @@ namespace CSharpSeleniumTemplate.Tests
         string SENHA = ConfigurationManager.AppSettings["password"].ToString();
         [AutoInstance] LoginFlows logarNoSistema;
         [AutoInstance] MenuMantis menuMantis;
-
+        [AutoInstance] PlanejametoPage planejamento;
         #endregion
 
         [Test]
@@ -30,14 +31,17 @@ namespace CSharpSeleniumTemplate.Tests
         public void AcessarTelaDePlanejamento()
         {
             #region Parameters
-            string mensagemNaTela = "";
+            string mensagemNaTela = "Nenhum planejamento disponível.";
             #endregion
 
             logarNoSistema.EfetuarLogin(USUARIO, SENHA);
 
             menuMantis.ClicarItemMenuPlanejamento();
+
+            Assert.That(planejamento.CapturaMensagemNaTela().Contains(mensagemNaTela));
         }
 
+        /* Cenario relacionado a Cenario
         [Test]
         [Category("Planejamento")]
         public void PesquisaTarefaComCaracteres()
@@ -47,6 +51,9 @@ namespace CSharpSeleniumTemplate.Tests
 
         [Test]
         [Category("Planejamento")]
-        public void PesquisarTarefaComIdInexistente() { }
+        public void PesquisarTarefaComIdInexistente()
+        {
+            //Test
+        }*/
     }
 }

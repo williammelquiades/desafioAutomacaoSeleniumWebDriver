@@ -15,13 +15,12 @@ namespace CSharpSeleniumTemplate.Tests
     [TestFixture]
     public class ReportIssueTests : TestBase
     {
-
         #region Page Objects
         LoginFlows loginFlows;
         MainPage mainPage;
         BugReportPage bugReportPage;
         #endregion
-
+        /*
         [Test]
         public void CadastrarNovaIssueComSucessoInformandoSomenteCamposObrigatorios()
         {
@@ -50,5 +49,6 @@ namespace CSharpSeleniumTemplate.Tests
 
         [Test]
         public void TentarCriarCadastroSemPreencherCamposObrigatorios() { }
+        */
     }
 }

@@ -45,7 +45,7 @@ namespace CSharpSeleniumTemplate.Bases
         //Actions Planejamento
         public void ClicarItemMenuPlanejamento()
         {
-            Click(ItemMenuPlanejamento);
+            Click(clicarEmPlanejamento);
         }
         //Actions Resumo
 
