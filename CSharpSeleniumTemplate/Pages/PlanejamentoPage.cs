@@ -11,26 +11,16 @@ namespace CSharpSeleniumTemplate.Pages
 {
     public class PlanejamentoPage : PageBase
     {
-        #region Mapping
-        By msgEmTela = By.XPath("//p[@class='lead']");
-        By campoPesquisaTarefa = By.Name("bug_id");
+        #region
+        By msgDeRetornoEmTela = By.XPath("//p[@class='lead']");
         #endregion
 
-        #region Actions
-        public void ClicarPlanejamento()
+        #region Action
+
+        public string CapturaMensagemNaTela()
         {
-
+            return GetText(msgDeRetornoEmTela);
         }
-
-        public void RetornoPlanejamentoIndisponivel()
-        {
-
-        }
-
-        public void PesquisarTaredaId()
-        {
-        
-        }
-        #endregion
+        #endregion#endregion
     }
 }

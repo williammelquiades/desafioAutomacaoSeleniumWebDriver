@@ -23,7 +23,7 @@ namespace CSharpSeleniumTemplate.Tests
         string SENHA = ConfigurationManager.AppSettings["password"].ToString();
         [AutoInstance] LoginFlows logarNoSistema;
         [AutoInstance] MenuMantis menuMantis;
-        [AutoInstance] PlanejametoPage planejamento;
+        [AutoInstance] PlanejamentoPage planejamento;
         #endregion
 
         [Test]
