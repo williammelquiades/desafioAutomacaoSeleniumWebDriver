@@ -19,27 +19,42 @@ namespace CSharpSeleniumTemplate.Tests
         #region Pages and Flows Objects
         string USUARIO = ConfigurationManager.AppSettings["username"].ToString();
         string SENHA = ConfigurationManager.AppSettings["password"].ToString();
-        [AutoInstance] LoginFlows loginInSystem;
+        [AutoInstance] LoginFlows logarNoSistema;
         [AutoInstance] MenuMantis menuMantis;
-        [AutoInstance] GerenciarPage emGerenciarProjetos;
+        [AutoInstance] VerTarefasPage verTarefas;
         #endregion
 
         [Test]
-        [Category ("Ver Tarefas")]
+        [Category("Ver Tarefas")]
         public void PesquisarTaredaComString()
         {
+            #region Parameters
+            string tarefa = "Pokemo 20" + GeneralHelpers.ReturnStringWithRandomNumbers(2);
+            string mensagemErroEsperada = "Um número era esperado para bug_id.";
+            #endregion
 
+            logarNoSistema.EfetuarLogin(USUARIO, SENHA);
+
+            verTarefas.PesquisarGlobalTarefas(tarefa);
+
+            Assert.That(verTarefas.CapturarMensagemRetornada().Contains(mensagemErroEsperada));
         }
 
-        /*
         [Test]
-        [Category ("Ver Tarefas")]
+        [Category("Ver Tarefas")]
         public void PesquisarTarefasInexistente()
         {
+            #region Parameters
+            string tarefa = GeneralHelpers.ReturnStringWithRandomNumbers(4);
+            //string mensagemErroEsperada = ;
+            #endregion
 
+            logarNoSistema.EfetuarLogin(USUARIO, SENHA);
+
+            verTarefas.PesquisarGlobalTarefas(tarefa);
+
+            Assert.That(verTarefas.CapturarMensagemRetornada().Contains("A tarefa " + tarefa + " não encontrada."));
         }
-        */
-
 
     }
 }

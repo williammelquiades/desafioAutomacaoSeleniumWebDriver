@@ -128,6 +128,13 @@ namespace CSharpSeleniumTemplate.Bases
             throw new Exception("Given element isn't visible");
         }
 
+        protected void EnterKeyBoardInput(By locator)
+        {
+            Actions action = new Actions(driver);
+            action.SendKeys(Keys.Enter).Build().Perform();
+            ExtentReportHelpers.AddTestInfo(3, "");
+        }
+
         protected void SendKeys(By locator, string text)
         {
             WaitForElement(locator).SendKeys(text);
