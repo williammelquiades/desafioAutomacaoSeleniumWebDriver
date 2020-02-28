@@ -46,7 +46,6 @@ namespace CSharpSeleniumTemplate.Tests
         {
             #region Parameters
             string tarefa = GeneralHelpers.ReturnStringWithRandomNumbers(4);
-            //string mensagemErroEsperada = ;
             #endregion
 
             logarNoSistema.EfetuarLogin(USUARIO, SENHA);
