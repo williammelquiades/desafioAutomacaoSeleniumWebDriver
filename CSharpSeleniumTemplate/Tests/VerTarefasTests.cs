@@ -42,7 +42,7 @@ namespace CSharpSeleniumTemplate.Tests
 
         [Test]
         [Category("Ver Tarefas")]
-        public void PesquisarTarefasIdInexistente()
+        public void PesquisarTarefaIdInexistente()
         {
             #region Parameters
             string tarefa = GeneralHelpers.ReturnStringWithRandomNumbers(4);
