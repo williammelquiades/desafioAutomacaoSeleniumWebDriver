@@ -26,7 +26,7 @@ namespace CSharpSeleniumTemplate.Tests
 
         [Test]
         [Category("Ver Tarefas")]
-        public void PesquisarTaredaComString()
+        public void PesquisarTaredaPorString()
         {
             #region Parameters
             string tarefa = "Pokemo 20" + GeneralHelpers.ReturnStringWithRandomNumbers(2);
@@ -42,7 +42,7 @@ namespace CSharpSeleniumTemplate.Tests
 
         [Test]
         [Category("Ver Tarefas")]
-        public void PesquisarTarefasInexistente()
+        public void PesquisarTarefasIdInexistente()
         {
             #region Parameters
             string tarefa = GeneralHelpers.ReturnStringWithRandomNumbers(4);
