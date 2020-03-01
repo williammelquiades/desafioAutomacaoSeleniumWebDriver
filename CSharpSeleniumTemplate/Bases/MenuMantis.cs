@@ -14,7 +14,8 @@ namespace CSharpSeleniumTemplate.Bases
         By categoryComboBox = By.Name("category_id");
 
         //Item de menu: Ver Tarefas
-        By clicarEmVerTarefas = By.XPath("//a[@href='/bug_report_page.php']");
+        By clicarEmVerTarefas = By.XPath("//a[@href='/view_all_bug_page.php']");
+        By clicarEmVerTarefasName = By.Name(" Ver Tarefas ");
 
         //Item de menu: Criar Tarefa
         By clicarEmCriarTarefas = By.XPath("//a[@href='/bug_report_page.php']");

@@ -26,6 +26,22 @@ namespace CSharpSeleniumTemplate.Tests
 
         [Test]
         [Category("Ver Tarefas")]
+        public void ValidarAcessoATela()
+        {
+            #region Parameters
+            string nomeNaTela = "Visualizando Tarefas";
+            #endregion
+
+            logarNoSistema.EfetuarLogin(USUARIO, SENHA);
+
+            menuMantis.ClicarItemMenuVerTarefas();
+
+            Assert.IsTrue(verTarefas.VerificarTextoNaTela().Contains(nomeNaTela));
+
+        }
+        /*
+        [Test]
+        [Category("Ver Tarefas")]
         public void PesquisarTaredaPorString()
         {
             #region Parameters
@@ -53,7 +69,7 @@ namespace CSharpSeleniumTemplate.Tests
             verTarefas.PesquisarGlobalTarefas(tarefa);
 
             Assert.That(verTarefas.CapturarMensagemRetornada().Contains("A tarefa " + tarefa + " não encontrada."));
-        }
+        }*/
 
     }
 }

@@ -13,6 +13,7 @@ namespace CSharpSeleniumTemplate.Pages
         #region Mapping
         By pesquisaTarefaGlobal = By.Name("bug_id");
         By boxDeErro = By.XPath("//div[@class='alert alert-danger']//p[2]");
+        By capturaTexto = By.XPath("//*[@id='bug_action']//h4");
         #endregion
 
         #region Acction
@@ -25,6 +26,11 @@ namespace CSharpSeleniumTemplate.Pages
         public string CapturarMensagemRetornada()
         {
             return GetText(boxDeErro);
+        }
+
+        public string VerificarTextoNaTela()
+        {
+            return GetText(capturaTexto);
         }
         #endregion
     }

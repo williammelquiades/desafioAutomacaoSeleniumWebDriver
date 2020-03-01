@@ -10,7 +10,10 @@ namespace CSharpSeleniumTemplate.DataBaseSteps
 {
     class GerenciarProjetosDBSteps
     {
-        public void CriarProjetoViaQuerieBD(string nameProjeto, string descricaoProjeto) { }
+        public void CriarProjetoViaQuerieBD(string nameProjeto, string descricaoProjeto)
+        {
+        
+        }
 
         public static int RetornaQuantidadeDeProjetosCriadosDB()
         {
@@ -37,7 +40,8 @@ namespace CSharpSeleniumTemplate.DataBaseSteps
             return Convert.ToInt32(DataBaseHelpers.RetornaDadosQuery(queryMarcador)[0]);
         }
 
-        public static int RetornaQuantidadeTotalDeMarcadoresDB() {
+        public static int RetornaQuantidadeTotalDeMarcadoresDB()
+        {
             string executQuerie = QueriesGerenciar.RetornarTotalDeMarcadorEmBanco;
             return Convert.ToInt32(DataBaseHelpers.RetornaDadosQuery(executQuerie)[0]);
         }
