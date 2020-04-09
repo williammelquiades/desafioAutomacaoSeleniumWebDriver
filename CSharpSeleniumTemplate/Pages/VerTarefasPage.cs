@@ -25,6 +25,7 @@ namespace CSharpSeleniumTemplate.Pages
 
         By dropdownPrioridade = By.Id("priority");
         By optionsPrioridade = By.XPath("//*[@id='priority']//option");
+        By prioridadeSelecionanda = By.XPath("(//*[@id='priority']//option[@selected])");
         #endregion
 
         #region Acction
@@ -47,6 +48,11 @@ namespace CSharpSeleniumTemplate.Pages
         public string VerificarTextoNaTela()
         {
             return GetText(capturaTexto);
+        }
+
+        public string VerificarPrioridade()
+        {
+            return GetText(prioridadeSelecionanda);
         }
 
         public void ClicarEmNovoFiltro()

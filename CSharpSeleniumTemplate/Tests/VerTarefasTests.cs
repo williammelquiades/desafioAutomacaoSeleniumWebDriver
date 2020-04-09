@@ -126,11 +126,13 @@ namespace CSharpSeleniumTemplate.Tests
 
             verTarefas.ClicarEmEditarTarefaAleatoria();
 
-            //verTarefas.clicarEmCampoPrioridade();
+            verTarefas.VerificarPrioridade();
 
             verTarefas.SelecionarPrioridadeAleatoria();
 
             verTarefas.ClicarEmAtualizarTarefa();
+
+            //Assert.That(verTarefas.CapturarIdDoBug().Contains(numeroPadrao));
 
         }
 
