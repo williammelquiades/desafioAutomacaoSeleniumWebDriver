@@ -136,7 +136,7 @@ namespace CSharpSeleniumTemplate.Tests
 
         }
 
-        /*
+        
         [Test]
         [Category ("Ver Tarefas")]
         public void ApagarUmaTarefa()
@@ -144,6 +144,7 @@ namespace CSharpSeleniumTemplate.Tests
             // a fazer
         }
 
+        /*
         [Test]
         [Category ("Ver Tarefas")]
         public void AtribuirTaredas()
