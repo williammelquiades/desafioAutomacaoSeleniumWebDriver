@@ -2,6 +2,7 @@
 using CSharpSeleniumTemplate.Helpers;
 using OpenQA.Selenium;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -119,27 +120,7 @@ namespace CSharpSeleniumTemplate.Pages
 
         public void SelecionarPrioridadeAleatoria()
         {
-
-            //Click(dropdownPrioridade);
-
-
-            /* option 1 : Capturar todos os options dentro de um do Dropdown *
-             
-            IList<IWebElement> optionsDropdown = driver.FindElements(this.optionsPrioridade);
-
-            for (int x = 0; x < optionsDropdown.Count; x++)
-            {
-
-                string[] itemsInDropdown = new string[] {
-                    optionsDropdown.Add
-                    (
-                       GetText("(//*[@id='priority']//option)['" + x + "']")
-                    )
-                };
-            }
-            */
-
-            /* Option 2 */
+            /* Option 1 : Post as information wend exist in drop 
             Random rand = new Random();
 
             //string[] itemsInDropdown = new string[] { GetText(optionsPrioridade) };
@@ -147,6 +128,22 @@ namespace CSharpSeleniumTemplate.Pages
             string[] itemsInDropdown = new string[] {"nenhuma", "baixa", "normal", "alta", "urgente", "imediato" };
 
             ComboBoxSelectByVisibleText(this.dropdownPrioridade, (itemsInDropdown[rand.Next(itemsInDropdown.Length)]));
+            */
+
+            // Option 2 : Get Information exist in drop int put in string list
+
+            IList<IWebElement> allOptionsDropdown = driver.FindElements(this.optionsPrioridade);
+
+            IList<string> optionsListDropdown = new List<string>();
+
+            foreach (var element in allOptionsDropdown)
+            {
+                optionsListDropdown.Add(element.Text);
+            }
+
+            Random rand = new Random();
+
+            ComboBoxSelectByVisibleText(this.dropdownPrioridade, (optionsListDropdown[rand.Next(optionsListDropdown.Count)]));
 
         }
 
