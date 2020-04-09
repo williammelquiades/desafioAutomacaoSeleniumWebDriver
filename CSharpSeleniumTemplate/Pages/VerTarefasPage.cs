@@ -29,6 +29,10 @@ namespace CSharpSeleniumTemplate.Pages
         By prioridadeSelecionanda = By.XPath("(//*[@id='priority']//option[@selected])");
         #endregion
 
+        //Controller Global
+        public string VerificarPrioridadeAtual;
+        public string VerificarPrioridadeAnterior;
+
         #region Acction
         public void PesquisarGlobalTarefas(string pesquisaTarefa)
         {
@@ -53,6 +57,7 @@ namespace CSharpSeleniumTemplate.Pages
 
         public string VerificarPrioridade()
         {
+            //VerificarPrioridadeAnterior.GetText(prioridadeSelecionanda);
             return GetText(prioridadeSelecionanda);
         }
 
@@ -115,8 +120,8 @@ namespace CSharpSeleniumTemplate.Pages
         public void clicarEmCampoPrioridade()
         {
             Click(dropdownPrioridade);
+            VerificarPrioridadeAnterior = VerificarPrioridade();
         }
-
 
         public void SelecionarPrioridadeAleatoria()
         {
@@ -138,12 +143,22 @@ namespace CSharpSeleniumTemplate.Pages
 
             foreach (var element in allOptionsDropdown)
             {
-                optionsListDropdown.Add(element.Text);
+                if (element.Text == VerificarPrioridadeAnterior)
+                {
+                    optionsListDropdown.Remove(element.Text);
+                }
+                else
+                {
+                    optionsListDropdown.Add(element.Text);
+                }
+
             }
 
             Random rand = new Random();
 
-            ComboBoxSelectByVisibleText(this.dropdownPrioridade, (optionsListDropdown[rand.Next(optionsListDropdown.Count)]));
+            VerificarPrioridadeAtual = optionsListDropdown[rand.Next(0, optionsListDropdown.Count)];
+
+            ComboBoxSelectByVisibleText(this.dropdownPrioridade, VerificarPrioridadeAtual);
 
         }
 
