@@ -8,11 +8,14 @@ using NUnit.Framework;
 using System.Reflection;
 using CSharpSeleniumTemplate.Helpers;
 using System.Configuration;
+using System.Collections;
+using CSharpSeleniumTemplate.Pages;
 
 namespace CSharpSeleniumTemplate.Bases
 {
     public class TestBase
     {
+
         [OneTimeSetUp]
         public void OneTimeSetUp()
         {

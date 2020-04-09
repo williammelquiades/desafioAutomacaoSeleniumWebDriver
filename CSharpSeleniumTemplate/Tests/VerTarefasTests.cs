@@ -4,6 +4,7 @@ using CSharpSeleniumTemplate.Helpers;
 using CSharpSeleniumTemplate.Pages;
 using NUnit.Framework;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -39,7 +40,7 @@ namespace CSharpSeleniumTemplate.Tests
             Assert.IsTrue(verTarefas.VerificarTextoNaTela().Contains(nomeNaTela));
 
         }
-        /*
+
         [Test]
         [Category("Ver Tarefas")]
         public void PesquisarTaredaPorString()
@@ -50,6 +51,8 @@ namespace CSharpSeleniumTemplate.Tests
             #endregion
 
             logarNoSistema.EfetuarLogin(USUARIO, SENHA);
+
+            menuMantis.ClicarItemMenuVerTarefas();
 
             verTarefas.PesquisarGlobalTarefas(tarefa);
 
@@ -66,10 +69,91 @@ namespace CSharpSeleniumTemplate.Tests
 
             logarNoSistema.EfetuarLogin(USUARIO, SENHA);
 
+            menuMantis.ClicarItemMenuVerTarefas();
+
             verTarefas.PesquisarGlobalTarefas(tarefa);
 
             Assert.That(verTarefas.CapturarMensagemRetornada().Contains("A tarefa " + tarefa + " não encontrada."));
-        }*/
+        }
 
+        [Test]
+        [Category("Ver Tarefas")]
+        public void SalvarUmNovoFiltro()
+        {
+            #region Parameters
+            string descricaoNovoFiltro = "Filtro";
+            #endregion
+
+            logarNoSistema.EfetuarLogin(USUARIO, SENHA);
+
+            menuMantis.ClicarItemMenuVerTarefas();
+
+            verTarefas.ClicarEmNovoFiltro();
+
+            verTarefas.PreencherNovoFiltro();
+
+            verTarefas.ConfirmarCriacaoFiltro();
+
+            //Assert.That(verTarefas.CapturarMensagemRetornada().Contains("Sucesso"));
+        }
+
+        [Test]
+        [Category("Ver Tarefas")]
+        public void AcessarTarefaAleatoria()
+        {
+            #region Parameters
+            string numeroPadrao = "00";
+            #endregion
+            logarNoSistema.EfetuarLogin(USUARIO, SENHA);
+
+            menuMantis.ClicarItemMenuVerTarefas();
+
+            verTarefas.VerificarTarefaNaLista();
+
+            verTarefas.ClicarEmTarefaAleatoria();
+
+            Assert.That(verTarefas.CapturarIdDoBug().Contains(numeroPadrao));
+
+        }
+
+        [Test]
+        [Category ("Ver Tarefas")]
+        public void AlterarPriodidadeTarefa()
+        {
+            logarNoSistema.EfetuarLogin(USUARIO, SENHA);
+
+            menuMantis.ClicarItemMenuVerTarefas();
+
+            verTarefas.ClicarEmEditarTarefaAleatoria();
+
+            //verTarefas.clicarEmCampoPrioridade();
+
+            verTarefas.SelecionarPrioridadeAleatoria();
+
+            verTarefas.ClicarEmAtualizarTarefa();
+
+        }
+
+        /*
+        [Test]
+        [Category ("Ver Tarefas")]
+        public void ApagarUmaTarefa()
+        {
+            // a fazer
+        }
+
+        [Test]
+        [Category ("Ver Tarefas")]
+        public void AtribuirTaredas()
+        {
+            // a fazer
+        }
+
+        [Test]
+        [Category ("Ver Tarefas")]
+        public void ResolverTarefa()
+        {
+            // a fazer
+        }*/
     }
 }

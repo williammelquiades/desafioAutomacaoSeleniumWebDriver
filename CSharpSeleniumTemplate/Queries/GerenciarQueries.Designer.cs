@@ -22,14 +22,14 @@ namespace CSharpSeleniumTemplate.Queries {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class QueriesGerenciar {
+    internal class GerenciarQueries {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal QueriesGerenciar() {
+        internal GerenciarQueries() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace CSharpSeleniumTemplate.Queries {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CSharpSeleniumTemplate.Queries.QueriesGerenciar", typeof(QueriesGerenciar).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CSharpSeleniumTemplate.Queries.GerenciarQueries", typeof(GerenciarQueries).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -70,20 +70,11 @@ namespace CSharpSeleniumTemplate.Queries {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SELECT COUNT(*) AS projetos FROM mantis_tag_table;.
-        /// </summary>
-        internal static string BuscaTotalDeMarcadoresEmBanco {
-            get {
-                return ResourceManager.GetString("BuscaQuantidadeDeMarcadoresEmBanco", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to SELECT COUNT(*) AS projetos FROM mantis_project_table;.
         /// </summary>
         internal static string BuscarQuantidadeDeProjetosEmBanco {
             get {
-                return ResourceManager.GetString("BuscaQuantidadeDeProjetosEmBanco", resourceCulture);
+                return ResourceManager.GetString("BuscarQuantidadeDeProjetosEmBanco", resourceCulture);
             }
         }
         
@@ -93,7 +84,7 @@ namespace CSharpSeleniumTemplate.Queries {
         /// </summary>
         internal static string PesquisarSeMarcadorXPTOFoiDeletado {
             get {
-                return ResourceManager.GetString("RetornaQuantidadeDeMarcadorPorNome", resourceCulture);
+                return ResourceManager.GetString("PesquisarSeMarcadorXPTOFoiDeletado", resourceCulture);
             }
         }
         
@@ -102,7 +93,7 @@ namespace CSharpSeleniumTemplate.Queries {
         /// </summary>
         internal static string RetornarTotalDeMarcadorEmBanco {
             get {
-                return ResourceManager.GetString("RetornaQuantidadeTotalDeMarcadorEmBanco", resourceCulture);
+                return ResourceManager.GetString("RetornarTotalDeMarcadorEmBanco", resourceCulture);
             }
         }
         
@@ -112,7 +103,7 @@ namespace CSharpSeleniumTemplate.Queries {
         /// </summary>
         internal static string SelecionarMarcadorPeloNome {
             get {
-                return ResourceManager.GetString("SelecionarMarcadorPorNome", resourceCulture);
+                return ResourceManager.GetString("SelecionarMarcadorPeloNome", resourceCulture);
             }
         }
     }

@@ -331,7 +331,7 @@ namespace CSharpSeleniumTemplate.Bases
 
         // Select item na lista de forma automatica
 
-        public void escolherValorAleatorioNaLista(IWebElement elemento)
+        public void EscolherValorAleatorioNaLista(IWebElement elemento)
         {
             wait.Until(ExpectedConditions.ElementToBeClickable(elemento));
 
