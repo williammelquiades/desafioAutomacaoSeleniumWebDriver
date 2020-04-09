@@ -141,7 +141,12 @@ namespace CSharpSeleniumTemplate.Tests
         [Category ("Ver Tarefas")]
         public void ApagarUmaTarefa()
         {
-            // a fazer
+            logarNoSistema.EfetuarLogin(USUARIO, SENHA);
+
+            menuMantis.ClicarItemMenuVerTarefas();
+
+            verTarefas.ClicarEmMarcarTarefaAleatoria();
+
         }
 
         /*

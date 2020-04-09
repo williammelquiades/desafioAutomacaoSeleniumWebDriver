@@ -12,6 +12,8 @@ namespace CSharpSeleniumTemplate.Pages
 {
     public class VerTarefasPage : PageBase
     {
+        Random rand = new Random();
+
         #region Mapping
         By pesquisaTarefaGlobal = By.Name("bug_id");
         By boxDeErro = By.XPath("//div[@class='alert alert-danger']//p[2]");
@@ -22,6 +24,8 @@ namespace CSharpSeleniumTemplate.Pages
         By botaoSalvarNovoFiltro = By.XPath("//input[@value='Salvar Filtro Atual']");
         By listaDeTarefas = By.XPath("(//*[@class='column-id']//a[contains(@href,'/view')])");
         By botaoEditarTarefa = By.XPath("(//*[@class='column-edit']//i[@title='Atualizar'])");
+        By checkboxMarcarTarefa = By.ClassName("ace");
+        By checkboxMarcarTarefa_ = By.XPath(" (//span[@class='lbl'])");
         By botaoAtualizarInformacao = By.XPath("//input[@type='submit']");
 
         By dropdownPrioridade = By.Id("priority");
@@ -57,7 +61,6 @@ namespace CSharpSeleniumTemplate.Pages
 
         public string VerificarPrioridade()
         {
-            //VerificarPrioridadeAnterior.GetText(prioridadeSelecionanda);
             return GetText(prioridadeSelecionanda);
         }
 
@@ -92,8 +95,6 @@ namespace CSharpSeleniumTemplate.Pages
 
             IList<IWebElement> options = driver.FindElements(this.listaDeTarefas);
 
-            Random rand = new Random();
-
             int tarefasRandom = rand.Next(1, options.Count);
 
             string temp = tarefasRandom.ToString();
@@ -107,13 +108,24 @@ namespace CSharpSeleniumTemplate.Pages
 
             IList<IWebElement> options = driver.FindElements(this.botaoEditarTarefa);
 
-            Random rand = new Random();
-
             int tarefasRandom = rand.Next(1, options.Count);
 
             string temp = tarefasRandom.ToString();
 
             Click(By.XPath("(//*[@class='column-edit']//i[@title='Atualizar'])['" + temp + "']"));
+
+        }
+
+        public void ClicarEmMarcarTarefaAleatoria()
+        {
+
+            IList<IWebElement> quantidadeDeMarcadoresNaTela = driver.FindElements(checkboxMarcarTarefa_);
+
+            int numeroDoMarcadoSelecionado = rand.Next(0, quantidadeDeMarcadoresNaTela.Count);
+
+            string valorTemporario = numeroDoMarcadoSelecionado.ToString();
+
+            Click(By.XPath("(//span[@class='lbl'])["+ valorTemporario +"]"));
 
         }
 
@@ -154,7 +166,7 @@ namespace CSharpSeleniumTemplate.Pages
 
             }
 
-            Random rand = new Random();
+            //Random rand = new Random();
 
             VerificarPrioridadeAtual = optionsListDropdown[rand.Next(0, optionsListDropdown.Count)];
 
