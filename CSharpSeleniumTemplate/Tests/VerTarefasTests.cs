@@ -161,21 +161,50 @@ namespace CSharpSeleniumTemplate.Tests
         
         [Test]
         [Category ("Ver Tarefas")]
-        public void AtribuirTaredas()
+        public void AtribuirUmaTarefa()
+        {
+
+            #region Parameters
+            string atribuirA = "administrator";
+            #endregion
+            logarNoSistema.EfetuarLogin(USUARIO, SENHA);
+
+            menuMantis.ClicarItemMenuVerTarefas();
+
+            verTarefas.ClicarEmMarcarTarefaAleatoria();
+
+            verTarefas.SelecionarAtribuirTarefa();
+
+            verTarefas.ClicarEmBotaoOK();
+
+            verTarefas.AtribuirTarefaA(atribuirA);
+
+            verTarefas.ClicarEmAtribuirTarefa();
+
+            Assert.That(verTarefas.VerificarEstado.Contains(atribuirA));
+
+        }
+
+       
+        [Test]
+        [Category ("Ver Tarefas")]
+        public void ResolverTarefa()
         {
             logarNoSistema.EfetuarLogin(USUARIO, SENHA);
 
             menuMantis.ClicarItemMenuVerTarefas();
 
             verTarefas.ClicarEmMarcarTarefaAleatoria();
-        }
 
-        /*
-        [Test]
-        [Category ("Ver Tarefas")]
-        public void ResolverTarefa()
-        {
-            // a fazer
-        }*/
+            verTarefas.SelecionarResolverTarefa();
+
+            verTarefas.ClicarEmBotaoOK();
+
+            verTarefas.SelecionarResolutionAleatoria();
+
+            verTarefas.ClicarEmResolverTarefa();
+
+            Assert.That(verTarefas.VerificarEstado.Contains("resolvido"));
+        }
     }
 }

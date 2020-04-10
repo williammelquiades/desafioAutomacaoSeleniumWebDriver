@@ -29,10 +29,10 @@ namespace CSharpSeleniumTemplate.Pages
         By checkboxMarcarTarefa_ = By.XPath(" (//span[@class='lbl'])");
         By botaoAtualizarInformacao = By.XPath("//input[@type='submit']");
         By botaoConfirmarDeletarTarefa = By.XPath("//input[@value='Apagar Tarefas']");
-        By botaoOkParaTarefaSelecionada  = By.XPath("//input[@value='OK']");
+        By botaoOkParaTarefaSelecionada = By.XPath("//input[@value='OK']");
         By dropdownAcoes = By.XPath("//select[@name='action']");
 
-       By dropdownPrioridade = By.Id("priority");
+        By dropdownPrioridade = By.Id("priority");
         By optionsPrioridade = By.XPath("//*[@id='priority']//option");
         By prioridadeSelecionanda = By.XPath("(//*[@id='priority']//option[@selected])");
         #endregion
@@ -196,6 +196,13 @@ namespace CSharpSeleniumTemplate.Pages
 
             ComboBoxSelectByVisibleText(dropdownAcoes, itemDelete);
 
+        }
+
+        public void SelecionarAtribuirTarefa()
+        {
+            string itemAtribuir = "Atribuir";
+
+            ComboBoxSelectByVisibleText(dropdownAcoes, itemAtribuir);
         }
 
         public void ClicarEmBotaoOK()
