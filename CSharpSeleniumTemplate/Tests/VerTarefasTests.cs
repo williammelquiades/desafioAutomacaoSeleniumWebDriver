@@ -147,16 +147,30 @@ namespace CSharpSeleniumTemplate.Tests
 
             verTarefas.ClicarEmMarcarTarefaAleatoria();
 
+            verTarefas.SelecionarApagarTarefa();
+
+            verTarefas.ClicarEmBotaoOK();
+
+            verTarefas.ClicarEmConfirmarApagarTarefa();
+
+            verTarefas.UpdateMarcador();
+
+            Assert.AreNotEqual(verTarefas.MarcadorAnterior,verTarefas.MarcadorAtual);
         }
 
-        /*
+        
         [Test]
         [Category ("Ver Tarefas")]
         public void AtribuirTaredas()
         {
-            // a fazer
+            logarNoSistema.EfetuarLogin(USUARIO, SENHA);
+
+            menuMantis.ClicarItemMenuVerTarefas();
+
+            verTarefas.ClicarEmMarcarTarefaAleatoria();
         }
 
+        /*
         [Test]
         [Category ("Ver Tarefas")]
         public void ResolverTarefa()

@@ -16,6 +16,7 @@ namespace CSharpSeleniumTemplate.Pages
 
         #region Mapping
         By pesquisaTarefaGlobal = By.Name("bug_id");
+        By contadorDeTarefas = By.ClassName("badge");
         By boxDeErro = By.XPath("//div[@class='alert alert-danger']//p[2]");
         By idBug = By.XPath("(//td[@class='bug-id'])");
         By capturaTexto = By.XPath("//*[@id='bug_action']//h4");
@@ -27,8 +28,11 @@ namespace CSharpSeleniumTemplate.Pages
         By checkboxMarcarTarefa = By.ClassName("ace");
         By checkboxMarcarTarefa_ = By.XPath(" (//span[@class='lbl'])");
         By botaoAtualizarInformacao = By.XPath("//input[@type='submit']");
+        By botaoConfirmarDeletarTarefa = By.XPath("//input[@value='Apagar Tarefas']");
+        By botaoOkParaTarefaSelecionada  = By.XPath("//input[@value='OK']");
+        By dropdownAcoes = By.XPath("//select[@name='action']");
 
-        By dropdownPrioridade = By.Id("priority");
+       By dropdownPrioridade = By.Id("priority");
         By optionsPrioridade = By.XPath("//*[@id='priority']//option");
         By prioridadeSelecionanda = By.XPath("(//*[@id='priority']//option[@selected])");
         #endregion
@@ -36,6 +40,8 @@ namespace CSharpSeleniumTemplate.Pages
         //Controller Global
         public string VerificarPrioridadeAtual;
         public string VerificarPrioridadeAnterior;
+        public string MarcadorAnterior;
+        public string MarcadorAtual;
 
         #region Acction
         public void PesquisarGlobalTarefas(string pesquisaTarefa)
@@ -62,6 +68,16 @@ namespace CSharpSeleniumTemplate.Pages
         public string VerificarPrioridade()
         {
             return GetText(prioridadeSelecionanda);
+        }
+
+        public string VerificarMarcador()
+        {
+            return GetText(contadorDeTarefas);
+        }
+
+        public void UpdateMarcador()
+        {
+            MarcadorAtual = VerificarMarcador();
         }
 
         public void ClicarEmNovoFiltro()
@@ -119,13 +135,13 @@ namespace CSharpSeleniumTemplate.Pages
         public void ClicarEmMarcarTarefaAleatoria()
         {
 
-            IList<IWebElement> quantidadeDeMarcadoresNaTela = driver.FindElements(checkboxMarcarTarefa_);
+            IList<IWebElement> quantidadeDeMarcadoresNaTela = driver.FindElements(checkboxMarcarTarefa);
 
-            int numeroDoMarcadoSelecionado = rand.Next(0, quantidadeDeMarcadoresNaTela.Count);
+            int numeroDoMarcadoSelecionado = rand.Next(1, quantidadeDeMarcadoresNaTela.Count);
 
             string valorTemporario = numeroDoMarcadoSelecionado.ToString();
 
-            Click(By.XPath("(//span[@class='lbl'])["+ valorTemporario +"]"));
+            Click(By.XPath("(//span[@class='lbl'])[" + valorTemporario + "]"));
 
         }
 
@@ -172,6 +188,25 @@ namespace CSharpSeleniumTemplate.Pages
 
             ComboBoxSelectByVisibleText(this.dropdownPrioridade, VerificarPrioridadeAtual);
 
+        }
+
+        public void SelecionarApagarTarefa()
+        {
+            string itemDelete = "Apagar";
+
+            ComboBoxSelectByVisibleText(dropdownAcoes, itemDelete);
+
+        }
+
+        public void ClicarEmBotaoOK()
+        {
+            MarcadorAnterior = VerificarMarcador();
+            Click(botaoOkParaTarefaSelecionada);
+        }
+
+        public void ClicarEmConfirmarApagarTarefa()
+        {
+            Click(botaoConfirmarDeletarTarefa);
         }
 
         #endregion
