@@ -196,15 +196,16 @@ namespace CSharpSeleniumTemplate.Tests
 
             verTarefas.ClicarEmMarcarTarefaAleatoria();
 
-            //verTarefas.SelecionarResolverTarefa();
+            verTarefas.SelecionarResolverTarefa();
 
             verTarefas.ClicarEmBotaoOK();
 
-            //verTarefas.SelecionarResolutionAleatoria();
+            verTarefas.SelecionarStatusDaResolutionAleatoria();
 
-            //verTarefas.ClicarEmResolverTarefa();
+            verTarefas.ClicarEmResolverTarefa();
 
-            //Assert.That(verTarefas.VerificarEstado.Contains("resolvido"));
+            // melhorar metodo de assert, capturar tarefa selecionada.
+            Assert.That(verTarefas.VerificarCampoEstado().Contains("resolvido"));
         }
     }
 }

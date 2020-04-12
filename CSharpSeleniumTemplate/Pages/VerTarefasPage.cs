@@ -30,12 +30,14 @@ namespace CSharpSeleniumTemplate.Pages
         By botaoAtualizarInformacao = By.XPath("//input[@type='submit']");
         By botaoConfirmarDeletarTarefa = By.XPath("//input[@value='Apagar Tarefas']");
         By botaoAtribuirTarefa = By.XPath("//input[@value='Atribuir Tarefas']");
+        By botaoResolverTarefas = By.XPath("//input[@value='Resolver Tarefas']");
         By botaoOkParaTarefaSelecionada = By.XPath("//input[@value='OK']");
         By dropdownAcoes = By.XPath("//select[@name='action']");
         By dropdownAtribuir = By.ClassName("input-sm");
         By campoEstado = By.LinkText("administrator");
 
         By dropdownPrioridade = By.Id("priority");
+        By dropdownResolution = By.Name("resolution");
         By optionsPrioridade = By.XPath("//*[@id='priority']//option");
         By prioridadeSelecionanda = By.XPath("(//*[@id='priority']//option[@selected])");
         #endregion
@@ -153,6 +155,17 @@ namespace CSharpSeleniumTemplate.Pages
 
         }
 
+        public void SelecionarStatusDaResolutionAleatoria()
+        {
+
+            Random rand = new Random();
+
+            string[] itemsInDropdown = new string[] { "aberto", "corrigido", "reaberto", "incapaz de reproduzir", "não corrigível", "duplicado", "não é uma tarefa", "suspenso", "não será corrigido" };
+
+            ComboBoxSelectByVisibleText(this.dropdownResolution, (itemsInDropdown[rand.Next(0, itemsInDropdown.Length)]));
+
+        }
+
         public void clicarEmCampoPrioridade()
         {
             Click(dropdownPrioridade);
@@ -161,17 +174,6 @@ namespace CSharpSeleniumTemplate.Pages
 
         public void SelecionarPrioridadeAleatoria()
         {
-            /* Option 1 : Post as information wend exist in drop 
-            Random rand = new Random();
-
-            //string[] itemsInDropdown = new string[] { GetText(optionsPrioridade) };
-
-            string[] itemsInDropdown = new string[] {"nenhuma", "baixa", "normal", "alta", "urgente", "imediato" };
-
-            ComboBoxSelectByVisibleText(this.dropdownPrioridade, (itemsInDropdown[rand.Next(itemsInDropdown.Length)]));
-            */
-
-            // Option 2 : Get Information exist in drop int put in string list
 
             IList<IWebElement> allOptionsDropdown = driver.FindElements(this.optionsPrioridade);
 
@@ -208,6 +210,11 @@ namespace CSharpSeleniumTemplate.Pages
             Click(botaoAtribuirTarefa);
         }
 
+        public void ClicarEmResolverTarefa()
+        {
+            Click(botaoResolverTarefas);
+        }
+
         public void SelecionarApagarTarefa()
         {
             string itemDelete = "Apagar";
@@ -221,6 +228,13 @@ namespace CSharpSeleniumTemplate.Pages
             string itemAtribuir = "Atribuir";
 
             ComboBoxSelectByVisibleText(dropdownAcoes, itemAtribuir);
+        }
+
+        public void SelecionarResolverTarefa()
+        {
+            string itemResolver = "Resolver";
+
+            ComboBoxSelectByVisibleText(dropdownAcoes, itemResolver);
         }
 
         public void ClicarEmBotaoOK()
