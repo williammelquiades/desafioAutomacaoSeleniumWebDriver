@@ -29,8 +29,11 @@ namespace CSharpSeleniumTemplate.Pages
         By checkboxMarcarTarefa_ = By.XPath(" (//span[@class='lbl'])");
         By botaoAtualizarInformacao = By.XPath("//input[@type='submit']");
         By botaoConfirmarDeletarTarefa = By.XPath("//input[@value='Apagar Tarefas']");
+        By botaoAtribuirTarefa = By.XPath("//input[@value='Atribuir Tarefas']");
         By botaoOkParaTarefaSelecionada = By.XPath("//input[@value='OK']");
         By dropdownAcoes = By.XPath("//select[@name='action']");
+        By dropdownAtribuir = By.ClassName("input-sm");
+        By campoEstado = By.LinkText("administrator");
 
         By dropdownPrioridade = By.Id("priority");
         By optionsPrioridade = By.XPath("//*[@id='priority']//option");
@@ -42,6 +45,11 @@ namespace CSharpSeleniumTemplate.Pages
         public string VerificarPrioridadeAnterior;
         public string MarcadorAnterior;
         public string MarcadorAtual;
+
+        public string VerificarCampoEstado()
+        {
+            return GetText(campoEstado);
+        }
 
         #region Acction
         public void PesquisarGlobalTarefas(string pesquisaTarefa)
@@ -188,6 +196,16 @@ namespace CSharpSeleniumTemplate.Pages
 
             ComboBoxSelectByVisibleText(this.dropdownPrioridade, VerificarPrioridadeAtual);
 
+        }
+
+        public void AtribuirTarefaA(string atribuirA)
+        {
+            ComboBoxSelectByVisibleText(dropdownAtribuir, atribuirA);
+        }
+
+        public void ClicarEmAtribuirTarefa()
+        {
+            Click(botaoAtribuirTarefa);
         }
 
         public void SelecionarApagarTarefa()
