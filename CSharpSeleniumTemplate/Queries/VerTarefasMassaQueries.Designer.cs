@@ -22,14 +22,14 @@ namespace CSharpSeleniumTemplate.Queries {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class UsuariosQueries {
+    internal class VerTarefasMassaQueries {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal UsuariosQueries() {
+        internal VerTarefasMassaQueries() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace CSharpSeleniumTemplate.Queries {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CSharpSeleniumTemplate.Queries.UsuariosQueries", typeof(UsuariosQueries).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CSharpSeleniumTemplate.Queries.VerTarefasMassaQueries", typeof(VerTarefasMassaQueries).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,22 +61,19 @@ namespace CSharpSeleniumTemplate.Queries {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SELECT password FROM mantis_user_table WHERE username=&apos;$username&apos;;.
+        ///   Looks up a localized string similar to BEGIN;
+        ///
+        ///INSERT INTO mantis_bug_table 
+        ///(project_id,reporter_id,handler_id,duplicate_id,priority,severity,reproducibility,STATUS,resolution,projection,
+        ///eta,bug_text_id,os,os_build,platform,version,fixed_in_version,build,profile_id,view_state,summary,sponsorship_total,sticky,target_version,
+        ///category_id)
+        ///VALUES(1,1,0,0,30,50,70,10,10,10,10,1,&apos;Trigger SO&apos;,43,&apos;TRG Plataforma&apos;, &apos;&apos;,&apos;&apos;,&apos;&apos;,24,10,&apos;Auto Insert&apos;, 0,0,&apos;&apos;,1);
+        ///
+        ///INSERT INTO mantis_bug_text_table (id,description,steps_to_reproduce,additional_informat [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string RetornaSenhaUsuario {
+        internal static string TarefasVerFullStack {
             get {
-                return ResourceManager.GetString("RetornaSenhaUsuario", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to select user.senha 
-        ///from usuarios user 
-        ///where user.username = &apos;$username&apos;;.
-        /// </summary>
-        internal static string RetornoErro {
-            get {
-                return ResourceManager.GetString("RetornoErro", resourceCulture);
+                return ResourceManager.GetString("TarefasVerFullStack", resourceCulture);
             }
         }
     }

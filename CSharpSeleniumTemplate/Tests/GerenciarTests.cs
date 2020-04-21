@@ -27,8 +27,7 @@ namespace CSharpSeleniumTemplate.Tests
         [AutoInstance] FormularioGerenciamentoUsuarioPage formularioUsuario;
         string MSGESPERADA = "Operação realizada com sucesso.";
         #endregion
-
-        
+       
         [Test]
         [Category("Acessar Abas")]
         public void AcessarAbaGerenciarUsuario()
@@ -105,7 +104,6 @@ namespace CSharpSeleniumTemplate.Tests
 
             gerenciarPage.ClicarEmAbaGerenciarMarcadores();
 
-            //Assert.AreEqual(nameEsperado, gerenciarPage.CapturarNomeDuploDoFormulario());
             Assert.That(formularioMarcadores.VerificarBotaoPaginacaoEmTela);
         }
 
@@ -124,7 +122,7 @@ namespace CSharpSeleniumTemplate.Tests
 
             gerenciarPage.ClicarEmAbaGerenciarCamposPersonalizados();
 
-            //Assert.AreEqual(nameEsperado, gerenciarPage.CapturarPadraoNomeDoFormulario());
+
             Assert.That(gerenciarPage.VerificarBotaoNovoCampo);
         }
 

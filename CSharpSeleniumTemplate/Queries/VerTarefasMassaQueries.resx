@@ -117,12 +117,21 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="RetornaSenhaUsuario" xml:space="preserve">
-    <value>SELECT password FROM mantis_user_table WHERE username='$username';</value>
-  </data>
-  <data name="RetornoErro" xml:space="preserve">
-    <value>select user.senha 
-from usuarios user 
-where user.username = '$username';</value>
+  <data name="TarefasVerFullStack" xml:space="preserve">
+    <value>BEGIN;
+
+INSERT INTO mantis_bug_table 
+(project_id,reporter_id,handler_id,duplicate_id,priority,severity,reproducibility,STATUS,resolution,projection,
+eta,bug_text_id,os,os_build,platform,version,fixed_in_version,build,profile_id,view_state,summary,sponsorship_total,sticky,target_version,
+category_id)
+VALUES(1,1,0,0,30,50,70,10,10,10,10,1,'Trigger SO',43,'TRG Plataforma', '','','',24,10,'Auto Insert', 0,0,'',1);
+
+INSERT INTO mantis_bug_text_table (id,description,steps_to_reproduce,additional_information) VALUES(LAST_INSERT_ID(),'Auto Insert','Auto Insert', 'Insert For Trigger');
+
+INSERT INTO mantis_tag_table (user_id,NAME,description) VALUES(LAST_INSERT_ID(),'Auto Insert - Marcador ','Auto Insert - Description');
+
+INSERT INTO mantis_bug_tag_table(bug_id,tag_id,user_id) VALUES (LAST_INSERT_ID(),LAST_INSERT_ID(),LAST_INSERT_ID());
+
+COMMIT;</value>
   </data>
 </root>

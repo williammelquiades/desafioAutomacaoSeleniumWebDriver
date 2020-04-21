@@ -140,11 +140,39 @@ namespace CSharpSeleniumTemplate.Tests
               Assert.That(criarTarefas.ValidarCriarTarefa().Contains(msgEsperada));
           }
 
-        /*
-          [Test, Category("CriarNovasTarefasEmMassaComDataDriver")]
-          public void CriarNovasTarefasEmMassa() {
+        public static class TestData
+        {
+            public static IEnumerable TarefasExternas()
+            {
+                return GeneralHelpers.ReturnCSVData(GeneralHelpers.GetProjectPath() +
+         "Resources/TestData/Tarefas/CriarTarefasData.csv");
+            } 
+        }
 
-          }
-         */
+        [TestCaseSource(typeof(TestData), "TarefasExternas")]
+        [Category("CriarTarefasPorDataDriver")]
+          public void CriarNovasTarefasEmMassa(ArrayList testData) {
+            
+            menuMantis = new MenuMantis();
+            criarTarefas = new CriarTarefasPage();
+
+            #region Parameters
+            string resumo = testData[0].ToString();
+            string descricao = testData[1].ToString();
+            string categoria = "[Todos os Projetos] General";
+            #endregion
+
+            logarNoSistema.EfetuarLogin(USUARIO, SENHA);
+
+            menuMantis.ClicarItemMenuCriarTarefas();
+
+            criarTarefas.SelecionarCategoria(categoria);
+            criarTarefas.PreencherResumo(resumo);
+            criarTarefas.PreencherDescricao(descricao);
+            criarTarefas.SalvarNovoProjeto();
+
+            Assert.That(criarTarefas.ValidarCriarTarefa().Contains("sucesso"));
+        }
+         
     }
 }

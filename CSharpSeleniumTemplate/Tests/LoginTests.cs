@@ -15,6 +15,9 @@ namespace CSharpSeleniumTemplate.Tests
         //LoginPage loginPage;
         MainPage mainPage;
         [AutoInstance] LoginPage loginPage;
+        [AutoInstance] ContasDeAcessoPage minhaConta;
+
+      
         #endregion
 
         #region Data Driven Providers
@@ -55,8 +58,8 @@ namespace CSharpSeleniumTemplate.Tests
             mainPage = new MainPage();
 
             #region Parameters
-            string usuario = "templateautomacao";
-            string senha = "senhainvalida";
+            string usuario = ConfigurationManager.AppSettings["username"].ToString();
+            string senha = "rooot";
             string mensagemErroEsperada = "Your account may be disabled or blocked or the username/password you entered is incorrect.";
             #endregion
 
@@ -71,15 +74,17 @@ namespace CSharpSeleniumTemplate.Tests
 
         //Exemplo utilizando um retorno de uma query de banco de dados
         [Test]
-        public void EfetuarLoginComSucesso2()
+        public void EfetuarLoginDBComSucesso()
         {
             loginPage = new LoginPage();
             mainPage = new MainPage();
 
             #region Parameters
-            string usuario = "administrator";
-            string senha = UsuariosDBSteps.RetornaSenhaDoUsuario(usuario);
+            string usuario = "administrator"; // Buscar descrição do banco
+            //string senha = UsuariosDBSteps.RetornaSenhaDoUsuario(usuario);
+            string senha = ConfigurationManager.AppSettings["password"].ToString();
             #endregion
+
             loginPage.PreencherUsuario(usuario);
             loginPage.ClicarEmLogin();
             loginPage.PreencherSenha(senha);
@@ -106,6 +111,31 @@ namespace CSharpSeleniumTemplate.Tests
             loginPage.ClicarEmLogin();
 
             Assert.AreEqual(mensagemErroEsperada, loginPage.RetornaMensagemDeErro());
+        }
+
+        [Test]
+        [Category("Acessar Conta")]
+        public void RealizarLogoff()
+        {
+            loginPage = new LoginPage();
+            mainPage = new MainPage();
+
+            #region Parameters
+            string usuario = ConfigurationManager.AppSettings["username"].ToString();
+            string senha = ConfigurationManager.AppSettings["password"].ToString();
+            string mensagemErroEsperada = "Your account may be disabled or blocked or the username/password you entered is incorrect.";
+            #endregion
+
+            loginPage.PreencherUsuario(usuario);
+            loginPage.ClicarEmLogin();
+            loginPage.PreencherSenha(senha);
+            loginPage.ClicarEmLogin();
+
+            minhaConta.ClicarEmAbaToken();
+
+            minhaConta.ClicarDropdownUsuarioLogado();
+
+            minhaConta.ClicarEmSair();
         }
 
     }

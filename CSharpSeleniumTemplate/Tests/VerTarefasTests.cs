@@ -1,4 +1,5 @@
 ﻿using CSharpSeleniumTemplate.Bases;
+using CSharpSeleniumTemplate.DataBaseSteps;
 using CSharpSeleniumTemplate.Flows;
 using CSharpSeleniumTemplate.Helpers;
 using CSharpSeleniumTemplate.Pages;
@@ -167,6 +168,9 @@ namespace CSharpSeleniumTemplate.Tests
             #region Parameters
             string atribuirA = "administrator";
             #endregion
+
+            VerTarefasDBSteps.MassaDeTestesVerTaredasBD(); 
+            
             logarNoSistema.EfetuarLogin(USUARIO, SENHA);
 
             menuMantis.ClicarItemMenuVerTarefas();

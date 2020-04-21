@@ -144,6 +144,7 @@
     <Compile Include="Bases\TestBase.cs" />
     <Compile Include="DataBaseSteps\GerenciarProjetosDBSteps.cs" />
     <Compile Include="DataBaseSteps\UsuariosDBSteps.cs" />
+    <Compile Include="DataBaseSteps\VerTarefasDBSteps.cs" />
     <Compile Include="Flows\LoginFlows.cs" />
     <Compile Include="Helpers\AutoInstance.cs" />
     <Compile Include="Helpers\DataBaseHelpers.cs" />
@@ -152,6 +153,7 @@
     <Compile Include="Helpers\GeneralHelpers.cs" />
     <Compile Include="Pages\BugReportPage.cs" />
     <Compile Include="Pages\CategoriasGlobaisPage.cs" />
+    <Compile Include="Pages\ContasDeAcessoPage.cs" />
     <Compile Include="Pages\CriarTarefasPage.cs" />
     <Compile Include="Pages\GerenciarCamposPersonalizadosPage.cs" />
     <Compile Include="Pages\GerenciarPage.cs" />
@@ -182,7 +184,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>UsuariosQueries.resx</DependentUpon>
     </Compile>
+    <Compile Include="Queries\VerTarefasMassaQueries.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>VerTarefasMassaQueries.resx</DependentUpon>
+    </Compile>
     <Compile Include="Tests\CategoriasGlobaisTests.cs" />
+    <Compile Include="Tests\ContasDeAcessoTest.cs" />
     <Compile Include="Tests\CriarTarefasTests.cs" />
     <Compile Include="Tests\GerenciarCamposPersonalizadosTests.cs" />
     <Compile Include="Tests\GerenciarPerfisGlobaisTests.cs" />
@@ -202,6 +210,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <None Include="Resources\TestData\Login\EfetuarLoginInformandoUsuarioInvalidoData.csv" />
+    <None Include="Resources\TestData\Tarefas\CriarTarefasData.csv" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="extent-config.xml" />
@@ -219,6 +228,10 @@
     <EmbeddedResource Include="Queries\UsuariosQueries.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>UsuariosQueries.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Queries\VerTarefasMassaQueries.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>VerTarefasMassaQueries.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
