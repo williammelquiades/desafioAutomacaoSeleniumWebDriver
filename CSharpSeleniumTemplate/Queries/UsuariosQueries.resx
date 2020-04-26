@@ -117,6 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="DeletarUsuario" xml:space="preserve">
+    <value>DELETE FROM mantis_user_table
+WHERE id !=1;</value>
+  </data>
   <data name="RetornaSenhaUsuario" xml:space="preserve">
     <value>SELECT password FROM mantis_user_table WHERE username='$username';</value>
   </data>

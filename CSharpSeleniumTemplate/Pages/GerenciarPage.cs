@@ -307,8 +307,8 @@ namespace CSharpSeleniumTemplate.Pages
         public string verificaItemNaLista;
 
         #region Actions        
-        public void PreencherNomeCategoria()
-        {
+        public void PreencherNomeCategoria(/*string novaCategoria*/)
+        { // novaCategoria;
             verificaItemNaLista = ("Categoria[" + GeneralHelpers.ReturnStringWithRandomNumbers(2) + "]");
             SendKeys(this.campoNovaCategoria, verificaItemNaLista);//"Categoria[" + GeneralHelpers.ReturnStringWithRandomNumbers(2) + "]");
         }

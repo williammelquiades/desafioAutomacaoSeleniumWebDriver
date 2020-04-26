@@ -26,6 +26,7 @@ namespace CSharpSeleniumTemplate.Tests
         #endregion
 
         [Test]
+        [Parallelizable]
         [Category("Acessar Conta")]
         public void AcessarContaPorDropdown()
         {
@@ -44,6 +45,7 @@ namespace CSharpSeleniumTemplate.Tests
         }
 
         [Test]
+        [Parallelizable]
         [Category("Acessar Conta")]
         public void AcessarContaEmCliqueNoUsuario()
         {
@@ -61,6 +63,7 @@ namespace CSharpSeleniumTemplate.Tests
         }
 
         [Test]
+        [Parallelizable]
         [Category("Acessar Conta")]
         public void AcessarAbaMinhaConta()
         {

@@ -10,6 +10,7 @@ using CSharpSeleniumTemplate.Helpers;
 using System.Configuration;
 using System.Collections;
 using CSharpSeleniumTemplate.Pages;
+using CSharpSeleniumTemplate.DataBaseSteps;
 
 namespace CSharpSeleniumTemplate.Bases
 {
@@ -25,6 +26,12 @@ namespace CSharpSeleniumTemplate.Bases
         [SetUp]
         public void SetUp()
         {
+            //Limpa base se necessario retornar
+            MassaStartDBSteps.ClearMassaDeTestsDB();
+            //Criar projeto via Querie ao iniciar execução
+            //GerenciarProjetosDBSteps.CriarProjetoViaQuerieBD("Sprint Automacao " + GeneralHelpers.ReturnStringWithRandomNumbers(4),Automacao Web B2 -");
+            MassaStartDBSteps.CriaMassaDeTestesDB();
+
             ExtentReportHelpers.AddTest();
             DriverFactory.CreateInstance();
             DriverFactory.INSTANCE.Manage().Window.Maximize();
@@ -48,6 +55,9 @@ namespace CSharpSeleniumTemplate.Bases
         public void OneTimeTearDown()
         {
             ExtentReportHelpers.GenerateReport();
+
+            //Limpa tabelas da DB no final do test
+            MassaStartDBSteps.ClearMassaDeTestsDB();
         }
 
         #region Methodes needed to auto intance pages and flows [AutoInstance]

@@ -34,7 +34,8 @@ namespace CSharpSeleniumTemplate.Pages
         By botaoOkParaTarefaSelecionada = By.XPath("//input[@value='OK']");
         By dropdownAcoes = By.XPath("//select[@name='action']");
         By dropdownAtribuir = By.ClassName("input-sm");
-        By campoEstado = By.LinkText("administrator");
+        By campoEstado = By.XPath("//*[@class='align-left']//span");// //*[@class='column-status']//div By.LinkText("administrator");
+        By campoEstadoUsuario = By.XPath("//*[@class='align-left']//a");
 
         By dropdownPrioridade = By.Id("priority");
         By dropdownResolution = By.Name("resolution");
@@ -53,6 +54,10 @@ namespace CSharpSeleniumTemplate.Pages
             return GetText(campoEstado);
         }
 
+        public string VerificarCampoUsuario()
+        {
+            return GetText(campoEstadoUsuario);
+        }
         #region Acction
         public void PesquisarGlobalTarefas(string pesquisaTarefa)
         {

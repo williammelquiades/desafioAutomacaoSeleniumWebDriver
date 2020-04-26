@@ -33,6 +33,7 @@ namespace CSharpSeleniumTemplate.Helpers
                         {
                             ChromeOptions chrome = new ChromeOptions();
                             chrome.AddArgument("start-maximized");
+                            chrome.AddArgument("--window-size=1920,1080");
                             chrome.AddArgument("enable-automation");
                             chrome.AddArgument("--no-sandbox");
                             chrome.AddArgument("--disable-infobars");
@@ -50,6 +51,8 @@ namespace CSharpSeleniumTemplate.Helpers
                             chrome.AddArgument("no-sandbox");
                             chrome.AddArgument("--allow-running-insecure-content");
                             chrome.AddArgument("--lang=pt-BR");
+                            chrome.AddArgument("--window-size=1920,1080");
+                            //chrome.AddArgument("maxInstances=5");
 
                             INSTANCE = new RemoteWebDriver(new Uri(seleniumHub), chrome.ToCapabilities());
                         }
@@ -59,6 +62,7 @@ namespace CSharpSeleniumTemplate.Helpers
                     case "ie":
                         if (execution.Equals("local"))
                         {
+                            #region implement capabilities
                             //new line code
                             //DesiredCapabilities ie = new DesiredCapabilities();
 
@@ -67,19 +71,20 @@ namespace CSharpSeleniumTemplate.Helpers
 
                             //capabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
 
-                            ///ie.setCapability(CapabilityType.ForSeleniumServer.ENSURING_CLEAN_SESSION, true);
+                            //ie.setCapability(CapabilityType.ForSeleniumServer.ENSURING_CLEAN_SESSION, true);
                             //ieOptions.setCapability(InternetExplorerDriver.ENABLE_PERSISTENT_HOVERING, true);
                             //ieOptions.EnableNativeEvents("requireWindowFocus", true);
 
-                            //DesiredCapabilities capabilities = new DesiredCapabilities().;
-                            //desiredCapabilities capabilities = new DesiredCapabilities.InternetExplorerOptions();
+                            //desiredcapabilities capabilities = new desiredcapabilities().;
+                            //desiredcapabilities capabilities = new desiredcapabilities.internetexploreroptions();
 
                             //capabilities.SetCapability("requireWindowFocus", true);
                             //capabilities.SetCapability(InternetExplorerDriver.IGNORE_ZOOM_SETTING, false);
                             //capabilities.SetCapability("ie.ensureCleanSession", true);
                             //capabilities.SetCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
                             //capabilities.SetCapability(InternetExplorerDriver.FORCE_CREATE_PROCESS, true);
-
+                            #endregion
+                            
                             //exist line in projt
                             INSTANCE = new InternetExplorerDriver();
                         }

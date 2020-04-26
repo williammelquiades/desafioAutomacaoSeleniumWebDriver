@@ -117,9 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="LimparBaseFullStack" xml:space="preserve">
+    <value>BEGIN;
+TRUNCATE TABLE mantis_filters_table; 
+TRUNCATE TABLE mantis_bug_text_table;
+TRUNCATE TABLE mantis_bug_table;
+TRUNCATE TABLE mantis_tag_table;
+TRUNCATE TABLE mantis_bug_tag_table;
+TRUNCATE TABLE mantis_custom_field_table;
+TRUNCATE TABLE mantis_user_profile_table;
+TRUNCATE TABLE mantis_project_table;
+TRUNCATE TABLE mantis_category_table;
+#DELETE FROM mantis_category_table WHERE id !=1;
+COMMIT;</value>
+  </data>
   <data name="TarefasVerFullStack" xml:space="preserve">
     <value>BEGIN;
-
+#Criar um  projeto em base
+INSERT into mantis_project_table (NAME,description,inherit_global) values ('Proj Trigger' , 'Descrition Trigger', 1) ;
+#Criar uma tarefa base
 INSERT INTO mantis_bug_table 
 (project_id,reporter_id,handler_id,duplicate_id,priority,severity,reproducibility,STATUS,resolution,projection,
 eta,bug_text_id,os,os_build,platform,version,fixed_in_version,build,profile_id,view_state,summary,sponsorship_total,sticky,target_version,
@@ -127,10 +143,12 @@ category_id)
 VALUES(1,1,0,0,30,50,70,10,10,10,10,1,'Trigger SO',43,'TRG Plataforma', '','','',24,10,'Auto Insert', 0,0,'',1);
 
 INSERT INTO mantis_bug_text_table (id,description,steps_to_reproduce,additional_information) VALUES(LAST_INSERT_ID(),'Auto Insert','Auto Insert', 'Insert For Trigger');
-
+#Criar um marcador geral
 INSERT INTO mantis_tag_table (user_id,NAME,description) VALUES(LAST_INSERT_ID(),'Auto Insert - Marcador ','Auto Insert - Description');
 
 INSERT INTO mantis_bug_tag_table(bug_id,tag_id,user_id) VALUES (LAST_INSERT_ID(),LAST_INSERT_ID(),LAST_INSERT_ID());
+
+INSERT INTO mantis_category_table (NAME) VALUES ('General');
 
 COMMIT;</value>
   </data>

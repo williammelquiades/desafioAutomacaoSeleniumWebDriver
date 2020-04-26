@@ -22,14 +22,14 @@ namespace CSharpSeleniumTemplate.Queries {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class UsuariosQueries {
+    internal class MassaQueries {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal UsuariosQueries() {
+        internal MassaQueries() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace CSharpSeleniumTemplate.Queries {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CSharpSeleniumTemplate.Queries.UsuariosQueries", typeof(UsuariosQueries).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("CSharpSeleniumTemplate.Queries.MassaQueries", typeof(MassaQueries).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,32 +61,39 @@ namespace CSharpSeleniumTemplate.Queries {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DELETE FROM mantis_user_table
-        ///WHERE id !=1;.
+        ///   Looks up a localized string similar to BEGIN;
+        ///TRUNCATE TABLE mantis_filters_table; 
+        ///TRUNCATE TABLE mantis_bug_text_table;
+        ///TRUNCATE TABLE mantis_bug_table;
+        ///TRUNCATE TABLE mantis_tag_table;
+        ///TRUNCATE TABLE mantis_bug_tag_table;
+        ///TRUNCATE TABLE mantis_custom_field_table;
+        ///TRUNCATE TABLE mantis_user_profile_table;
+        ///TRUNCATE TABLE mantis_project_table;
+        ///TRUNCATE TABLE mantis_category_table;
+        ///#DELETE FROM mantis_category_table WHERE id !=1;
+        ///COMMIT;.
         /// </summary>
-        internal static string DeletarUsuario {
+        internal static string LimparBaseFullStack {
             get {
-                return ResourceManager.GetString("DeletarUsuario", resourceCulture);
+                return ResourceManager.GetString("LimparBaseFullStack", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to SELECT password FROM mantis_user_table WHERE username=&apos;$username&apos;;.
+        ///   Looks up a localized string similar to BEGIN;
+        ///#Criar um  projeto em base
+        ///INSERT into mantis_project_table (NAME,description,inherit_global) values (&apos;Proj Trigger&apos; , &apos;Descrition Trigger&apos;, 1) ;
+        ///#Criar uma tarefa base
+        ///INSERT INTO mantis_bug_table 
+        ///(project_id,reporter_id,handler_id,duplicate_id,priority,severity,reproducibility,STATUS,resolution,projection,
+        ///eta,bug_text_id,os,os_build,platform,version,fixed_in_version,build,profile_id,view_state,summary,sponsorship_total,sticky,target_version,
+        ///category_id)
+        ///VALUES(1,1,0,0,30,50,70,10,10,10,1 [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string RetornaSenhaUsuario {
+        internal static string TarefasVerFullStack {
             get {
-                return ResourceManager.GetString("RetornaSenhaUsuario", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to select user.senha 
-        ///from usuarios user 
-        ///where user.username = &apos;$username&apos;;.
-        /// </summary>
-        internal static string RetornoErro {
-            get {
-                return ResourceManager.GetString("RetornoErro", resourceCulture);
+                return ResourceManager.GetString("TarefasVerFullStack", resourceCulture);
             }
         }
     }

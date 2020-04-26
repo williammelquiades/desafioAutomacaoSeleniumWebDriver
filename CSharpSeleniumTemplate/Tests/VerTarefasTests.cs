@@ -34,6 +34,8 @@ namespace CSharpSeleniumTemplate.Tests
             string nomeNaTela = "Visualizando Tarefas";
             #endregion
 
+           // MassaStartDBSteps.CriaMassaDeTestesDB();
+
             logarNoSistema.EfetuarLogin(USUARIO, SENHA);
 
             menuMantis.ClicarItemMenuVerTarefas();
@@ -50,6 +52,8 @@ namespace CSharpSeleniumTemplate.Tests
             string tarefa = "Pokemo 20" + GeneralHelpers.ReturnStringWithRandomNumbers(2);
             string mensagemErroEsperada = "Um número era esperado para bug_id.";
             #endregion
+
+           //MassaStartDBSteps.CriaMassaDeTestesDB();
 
             logarNoSistema.EfetuarLogin(USUARIO, SENHA);
 
@@ -68,6 +72,8 @@ namespace CSharpSeleniumTemplate.Tests
             string tarefa = GeneralHelpers.ReturnStringWithRandomNumbers(4);
             #endregion
 
+           // MassaStartDBSteps.CriaMassaDeTestesDB();
+
             logarNoSistema.EfetuarLogin(USUARIO, SENHA);
 
             menuMantis.ClicarItemMenuVerTarefas();
@@ -84,6 +90,8 @@ namespace CSharpSeleniumTemplate.Tests
             #region Parameters
             string descricaoNovoFiltro = "Filtro";
             #endregion
+
+           // MassaStartDBSteps.CriaMassaDeTestesDB();
 
             logarNoSistema.EfetuarLogin(USUARIO, SENHA);
 
@@ -105,6 +113,9 @@ namespace CSharpSeleniumTemplate.Tests
             #region Parameters
             string numeroPadrao = "00";
             #endregion
+
+          //  MassaStartDBSteps.CriaMassaDeTestesDB();
+
             logarNoSistema.EfetuarLogin(USUARIO, SENHA);
 
             menuMantis.ClicarItemMenuVerTarefas();
@@ -121,6 +132,8 @@ namespace CSharpSeleniumTemplate.Tests
         [Category ("Ver Tarefas")]
         public void AlterarPriodidadeTarefa()
         {
+          //  MassaStartDBSteps.CriaMassaDeTestesDB();
+
             logarNoSistema.EfetuarLogin(USUARIO, SENHA);
 
             menuMantis.ClicarItemMenuVerTarefas();
@@ -137,11 +150,16 @@ namespace CSharpSeleniumTemplate.Tests
 
         }
 
-        
+
+        #region Erro 1100 Mantis
+   
         [Test]
         [Category ("Ver Tarefas")]
         public void ApagarUmaTarefa()
         {
+
+          //  MassaStartDBSteps.CriaMassaDeTestesDB();
+
             logarNoSistema.EfetuarLogin(USUARIO, SENHA);
 
             menuMantis.ClicarItemMenuVerTarefas();
@@ -158,8 +176,8 @@ namespace CSharpSeleniumTemplate.Tests
 
             Assert.AreNotEqual(verTarefas.MarcadorAnterior,verTarefas.MarcadorAtual);
         }
+        #endregion
 
-        
         [Test]
         [Category ("Ver Tarefas")]
         public void AtribuirUmaTarefa()
@@ -169,7 +187,7 @@ namespace CSharpSeleniumTemplate.Tests
             string atribuirA = "administrator";
             #endregion
 
-            VerTarefasDBSteps.MassaDeTestesVerTaredasBD(); 
+          //  MassaStartDBSteps.CriaMassaDeTestesDB(); 
             
             logarNoSistema.EfetuarLogin(USUARIO, SENHA);
 
@@ -185,7 +203,8 @@ namespace CSharpSeleniumTemplate.Tests
 
             verTarefas.ClicarEmAtribuirTarefa();
 
-            Assert.That(verTarefas.VerificarCampoEstado().Contains(atribuirA));
+            Assert.That(verTarefas.VerificarCampoUsuario().Contains(atribuirA));
+            //Assert.That(verTarefas.VerificarCampoEstado().Contains(atribuirA));
 
         }
 
@@ -194,6 +213,9 @@ namespace CSharpSeleniumTemplate.Tests
         [Category ("Ver Tarefas")]
         public void ResolverTarefa()
         {
+
+           // MassaStartDBSteps.CriaMassaDeTestesDB();
+
             logarNoSistema.EfetuarLogin(USUARIO, SENHA);
 
             menuMantis.ClicarItemMenuVerTarefas();

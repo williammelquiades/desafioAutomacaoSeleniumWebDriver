@@ -10,21 +10,25 @@ namespace CSharpSeleniumTemplate.DataBaseSteps
 {
     class GerenciarProjetosDBSteps
     {
-        public void CriarProjetoViaQuerieBD(string nameProjeto, string descricaoProjeto)
+        public static void CriarProjetoViaQuerieBD(string nameProjeto, string descricaoProjeto)
         {
-            /*
-            string executQuerie = TarefasQueries.CriarTarefasDAO +
-                    TarefasQueries.CriarMarcadorDAO +
-                  TarefasQueries.CriarTagDAO +
-                   TarefasQueries.CriarBugDAO;
-            DataBaseHelpers.ExecuteQuery(executQuerie);
-            */
+            string insertQuerie = GerenciarQueries.AdicionaProjetoPadrao
+            .Replace("$nomeProjeto", nameProjeto)
+            .Replace("$descricaoProjeto", descricaoProjeto);
+            DataBaseHelpers.ExecuteQuery(insertQuerie);
+
         }
 
         public static int RetornaQuantidadeDeProjetosCriadosDB()
         {
             string executQuerie = GerenciarQueries.BuscarQuantidadeDeProjetosEmBanco;
             return Convert.ToInt32(DataBaseHelpers.RetornaDadosQuery(executQuerie)[0]);
+        }
+
+        public static string RetonarCategoriaCriadaDB(string novaCategoria)
+        {
+            string executQuerie = GerenciarQueries.BuscarCategoriaCriada.Replace("$novaCategoria", novaCategoria);
+            return DataBaseHelpers.RetornaDadosQuery(executQuerie)[3];
         }
 
         // Querys para Gerenciar Marcadores

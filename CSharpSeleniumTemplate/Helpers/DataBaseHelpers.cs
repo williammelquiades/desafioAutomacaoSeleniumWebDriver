@@ -25,6 +25,11 @@ namespace CSharpSeleniumTemplate.Helpers
             return connection;
         }
 
+        internal static void ExecuteQuery(object deletaUsuariosCriado)
+        {
+            throw new NotImplementedException();
+        }
+
         public static void ExecuteQuery(string query)
         {
             using (MySqlCommand cmd = new MySqlCommand(query, GetDBConnection()))

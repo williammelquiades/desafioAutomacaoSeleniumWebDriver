@@ -117,8 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AdicionaProjetoPadrao" xml:space="preserve">
+    <value>INSERT into mantis_project_table (NAME,description,inherit_global) values ('$nomeProjeto' , '$descricaoProjeto', LAST_INSERT_ID()) ;</value>
+  </data>
   <data name="AdicionarNovoMarcador" xml:space="preserve">
     <value>INSERT INTO mantis_tag_table (user_id ,NAME , description) VALUES (1,'$marcadorDB','$descriçãoDB');</value>
+  </data>
+  <data name="BuscarCategoriaCriada" xml:space="preserve">
+    <value>SELECT * FROM mantis_category_table
+WHERE NAME = '$novaCategoria';</value>
   </data>
   <data name="BuscarQuantidadeDeProjetosEmBanco" xml:space="preserve">
     <value>SELECT COUNT(*) AS projetos FROM mantis_project_table;</value>

@@ -21,30 +21,30 @@ namespace CSharpSeleniumTemplate.Tests
         //[AutoInstance] CategoriaGlobalPage emCategoriaGlobal;
         #endregion
         
-        [Test]
-        public void CriarCategoriaGlobalComSucesso() {
+        //[Test]
+        //public void CriarCategoriaGlobalComSucesso() {
            
-            #region Parameters
-            String nomeNovaCategoria = "Categoria[" + GeneralHelpers.ReturnStringWithRandomNumbers(2)+ "]";
-            #endregion
+        //    #region Parameters
+        //    String nomeNovaCategoria = "Categoria[" + GeneralHelpers.ReturnStringWithRandomNumbers(2)+ "]";
+        //    #endregion
 
-            loginInSystem.EfetuarLogin(USUARIO, SENHA);
+        //    loginInSystem.EfetuarLogin(USUARIO, SENHA);
 
-            menuMantis.ClicarItemMenuGerenciar();
+        //    menuMantis.ClicarItemMenuGerenciar();
 
-            emGerenciarProjetos.ClicarEmAbaGerenciarProjetos();
-            //emCategoriaGlobal.PreencherCategoriaGlobal(nomeNovaCategoria);
-            //emCategoriaGlobal.ClicarAdicionarEmNovaCategoria();
+        //    emGerenciarProjetos.ClicarEmAbaGerenciarProjetos();
+        //    //emCategoriaGlobal.PreencherCategoriaGlobal(nomeNovaCategoria);
+        //    //emCategoriaGlobal.ClicarAdicionarEmNovaCategoria();
 
-            //Desenvolver retorno //Assert.AreEqual(mensagem);
-        }
+        //    //Desenvolver retorno //Assert.AreEqual(mensagem);
+        //}
 
-        /*
-        [Test]
-        public void AlterarCategoriaGlobal() { }
+        ///*
+        //[Test]
+        //public void AlterarCategoriaGlobal() { }
 
-        [Test]
-        public void ExcluirCategoriaGlobal() { }
-        */
+        //[Test]
+        //public void ExcluirCategoriaGlobal() { }
+        //*/
     }
 }

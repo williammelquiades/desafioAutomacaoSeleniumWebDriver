@@ -61,11 +61,30 @@ namespace CSharpSeleniumTemplate.Queries {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to INSERT into mantis_project_table (NAME,description,inherit_global) values (&apos;$nomeProjeto&apos; , &apos;$descricaoProjeto&apos;, LAST_INSERT_ID()) ;.
+        /// </summary>
+        internal static string AdicionaProjetoPadrao {
+            get {
+                return ResourceManager.GetString("AdicionaProjetoPadrao", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to INSERT INTO mantis_tag_table (user_id ,NAME , description) VALUES (1,&apos;$marcadorDB&apos;,&apos;$descriçãoDB&apos;);.
         /// </summary>
         internal static string AdicionarNovoMarcador {
             get {
                 return ResourceManager.GetString("AdicionarNovoMarcador", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SELECT * FROM mantis_category_table
+        ///WHERE NAME = &apos;$novaCategoria&apos;;.
+        /// </summary>
+        internal static string BuscarCategoriaCriada {
+            get {
+                return ResourceManager.GetString("BuscarCategoriaCriada", resourceCulture);
             }
         }
         

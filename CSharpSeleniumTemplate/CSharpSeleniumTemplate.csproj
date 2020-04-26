@@ -51,20 +51,20 @@
     <Reference Include="HtmlAgilityPack, Version=1.11.23.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
       <HintPath>..\packages\HtmlAgilityPack.1.11.23\lib\Net45\HtmlAgilityPack.dll</HintPath>
     </Reference>
-    <Reference Include="MongoDB.Bson, Version=2.10.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MongoDB.Bson.2.10.2\lib\net452\MongoDB.Bson.dll</HintPath>
+    <Reference Include="MongoDB.Bson, Version=2.10.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Bson.2.10.3\lib\net452\MongoDB.Bson.dll</HintPath>
     </Reference>
-    <Reference Include="MongoDB.Driver, Version=2.10.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MongoDB.Driver.2.10.2\lib\net452\MongoDB.Driver.dll</HintPath>
+    <Reference Include="MongoDB.Driver, Version=2.10.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Driver.2.10.3\lib\net452\MongoDB.Driver.dll</HintPath>
     </Reference>
-    <Reference Include="MongoDB.Driver.Core, Version=2.10.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MongoDB.Driver.Core.2.10.2\lib\net452\MongoDB.Driver.Core.dll</HintPath>
+    <Reference Include="MongoDB.Driver.Core, Version=2.10.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MongoDB.Driver.Core.2.10.3\lib\net452\MongoDB.Driver.Core.dll</HintPath>
     </Reference>
     <Reference Include="MongoDB.Libmongocrypt, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MongoDB.Libmongocrypt.1.0.0\lib\net452\MongoDB.Libmongocrypt.dll</HintPath>
     </Reference>
-    <Reference Include="MySqlConnector, Version=0.63.0.0, Culture=neutral, PublicKeyToken=d33d3e53aa5f8c92, processorArchitecture=MSIL">
-      <HintPath>..\packages\MySqlConnector.0.63.0\lib\net461\MySqlConnector.dll</HintPath>
+    <Reference Include="MySqlConnector, Version=0.64.0.0, Culture=neutral, PublicKeyToken=d33d3e53aa5f8c92, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySqlConnector.0.64.0\lib\net461\MySqlConnector.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -144,7 +144,7 @@
     <Compile Include="Bases\TestBase.cs" />
     <Compile Include="DataBaseSteps\GerenciarProjetosDBSteps.cs" />
     <Compile Include="DataBaseSteps\UsuariosDBSteps.cs" />
-    <Compile Include="DataBaseSteps\VerTarefasDBSteps.cs" />
+    <Compile Include="DataBaseSteps\MassaStartDBSteps.cs" />
     <Compile Include="Flows\LoginFlows.cs" />
     <Compile Include="Helpers\AutoInstance.cs" />
     <Compile Include="Helpers\DataBaseHelpers.cs" />
@@ -169,6 +169,11 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Queries\QueriesRestore.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QueriesRestore.resx</DependentUpon>
+    </Compile>
     <Compile Include="Queries\TarefasQueries.Designer.cs">
       <DependentUpon>TarefasQueries.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -184,10 +189,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>UsuariosQueries.resx</DependentUpon>
     </Compile>
-    <Compile Include="Queries\VerTarefasMassaQueries.Designer.cs">
+    <Compile Include="Queries\MassaQueries.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>VerTarefasMassaQueries.resx</DependentUpon>
+      <DependentUpon>MassaQueries.resx</DependentUpon>
     </Compile>
     <Compile Include="Tests\CategoriasGlobaisTests.cs" />
     <Compile Include="Tests\ContasDeAcessoTest.cs" />
@@ -217,6 +222,10 @@
     <Content Include="Resources\Files\anexo_ocorrencia.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Queries\QueriesRestore.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>QueriesRestore.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Queries\TarefasQueries.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>TarefasQueries.Designer.cs</LastGenOutput>
@@ -229,9 +238,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>UsuariosQueries.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Queries\VerTarefasMassaQueries.resx">
+    <EmbeddedResource Include="Queries\MassaQueries.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>VerTarefasMassaQueries.Designer.cs</LastGenOutput>
+      <LastGenOutput>MassaQueries.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -245,11 +254,11 @@
     <Error Condition="!Exists('..\packages\NUnit3TestAdapter.3.16.1\build\net35\NUnit3TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit3TestAdapter.3.16.1\build\net35\NUnit3TestAdapter.props'))" />
     <Error Condition="!Exists('..\packages\Selenium.Firefox.WebDriver.0.26.0\build\Selenium.Firefox.WebDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.Firefox.WebDriver.0.26.0\build\Selenium.Firefox.WebDriver.targets'))" />
     <Error Condition="!Exists('..\packages\Selenium.WebDriver.IEDriver.3.150.1\build\Selenium.WebDriver.IEDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.WebDriver.IEDriver.3.150.1\build\Selenium.WebDriver.IEDriver.targets'))" />
-    <Error Condition="!Exists('..\packages\Selenium.WebDriver.ChromeDriver.80.0.3987.10600\build\Selenium.WebDriver.ChromeDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.WebDriver.ChromeDriver.80.0.3987.10600\build\Selenium.WebDriver.ChromeDriver.targets'))" />
+    <Error Condition="!Exists('..\packages\Selenium.WebDriver.ChromeDriver.81.0.4044.6900\build\Selenium.WebDriver.ChromeDriver.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Selenium.WebDriver.ChromeDriver.81.0.4044.6900\build\Selenium.WebDriver.ChromeDriver.targets'))" />
   </Target>
   <Import Project="..\packages\Selenium.WebDriver.MicrosoftDriver.17.17134.0\build\Selenium.WebDriver.MicrosoftDriver.targets" Condition="Exists('..\packages\Selenium.WebDriver.MicrosoftDriver.17.17134.0\build\Selenium.WebDriver.MicrosoftDriver.targets')" />
   <Import Project="..\packages\MongoDB.Libmongocrypt.1.0.0\build\MongoDB.Libmongocrypt.targets" Condition="Exists('..\packages\MongoDB.Libmongocrypt.1.0.0\build\MongoDB.Libmongocrypt.targets')" />
   <Import Project="..\packages\Selenium.Firefox.WebDriver.0.26.0\build\Selenium.Firefox.WebDriver.targets" Condition="Exists('..\packages\Selenium.Firefox.WebDriver.0.26.0\build\Selenium.Firefox.WebDriver.targets')" />
   <Import Project="..\packages\Selenium.WebDriver.IEDriver.3.150.1\build\Selenium.WebDriver.IEDriver.targets" Condition="Exists('..\packages\Selenium.WebDriver.IEDriver.3.150.1\build\Selenium.WebDriver.IEDriver.targets')" />
-  <Import Project="..\packages\Selenium.WebDriver.ChromeDriver.80.0.3987.10600\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('..\packages\Selenium.WebDriver.ChromeDriver.80.0.3987.10600\build\Selenium.WebDriver.ChromeDriver.targets')" />
+  <Import Project="..\packages\Selenium.WebDriver.ChromeDriver.81.0.4044.6900\build\Selenium.WebDriver.ChromeDriver.targets" Condition="Exists('..\packages\Selenium.WebDriver.ChromeDriver.81.0.4044.6900\build\Selenium.WebDriver.ChromeDriver.targets')" />
 </Project>

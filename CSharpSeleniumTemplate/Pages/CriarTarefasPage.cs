@@ -36,7 +36,7 @@ namespace CSharpSeleniumTemplate.Pages
         #region Actions
         public void ClicarEmSelecionarProjeto()
         {
-            Click(botaoSelecionarProjeto);
+            //Click(botaoSelecionarProjeto);
         }
 
         public void SalvarNovoProjeto()

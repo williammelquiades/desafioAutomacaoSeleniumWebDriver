@@ -23,20 +23,20 @@ namespace CSharpSeleniumTemplate.Pages
             Click(this.abaGerenciarProjetos);
         }
 
-        public void PreencherNomeCategoria(string nomeCategoria)
-        {
-            SendKeys(this.campoNovaCategoria, nomeCategoria);
-        }
+        //public void PreencherNomeCategoria(string nomeCategoria)
+        //{
+        //    SendKeys(this.campoNovaCategoria, nomeCategoria);
+        //}
 
-        public void clicarEmAdicionar()
-        {
-            Click(botãoAdicionarCategoria);
-        }
+        //public void clicarEmAdicionar()
+        //{
+        //    Click(botãoAdicionarCategoria);
+        //}
 
-        public void RetornoValidacao()
-        {
-            // Validar criação de nova categoria
-        }
+        //public void RetornoValidacao()
+        //{
+        //    // Validar criação de nova categoria
+        //}
         #endregion
 
     }
