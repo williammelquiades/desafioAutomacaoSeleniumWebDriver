@@ -25,13 +25,20 @@ O desafio foi realizado sob a GTAA da Base 2 tecnologia, o desenvolvimento foi b
 - [x] 2) Alguns scripts devem ler dados de uma planilha Excel para implementar Data-Driven.
 - [x] 3) Dos 50 scripts a classe de teste CriarTarefasTests no cénario CriarNovasTarefasEmMassa é responsavel por criar novas tarefas usando o arquivos .csv e uma classe de login usar dados fake do arquivo .csv para tenta logar no sistema.
 - [x] 4) Os casos de testes precisam ser executados em no mínimo três navegadores. Utilizando o Selenium Grid.
-       - Os navegadores selecionados para execução foram Chrome, Firefox e Ie "Sim, tentei sofrer com energúmeno para execução de tests"
-       - Não é necessário executar em paralelo! "Sigo tentando aprofundar a execução via Docker"
+```
+- Os navegadores selecionados para execução foram Chrome, Firefox e Ie "Sim, tentei sofrer com energúmeno para execução de tests"
+- Não é necessário executar em paralelo! "Sigo tentando aprofundar a execução via Docker"
+
+```
 - [x] 5) Screenshots dos casos de testes na pasta bin\Debug\Reports após execução.
 - [x] 6) Relatório de testes automaticamente com screenshots dos casos de testes na pasta bin\Debug\Reports após execução com  ExtentReport.
 - [x] 7) Massa de testes geradas ao executar scripts e restore de banco de dados ao finalizar.
 - [x] 8) Scripts injetando Javascript para executar operação na telas.
 - [] 9) Testes agendados pelo Jenkins, CI, OK - CD [em estudos]
+
+## Desafios Futuros
+
+Modificar GTAA conforme apresentado na CTAL-TAE:
 
 
 
