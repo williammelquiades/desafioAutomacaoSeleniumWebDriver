@@ -27,7 +27,7 @@ O desafio foi realizado sob a GTAA da Base 2 tecnologia, o desenvolvimento foi b
 - [x] 4) Os casos de testes precisam ser executados em no mínimo três navegadores. Utilizando o Selenium Grid.
 ```
 - Os navegadores selecionados para execução foram Chrome, Firefox e Ie 
-"Sim, tentei sofrer com energúmeno para execução de tests"
+"Sim, tentei sofrer com energúmeno (IE) para execução de tests"
 - Não é necessário executar em paralelo! 
 "Sigo tentando aprofundar a execução via Docker"
 
@@ -39,7 +39,7 @@ O desafio foi realizado sob a GTAA da Base 2 tecnologia, o desenvolvimento foi b
 - [x] 9) Testes agendados pelo Jenkins, 
  ```
 - CI, OK
-- CD, em construção
+- CD, Buscando melhores entendimento por DevOps (em construção)
 ```  
 
 ## Desafios Futuros
