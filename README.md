@@ -36,7 +36,11 @@ O desafio foi realizado sob a GTAA da Base 2 tecnologia, o desenvolvimento foi b
 - [x] 6) Relatório de testes automaticamente com screenshots dos casos de testes na pasta bin\Debug\Reports após execução com  ExtentReport.
 - [x] 7) Massa de testes geradas ao executar scripts e restore de banco de dados ao finalizar.
 - [x] 8) Scripts injetando Javascript para executar operação na telas.
-- [em estudos] 9) Testes agendados pelo Jenkins, CI, OK - CD 
+- [x] 9) Testes agendados pelo Jenkins, 
+ ```
+- CI, OK
+- CD, em construção
+```  
 
 ## Desafios Futuros
 
