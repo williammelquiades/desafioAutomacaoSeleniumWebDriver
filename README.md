@@ -42,5 +42,6 @@ O desafio foi realizado sob a GTAA da Base 2 tecnologia, o desenvolvimento foi b
 
 Modificar GTAA conforme apresentado na CTAL-TAE:
 
+![generig_GTAA](https://user-images.githubusercontent.com/6877812/82620224-502d9200-9bae-11ea-88d0-64764fff236b.png)
 
 
