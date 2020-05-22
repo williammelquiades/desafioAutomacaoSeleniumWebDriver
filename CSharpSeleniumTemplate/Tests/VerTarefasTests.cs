@@ -28,6 +28,7 @@ namespace CSharpSeleniumTemplate.Tests
 
         [Test]
         [Category("Ver Tarefas")]
+        //[Parallelizable]
         public void ValidarAcessoATela()
         {
             #region Parameters
@@ -45,8 +46,9 @@ namespace CSharpSeleniumTemplate.Tests
         }
 
         [Test]
+        //[Parallelizable]
         [Category("Ver Tarefas")]
-        public void PesquisarTaredaPorString()
+        public void PesquisarTarefaPorString()
         {
             #region Parameters
             string tarefa = "Pokemo 20" + GeneralHelpers.ReturnStringWithRandomNumbers(2);
@@ -65,6 +67,7 @@ namespace CSharpSeleniumTemplate.Tests
         }
 
         [Test]
+        //[Parallelizable]
         [Category("Ver Tarefas")]
         public void PesquisarTarefaIdInexistente()
         {
@@ -84,6 +87,7 @@ namespace CSharpSeleniumTemplate.Tests
         }
 
         [Test]
+        //[Parallelizable]
         [Category("Ver Tarefas")]
         public void SalvarUmNovoFiltro()
         {
@@ -154,6 +158,7 @@ namespace CSharpSeleniumTemplate.Tests
         #region Erro 1100 Mantis
    
         [Test]
+        //[Parallelizable]
         [Category ("Ver Tarefas")]
         public void ApagarUmaTarefa()
         {
@@ -179,6 +184,7 @@ namespace CSharpSeleniumTemplate.Tests
         #endregion
 
         [Test]
+        //[Parallelizable]
         [Category ("Ver Tarefas")]
         public void AtribuirUmaTarefa()
         {
@@ -210,6 +216,7 @@ namespace CSharpSeleniumTemplate.Tests
 
        
         [Test]
+        //[Parallelizable]
         [Category ("Ver Tarefas")]
         public void ResolverTarefa()
         {
