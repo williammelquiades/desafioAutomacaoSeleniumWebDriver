@@ -25,6 +25,18 @@ namespace CSharpSeleniumTemplate.Pages
             SendKeys(usernameField, usuario);
         }
 
+        // metodos com JavaScript
+        public void PreencherUsuarioJS(string usuario)
+        {
+            SendKeysJavaScript(usernameField, usuario);
+        }
+
+        public void PreencherSenhaJS(string senha)
+        {
+            SendKeysJavaScript(passwordField, senha);
+        }
+        // end metedo com JS
+
         public void PreencherSenha(string senha)
         {
             SendKeys(passwordField, senha);

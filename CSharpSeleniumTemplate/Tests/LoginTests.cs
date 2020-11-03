@@ -50,6 +50,29 @@ namespace CSharpSeleniumTemplate.Tests
             });
         }
 
+        [Test]
+        public void EfetuarLoginComSucessoComJAVASCRIPT()
+        {
+            //loginPage = new LoginPage();
+            mainPage = new MainPage();
+
+            #region Parameters
+            string usuario = ConfigurationManager.AppSettings["username"].ToString();
+            string senha = ConfigurationManager.AppSettings["password"].ToString();
+            #endregion
+
+            loginPage.PreencherUsuarioJS(usuario);
+            loginPage.ClicarEmLogin();
+            loginPage.PreencherSenhaJS(senha);
+            loginPage.ClicarEmLogin();
+
+
+            Assert.Multiple(() =>
+            {
+                Assert.AreEqual(usuario, mainPage.RetornaUsernameDasInformacoesDeLogin());
+            });
+        }
+
 
         [Test]
         public void EfetuarLoginInformandoSenhaInvalida()

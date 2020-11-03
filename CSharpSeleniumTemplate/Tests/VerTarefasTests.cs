@@ -136,7 +136,7 @@ namespace CSharpSeleniumTemplate.Tests
         [Category ("Ver Tarefas")]
         public void AlterarPriodidadeTarefa()
         {
-          //  MassaStartDBSteps.CriaMassaDeTestesDB();
+            //MassaStartDBSteps.CriaMassaDeTestesDB();
 
             logarNoSistema.EfetuarLogin(USUARIO, SENHA);
 
@@ -163,7 +163,7 @@ namespace CSharpSeleniumTemplate.Tests
         public void ApagarUmaTarefa()
         {
 
-          //  MassaStartDBSteps.CriaMassaDeTestesDB();
+            //MassaStartDBSteps.CriaMassaDeTestesDB();
 
             logarNoSistema.EfetuarLogin(USUARIO, SENHA);
 
@@ -221,7 +221,7 @@ namespace CSharpSeleniumTemplate.Tests
         public void ResolverTarefa()
         {
 
-           // MassaStartDBSteps.CriaMassaDeTestesDB();
+            //MassaStartDBSteps.CriaMassaDeTestesDB();
 
             logarNoSistema.EfetuarLogin(USUARIO, SENHA);
 

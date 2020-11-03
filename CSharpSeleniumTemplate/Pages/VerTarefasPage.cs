@@ -34,8 +34,8 @@ namespace CSharpSeleniumTemplate.Pages
         By botaoOkParaTarefaSelecionada = By.XPath("//input[@value='OK']");
         By dropdownAcoes = By.XPath("//select[@name='action']");
         By dropdownAtribuir = By.ClassName("input-sm");
-        By campoEstado = By.XPath("//*[@class='align-left']//span");// //*[@class='column-status']//div By.LinkText("administrator");
-        By campoEstadoUsuario = By.XPath("//*[@class='align-left']//a");
+        By campoEstado = By.XPath("(//*[@class='align-left']//span)[2]");// //*[@class='column-status']//div By.LinkText("administrator");
+        By campoEstadoUsuario = By.XPath("(//*[@class='align-left']//a)[2]");
 
         By dropdownPrioridade = By.Id("priority");
         By dropdownResolution = By.Name("resolution");
