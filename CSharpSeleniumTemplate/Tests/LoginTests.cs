@@ -17,7 +17,7 @@ namespace CSharpSeleniumTemplate.Tests
         [AutoInstance] LoginPage loginPage;
         [AutoInstance] ContasDeAcessoPage minhaConta;
 
-      
+
         #endregion
 
         #region Data Driven Providers
@@ -53,7 +53,6 @@ namespace CSharpSeleniumTemplate.Tests
         [Test]
         public void EfetuarLoginComSucessoComJAVASCRIPT()
         {
-            //loginPage = new LoginPage();
             mainPage = new MainPage();
 
             #region Parameters
@@ -83,8 +82,8 @@ namespace CSharpSeleniumTemplate.Tests
             #region Parameters
             string usuario = ConfigurationManager.AppSettings["username"].ToString();
             string senha = "rooot";
-            string mensagemErroEsperada = "Sua conta pode estar desativada ou bloqueada ou o nome de usuário e a senha que você digitou não estão corretos."; 
-                //"Your account may be disabled or blocked or the username/password you entered is incorrect.";
+            string mensagemErroEsperada = "Sua conta pode estar desativada ou bloqueada ou o nome de usuário e a senha que você digitou não estão corretos.";
+            //"Your account may be disabled or blocked or the username/password you entered is incorrect.";
             #endregion
 
             loginPage.PreencherUsuario(usuario);
@@ -127,7 +126,7 @@ namespace CSharpSeleniumTemplate.Tests
             string usuario = testData[0].ToString();
             string senha = testData[1].ToString();
             string mensagemErroEsperada = "Sua conta pode estar desativada ou bloqueada ou o nome de usuário e a senha que você digitou não estão corretos.";
-                //"Your account may be disabled or blocked or the username/password you entered is incorrect.";
+            //"Your account may be disabled or blocked or the username/password you entered is incorrect.";
             #endregion
 
             loginPage.PreencherUsuario(usuario);
